@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 394886100}
-  m_IndirectSpecularColor: {r: 0.44131893, g: 0.490125, b: 0.57017505, a: 1}
+  m_IndirectSpecularColor: {r: 0.16368926, g: 0.2050146, b: 0.28483808, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15298,11 +15298,12 @@ MonoBehaviour:
   forearm: {fileID: 0}
   wristJoint: {fileID: 0}
   elbowJoint: {fileID: 0}
+  fingersTransform: []
   loPolyHandPalm: {fileID: 8413238276084224100}
   loPolyHandRenderer: {fileID: 8446757915085468210}
   _strength: 1
   _perBoneMass: 0.6
-  _material: {fileID: 13400000, guid: 568e469fec331dc4e967f921cd49c992, type: 2}
+  _material: {fileID: 13400000, guid: 21499581201963b4fba59af488b4b08c, type: 2}
 --- !u!1 &1903639699
 GameObject:
   m_ObjectHideFlags: 0
@@ -16766,11 +16767,12 @@ MonoBehaviour:
   forearm: {fileID: 0}
   wristJoint: {fileID: 0}
   elbowJoint: {fileID: 0}
+  fingersTransform: []
   loPolyHandPalm: {fileID: 5706024827110998019}
   loPolyHandRenderer: {fileID: 5681514794904125851}
   _strength: 1
   _perBoneMass: 0.6
-  _material: {fileID: 13400000, guid: 568e469fec331dc4e967f921cd49c992, type: 2}
+  _material: {fileID: 13400000, guid: 21499581201963b4fba59af488b4b08c, type: 2}
 --- !u!1 &2116972646
 GameObject:
   m_ObjectHideFlags: 0
