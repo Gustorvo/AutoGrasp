@@ -4,6 +4,9 @@ using Leap.Unity.Encoding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoftHand;
+using static SoftHand.Enums;
+using Finger = SoftHand.Enums.Finger;
 //    XR_HAND_JOINT_PALM_EXT = 0,
 //    XR_HAND_JOINT_WRIST_EXT = 1,
 //    XR_HAND_JOINT_THUMB_METACARPAL_EXT = 2,
@@ -35,100 +38,7 @@ namespace LeapExtensions
 {
     public static class HandExtensions
     {
-        public static void Decode(this VectorHand vHand, Hand intoHand, int num)
-        {
-            int boneIdx = 0;
-            Vector3 prevJoint = Vector3.zero;
-            Vector3 nextJoint = Vector3.zero;
-            Quaternion boneRot = Quaternion.identity;
-
-            // Fill fingers.
-            for (int fingerIdx = 0; fingerIdx < 5; fingerIdx++)
-            {
-                for (int jointIdx = 0; jointIdx < 4; jointIdx++)
-                {
-                    boneIdx = fingerIdx * 4 + jointIdx;
-                    prevJoint = vHand.jointPositions[fingerIdx * 5 + jointIdx];
-                    nextJoint = vHand.jointPositions[fingerIdx * 5 + jointIdx + 1];
-
-                    if ((nextJoint - prevJoint).normalized == Vector3.zero)
-                    {
-                        // Thumb "metacarpal" slot is an identity bone.
-                        boneRot = Quaternion.identity;
-                    }
-                    else
-                    {
-                        boneRot = Quaternion.LookRotation(
-                                    (nextJoint - prevJoint).normalized,
-                                    Vector3.Cross((nextJoint - prevJoint).normalized,
-                                                  (fingerIdx == 0 ?
-                                                    (vHand.isLeft ? -Vector3.up : Vector3.up)
-                                                   : Vector3.right)));
-                    }
-
-                    // Convert to world space from palm space.
-                    nextJoint = VectorHand.ToWorld(nextJoint, vHand.palmPos, vHand.palmRot);
-                    prevJoint = VectorHand.ToWorld(prevJoint, vHand.palmPos, vHand.palmRot);
-                    boneRot = vHand.palmRot * boneRot;
-
-                    intoHand.GetBone(boneIdx).Fill(
-                      prevJoint: prevJoint.ToVector(),
-                      nextJoint: nextJoint.ToVector(),
-                      center: ((nextJoint + prevJoint) / 2f).ToVector(),
-                      direction: (vHand.palmRot * Vector3.forward).ToVector(),
-                      length: (prevJoint - nextJoint).magnitude,
-                      width: 0.01f,
-                      type: (Bone.BoneType)jointIdx,
-                      rotation: boneRot.ToLeapQuaternion());
-                }
-                intoHand.Fingers[fingerIdx].Fill(
-                  frameId: -1,
-                  handId: (vHand.isLeft ? 0 : 1),
-                  fingerId: fingerIdx,
-                  timeVisible: 10f,// Time.time, <- This is unused and main thread only
-                  tipPosition: nextJoint.ToVector(),
-                  direction: (boneRot * Vector3.forward).ToVector(),
-                  width: 1f,
-                  length: 1f,
-                  isExtended: true,
-                  type: (Finger.FingerType)fingerIdx);
-            }
-
-            // Fill arm data.
-            intoHand.Arm.Fill(VectorHand.ToWorld(new Vector3(0f, 0f, -0.3f), vHand.palmPos, vHand.palmRot).ToVector(),
-                            VectorHand.ToWorld(new Vector3(0f, 0f, -0.055f), vHand.palmPos, vHand.palmRot).ToVector(),
-                            VectorHand.ToWorld(new Vector3(0f, 0f, -0.125f), vHand.palmPos, vHand.palmRot).ToVector(),
-                            Vector.Zero,
-                            0.3f,
-                            0.05f,
-                            (vHand.palmRot).ToLeapQuaternion());
-
-            // Finally, fill hand data.
-            var palmPose = new Leap.Unity.Pose(vHand.palmPos, vHand.palmRot);
-            // var wristPos = ToWorld(new Vector3(0f, -0.015f, -0.065f), palmPos, palmRot);
-            var wristPos = (palmPose * VectorHand.tweakWristPosition).position;
-            intoHand.Fill(
-              frameID: -1,
-              id: (vHand.isLeft ? 0 : 1),
-              confidence: 1f,
-              grabStrength: 0.5f,
-              grabAngle: 100f,
-              pinchStrength: 0.5f,
-              pinchDistance: 50f,
-              palmWidth: 0.085f,
-              isLeft: vHand.isLeft,
-              timeVisible: 1f,
-              fingers: null /* already uploaded finger data */,
-              palmPosition: vHand.palmPos.ToVector(),
-              stabilizedPalmPosition: vHand.palmPos.ToVector(),
-              palmVelocity: Vector3.zero.ToVector(),
-              palmNormal: (vHand.palmRot * Vector3.down).ToVector(),
-              rotation: (vHand.palmRot.ToLeapQuaternion()),
-              direction: (vHand.palmRot * Vector3.forward).ToVector(),
-              wristPosition: wristPos.ToVector()
-            );            
-        }
-
+        #region Transform extensions
         public static Vector3 FromVector(this Vector3 v)
         {
             return new Vector3() { x = v.x, y = v.y, z = v.z };
@@ -158,8 +68,126 @@ namespace LeapExtensions
         {
             return new Quaternion() { x = -q.x, y = -q.y, z = q.z, w = q.w };
         }
+        #endregion
+
+        #region Articulation body extension
+
+        public static ArticulationBody SetupForBone(this ArticulationBody body, OVRSkeleton.BoneId bi)
+        {
+            var bone = GetFingerBone(bi);
+            var finger = GetFinger(bi);
+            if (bone == FingerBone.Invalid || finger == Finger.Invalid)
+                return null;
+
+            body.anchorPosition = new Vector3(0f, 0f, 0f);
+            body.anchorRotation = Quaternion.identity;
+            body.mass = 3f;
+
+            if (bone == FingerBone.Trapezium || (bone == FingerBone.Metacarpal && finger == Finger.Pinky))
+            {
+                //return locked AB
+                body.jointType = ArticulationJointType.FixedJoint;
+                return body;
+            }
+            else if ((bone == FingerBone.Proximal && finger != Finger.Thumb) || (bone == FingerBone.Metacarpal && finger == Finger.Thumb))
+            {
+                //return spherical (2 dof)
+                body.jointType = ArticulationJointType.SphericalJoint;
+                body.swingZLock = ArticulationDofLock.LimitedMotion;
+                body.swingYLock = ArticulationDofLock.LimitedMotion;
+                body.twistLock = ArticulationDofLock.LockedMotion;
+                body.anchorRotation = Quaternion.Euler(90f, 180f, 0f);
+
+                ArticulationDrive yDrive = new ArticulationDrive()
+                {
+                    stiffness = 100f,// * _strength,
+                    forceLimit = 1000f,// * _strength,
+                    damping = 3f,
+                    lowerLimit = -15f,
+                    upperLimit = 85f
+                };
+                ArticulationDrive zDrive = new ArticulationDrive()
+                {
+                    stiffness = 100f,// * _strength,
+                    forceLimit = 1000f,// * _strength,
+                    damping = 6f,
+                    lowerLimit = -15f,
+                    upperLimit = 15f
+                };
+                body.zDrive = zDrive;
+                body.yDrive = yDrive;
+
+                return body;
+            }
+            // return 1 dof
+            body.jointType = ArticulationJointType.RevoluteJoint;
+            body.twistLock = ArticulationDofLock.LimitedMotion;
+            ArticulationDrive xDrive = new ArticulationDrive()
+            {
+                stiffness = 100f,// * _strength,
+                forceLimit = 1000f,// * _strength,
+                damping = 3f,
+                lowerLimit = -15f,
+                upperLimit = 115f
+            };
+            body.xDrive = xDrive;
+            body.anchorRotation = Quaternion.Euler(0f, 90f, 0f);
+            return body;
+        }
+
+        public static FingerBone GetFingerBone(this OVRSkeleton.BoneId bi)
+        {
+            switch ((int)bi)
+            {
+                case 2:
+                    return FingerBone.Trapezium;
+                case 3:
+                case 15:
+                    return FingerBone.Metacarpal;
+                case 4:
+                case 6:
+                case 9:
+                case 12:
+                case 16:
+                    return FingerBone.Proximal;
+                case 5:
+                case 8:
+                case 11:
+                case 14:
+                case 18:
+                    return FingerBone.Distal;
+                case 7:
+                case 10:
+                case 13:
+                case 17:
+                    return FingerBone.Intermediate;
+
+                default: return FingerBone.Invalid;
+            }
+
+        }
+
+        public static Finger GetFinger(this OVRSkeleton.BoneId bi)
+        {
+            switch ((int)bi)
+            {
+                case int n when n == 20 || n >= 2 && n <= 5:
+                    return Finger.Thumb;
+                case int n when n == 21 || n >= 6 && n <= 8:
+                    return Finger.Index;
+                case int n when n == 22 || n >= 9 && n <= 11:
+                    return Finger.Middle;
+                case int n when n == 23 || n >= 12 && n <= 14:
+                    return Finger.Ring;
+                case int n when n == 24 || n >= 15 && n <= 18:
+                    return Finger.Pinky;
+
+
+                default: return Finger.Invalid;
+            }
+        }
+
+        #endregion
 
     }
-
-
 }
