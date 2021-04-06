@@ -38,8 +38,8 @@ public class SkeletonMappingEditor : Editor
 				for (int i = (int)start; i < (int)end; ++i)
 				{
 					string boneName = BoneLabelFromBoneId(skeletonType, (BoneId)i);
-					skeleton.CustomBones[i] = (Transform)EditorGUILayout.ObjectField(boneName, skeleton.CustomBones[i], typeof(Transform), true);
-				}
+					skeleton.CustomBones[i] = (Transform)EditorGUILayout.ObjectField(boneName, skeleton.CustomBones[i], typeof(Transform), true);                    
+                }
 			}
 		}
 	}

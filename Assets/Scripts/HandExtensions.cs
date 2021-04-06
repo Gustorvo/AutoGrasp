@@ -82,14 +82,22 @@ namespace LeapExtensions
             body.anchorPosition = new Vector3(0f, 0f, 0f);
             body.anchorRotation = Quaternion.identity;
             body.mass = 3f;
+            body.linearLockX = ArticulationDofLock.LockedMotion;
+            body.linearLockY = ArticulationDofLock.LockedMotion;
+            body.linearLockZ = ArticulationDofLock.LockedMotion;
+         
+           
 
-            if (bone == FingerBone.Trapezium || (bone == FingerBone.Metacarpal && finger == Finger.Pinky))
+            if (bone == FingerBone.Trapezium /*|| (bone == FingerBone.Metacarpal && finger == Finger.Pinky)*/)
             {
                 //return locked AB
                 body.jointType = ArticulationJointType.FixedJoint;
+                body.swingYLock = ArticulationDofLock.LockedMotion;
+                body.swingZLock = ArticulationDofLock.LockedMotion;
+                body.twistLock = ArticulationDofLock.LockedMotion ;
                 return body;
             }
-            else if ((bone == FingerBone.Proximal && finger != Finger.Thumb) || (bone == FingerBone.Metacarpal && finger == Finger.Thumb))
+            if ((bone == FingerBone.Proximal && finger != Finger.Thumb) || (bone == FingerBone.Metacarpal && finger == Finger.Thumb))
             {
                 //return spherical (2 dof)
                 body.jointType = ArticulationJointType.SphericalJoint;
@@ -122,6 +130,8 @@ namespace LeapExtensions
             // return 1 dof
             body.jointType = ArticulationJointType.RevoluteJoint;
             body.twistLock = ArticulationDofLock.LimitedMotion;
+            body.swingYLock = ArticulationDofLock.LockedMotion;
+            body.swingZLock = ArticulationDofLock.LockedMotion;
             ArticulationDrive xDrive = new ArticulationDrive()
             {
                 stiffness = 100f,// * _strength,
@@ -130,6 +140,8 @@ namespace LeapExtensions
                 lowerLimit = -15f,
                 upperLimit = 115f
             };
+            if (bone == FingerBone.Metacarpal && finger == Finger.Pinky)
+                xDrive.upperLimit = 15;
             body.xDrive = xDrive;
             body.anchorRotation = Quaternion.Euler(0f, 90f, 0f);
             return body;

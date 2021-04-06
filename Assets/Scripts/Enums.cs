@@ -25,5 +25,13 @@ namespace SoftHand
             Ring = 3,
             Pinky = 4
         }
+
+        public enum Drive
+        {
+            Invalid = -1,
+            Xdrive = 1,
+            Ydrive = 2,
+            Zdrive = 3
+        }
     }
 }

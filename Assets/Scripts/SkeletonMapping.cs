@@ -338,6 +338,7 @@ namespace SoftHand
                     capsule.height = (CustomBones[i].position - nextBoneTransform.position).magnitude + capsule.radius;
                     capsule.material = _material;
                     capsule.center = new Vector3(capsule.height / 2f - capsule.radius, 0f, 0f) * -1;
+                    capsule.isTrigger = true;
                     //_capsuleColliders[i] = capsule;
                     //go.transform.SetParent(CustomBones[i]);
                     //go.transform.localPosition = Vector3.zero;
