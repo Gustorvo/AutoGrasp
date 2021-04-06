@@ -6,7 +6,6 @@ namespace SoftHand
     using System.Text.RegularExpressions;
     using UnityEditor;
     using UnityEngine;
-    using LeapExtensions;
     using static OVRSkeleton;
 
     public class SkeletonMapping : MonoBehaviour

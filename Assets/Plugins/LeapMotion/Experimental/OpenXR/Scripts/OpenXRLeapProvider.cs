@@ -9,6 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Leap.Unity.Encoding;
+#if !PLATFORM_STANDALONE_OSX
 using Microsoft.MixedReality.OpenXR.Preview;
 
 namespace Leap.Unity
@@ -56,7 +57,7 @@ public class OpenXRLeapProvider : LeapProvider
     DispatchFixedFrameEvent(_fixedUpdateFrame); 
   }
 
-  #region LeapProvider 
+#region LeapProvider 
   
   /// <Summary>
   /// Popuates the given Leap Frame with the most recent hand data
@@ -111,13 +112,13 @@ public class OpenXRLeapProvider : LeapProvider
       }
   }
 
-  #endregion
+#endregion
 
-  #region Frame Utilities
+#region Frame Utilities
 
   public override Frame CurrentFrame {
     get {
-      #if UNITY_EDITOR
+#if UNITY_EDITOR
       if (!Application.isPlaying) {
         _editTimeFrame.Hands.Clear();
         _untransformedEditTimeFrame.Hands.Clear();
@@ -126,14 +127,14 @@ public class OpenXRLeapProvider : LeapProvider
         transformFrame(_untransformedEditTimeFrame, _editTimeFrame);
         return _editTimeFrame;
       }
-      #endif
+#endif
       return _updateFrame;
     }
   }
 
   public override Frame CurrentFixedFrame {
     get {
-      #if UNITY_EDITOR
+#if UNITY_EDITOR
       if (!Application.isPlaying) {
         _editTimeFrame.Hands.Clear();
         _untransformedEditTimeFrame.Hands.Clear();
@@ -142,7 +143,7 @@ public class OpenXRLeapProvider : LeapProvider
         transformFrame(_untransformedEditTimeFrame, _editTimeFrame);
         return _editTimeFrame;
       }
-      #endif
+#endif
       return _updateFrame;
     }
   }
@@ -153,11 +154,11 @@ public class OpenXRLeapProvider : LeapProvider
           dest.CopyFrom(source).Transform(transform.GetLeapMatrix());
   }
 
-  #endregion
+#endregion
 
-  #region Editor Pose Implementation
+#region Editor Pose Implementation
 
-  #if UNITY_EDITOR
+#if UNITY_EDITOR
   private Frame _backingUntransformedEditTimeFrame = null;
   private Frame _untransformedEditTimeFrame {
     get {
@@ -207,7 +208,8 @@ public class OpenXRLeapProvider : LeapProvider
     }
   }
 
-  #endif
-  #endregion
+#endif
+#endregion
 }
 }
+#endif

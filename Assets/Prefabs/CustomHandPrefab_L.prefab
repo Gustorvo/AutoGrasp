@@ -421,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1805378900296077574}
   - component: {fileID: 3354551582538639016}
+  - component: {fileID: 5580590545726074320}
   m_Layer: 0
   m_Name: b_l_wrist/palm
   m_TagString: Untagged
@@ -498,6 +499,19 @@ ArticulationBody:
   m_JointFriction: 0.05
   m_Immovable: 1
   m_UseGravity: 1
+--- !u!65 &5580590545726074320
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808406547086766082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07517255, y: 0.024850063, z: 0.07785258}
+  m_Center: {x: -0.05046134, y: 0.007211853, z: -0.0019676927}
 --- !u!1 &1808440030360153454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a74f5f6e5029844aa9165439fa536c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _palm: {fileID: 0}
+  _anchor: {fileID: 0}
 --- !u!114 &3354880477473689629
 MonoBehaviour:
   m_ObjectHideFlags: 0

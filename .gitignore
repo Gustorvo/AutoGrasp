@@ -61,3 +61,4 @@ crashlytics-build.properties
 Assets/Oculus/
 Assets/Oculus.meta
 Packages/MixedReality/
+EditorUserSettings.asset

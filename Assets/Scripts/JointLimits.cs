@@ -1,4 +1,3 @@
-using LeapExtensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +12,7 @@ namespace SoftHand
         public OVRCustomSkeleton skeleton;
         public int bonesCount;
         public float offset = 5;
-        public List<FingerBone> fingerBoneIds;
+        public List<FingerBoneLimits> fingerBoneIds;
         List<string> boneNames;
         List<Vector3> boneRotValues;
 
@@ -23,14 +22,14 @@ namespace SoftHand
                 skeleton = GetComponent<OVRCustomSkeleton>();
             if (skeleton == null)
                 skeleton = transform.parent.GetComponent<OVRCustomSkeleton>();
-            fingerBoneIds = new List<FingerBone>();
+            fingerBoneIds = new List<FingerBoneLimits>();
             boneNames = GetBoneNames();
             boneRotValues = new List<Vector3>();
             FetchRotations(ref boneRotValues);
 
             for (int i = 0; i < boneNames.Count; i++)
             {
-                fingerBoneIds.Add(new FingerBone(i, boneNames[i], boneRotValues[i]));
+                fingerBoneIds.Add(new FingerBoneLimits(i, boneNames[i], boneRotValues[i]));
             }
 
         }
@@ -102,7 +101,7 @@ namespace SoftHand
     }
 
     [Serializable]
-    public class FingerBone
+    public class FingerBoneLimits
     {
         public int Id;
         public int DOFs;
@@ -112,7 +111,7 @@ namespace SoftHand
 
         private float maxX, maxY, maxZ, minX, minY, minZ;
         // public Transform transform;
-        public FingerBone(int id, string name, Vector3 rotation)// : this()
+        public FingerBoneLimits(int id, string name, Vector3 rotation)// : this()
         {
             Id = id;
             Name = name;

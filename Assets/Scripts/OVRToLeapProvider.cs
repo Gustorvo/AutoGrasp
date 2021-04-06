@@ -1,7 +1,6 @@
 using Leap;
 using Leap.Unity;
 using Leap.Unity.Encoding;
-using LeapExtensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
