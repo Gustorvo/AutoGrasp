@@ -100,6 +100,12 @@ namespace SoftHand
 
         public bool IsInitialized { get; private set; }
 
+        private void Awake()
+        {
+            InitializeCapsules();
+            InitializeArticulationBodies();
+        }
+
 #if UNITY_EDITOR
 
         [ContextMenu("Fix bone Hierarchy")]
@@ -296,15 +302,15 @@ namespace SoftHand
         [ContextMenu("Make capsule colliders")]
         private void InitializeCapsules()
         {
-            //// Get the layers that collide with this hand
-            //int myLayer = gameObject.layer;
-            //for (int i = 0; i < 32; i++)
-            //{
-            //    if (!Physics.GetIgnoreLayerCollision(myLayer, i))
-            //    {
-            //        _layerMask = _layerMask | 1 << i;
-            //    }
-            //}
+            // Get the layers that collide with this hand
+            int myLayer = gameObject.layer;
+            for (int i = 0; i < 32; i++)
+            {
+                if (!Physics.GetIgnoreLayerCollision(myLayer, i))
+                {
+                    _layerMask = _layerMask | 1 << i;
+                }
+            }
 
             //bool flipX = (_skeletonType == SkeletonType.HandLeft || _skeletonType == SkeletonType.HandRight);
 
@@ -338,12 +344,13 @@ namespace SoftHand
                     capsule.height = (CustomBones[i].position - nextBoneTransform.position).magnitude + capsule.radius;
                     capsule.material = _material;
                     capsule.center = new Vector3(capsule.height / 2f - capsule.radius, 0f, 0f) * -1;
+                    capsule.isTrigger = true;
                     //_capsuleColliders[i] = capsule;
                     //go.transform.SetParent(CustomBones[i]);
                     //go.transform.localPosition = Vector3.zero;
                     //go.transform.localRotation = Quaternion.identity;
                 }
-            }  
+            }
         }
 
         [ContextMenu("Make Art bodies")]
@@ -359,12 +366,13 @@ namespace SoftHand
                     GameObject go = CustomBones[i].gameObject;
                     if (go != null)
                     {
-                        BoneId bi = (BoneId)i;                     
+                        BoneId bi = (BoneId)i;
                         ArticulationBody body = go.TryGetComponent<ArticulationBody>(out body) ? body : go.AddComponent<ArticulationBody>();
                         body.SetupForBone(bi);
+                        body.useGravity = false;
                         // hack to re-initialize AB by toggling on and off
-                        body.enabled = false; 
-                        body.enabled = true; 
+                        body.enabled = false;
+                        body.enabled = true;
                     }
 
                 }

@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3549015179716324224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8278498736569955232}
+  - component: {fileID: 7396405762500755813}
+  m_Layer: 0
+  m_Name: Joint limit recorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8278498736569955232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3549015179716324224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7396405762500755813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3549015179716324224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7c147842fb26b478f7c1ea6d888261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeleton: {fileID: 0}
+  bonesCount: 0
+  offset: 5
+  fingerBoneIds:
+  - Id: 0
+    DOFs: 3
+    Name: Thumb_Trapezium
+    InitialRot: {x: 38.692566, y: -62.72934, z: -23.078094}
+    MinDelta: {x: -17, y: -17, z: -56}
+    MaxDelta: {x: 10, y: 2, z: 48}
+  - Id: 1
+    DOFs: 3
+    Name: Thumb_Metacarpal
+    InitialRot: {x: 29.470608, y: -7.3900757, z: -16.908875}
+    MinDelta: {x: -12, y: -36, z: -14}
+    MaxDelta: {x: 2, y: 34, z: 17}
+  - Id: 2
+    DOFs: 1
+    Name: Thumb_Proximal
+    InitialRot: {x: -10.17749, y: 8.088296, z: 8.985043}
+    MinDelta: {x: 0, y: 0, z: -72}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 3
+    DOFs: 1
+    Name: Thumb_Distal
+    InitialRot: {x: 9.983564, y: -6.9602966, z: 6.110595}
+    MinDelta: {x: 0, y: 0, z: -55}
+    MaxDelta: {x: 0, y: 0, z: 14}
+  - Id: 4
+    DOFs: 2
+    Name: Index_Proximal
+    InitialRot: {x: 3.6063442, y: 2.0094755, z: -4.901184}
+    MinDelta: {x: 0, y: -27, z: -74}
+    MaxDelta: {x: 0, y: 19, z: 16}
+  - Id: 5
+    DOFs: 1
+    Name: Index_Intermediate
+    InitialRot: {x: -2.960022, y: 0.8260285, z: -0.39883423}
+    MinDelta: {x: 0, y: 0, z: -107}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 6
+    DOFs: 1
+    Name: Index_Distal
+    InitialRot: {x: -2.0587158, y: 2.9720972, z: 8.212348}
+    MinDelta: {x: 0, y: 0, z: -82}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 7
+    DOFs: 2
+    Name: Middle_Proximal
+    InitialRot: {x: -0.73043823, y: 5.9465303, z: -5.988678}
+    MinDelta: {x: 0, y: -9, z: -81}
+    MaxDelta: {x: 0, y: 19, z: 16}
+  - Id: 8
+    DOFs: 1
+    Name: Middle_Intermediate
+    InitialRot: {x: -1.2876587, y: 0.4993323, z: 0.22109771}
+    MinDelta: {x: 0, y: 0, z: -107}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 9
+    DOFs: 1
+    Name: Middle_Distal
+    InitialRot: {x: -3.9656372, y: 0.16048159, z: 10.674112}
+    MinDelta: {x: 0, y: 0, z: -82}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 10
+    DOFs: 2
+    Name: Ring_Proximal
+    InitialRot: {x: -5.3339844, y: 14.480696, z: -6.440796}
+    MinDelta: {x: 0, y: -13, z: -86}
+    MaxDelta: {x: 0, y: 15, z: 16}
+  - Id: 11
+    DOFs: 1
+    Name: Ring_Intermediate
+    InitialRot: {x: -3.8528442, y: 0.34215674, z: -0.6622925}
+    MinDelta: {x: 0, y: 0, z: -107}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 12
+    DOFs: 1
+    Name: Ring_Distal
+    InitialRot: {x: -0.31451416, y: -3.35318, z: 2.878804}
+    MinDelta: {x: 0, y: 0, z: -78}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 13
+    DOFs: 0
+    Name: Pinky_Metacarpal
+    InitialRot: {x: -23.30957, y: 17.705233, z: -5.847473}
+    MinDelta: {x: 0, y: 0, z: 0}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 14
+    DOFs: 2
+    Name: Pinky_Proximal
+    InitialRot: {x: 10.4376335, y: -0.770874, z: -3.3077087}
+    MinDelta: {x: 0, y: -12, z: -93}
+    MaxDelta: {x: 0, y: 39, z: 32}
+  - Id: 15
+    DOFs: 1
+    Name: Pinky_Intermediate
+    InitialRot: {x: -4.3727417, y: 4.8746195, z: 1.3387848}
+    MinDelta: {x: 0, y: 0, z: -107}
+    MaxDelta: {x: 0, y: 0, z: 0}
+  - Id: 16
+    DOFs: 1
+    Name: Pinky_Distal
+    InitialRot: {x: 0.20910904, y: -5.633423, z: 2.7456658}
+    MinDelta: {x: 0, y: 0, z: -77}
+    MaxDelta: {x: 0, y: 0, z: 0}
