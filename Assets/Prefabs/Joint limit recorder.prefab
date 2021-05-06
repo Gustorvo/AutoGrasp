@@ -38,7 +38,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3549015179716324224}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a7c147842fb26b478f7c1ea6d888261, type: 3}
   m_Name: 
@@ -57,14 +57,14 @@ MonoBehaviour:
     DOFs: 3
     Name: Thumb_Metacarpal
     InitialRot: {x: 29.470608, y: -7.3900757, z: -16.908875}
-    MinDelta: {x: -12, y: -36, z: -14}
+    MinDelta: {x: -12, y: -36, z: -75}
     MaxDelta: {x: 2, y: 34, z: 17}
   - Id: 2
     DOFs: 1
     Name: Thumb_Proximal
     InitialRot: {x: -10.17749, y: 8.088296, z: 8.985043}
     MinDelta: {x: 0, y: 0, z: -72}
-    MaxDelta: {x: 0, y: 0, z: 0}
+    MaxDelta: {x: 0, y: 0, z: 20}
   - Id: 3
     DOFs: 1
     Name: Thumb_Distal

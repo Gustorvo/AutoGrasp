@@ -26,6 +26,8 @@ public class ArtBodyTargetControllerEditor : EditorWindow
 
     void OnGUI()
     {
+       // if (EditorApplication.isPlayingOrWillChangePlaymode)
+        //    return;
         EditorGUILayout.BeginHorizontal();
         artDriveSource = (UnityEngine.GameObject)EditorGUILayout.ObjectField(artDriveSource, typeof(GameObject), true);
         if (artDriveSource == null)
@@ -58,7 +60,7 @@ public class ArtBodyTargetControllerEditor : EditorWindow
         if (GUILayout.Button("Fetch drives"))
         {
             _driveController.Awake();
-            EditorUtility.SetDirty(_driveController);
+            //EditorUtility.SetDirty(_driveController);
             EditorSceneManager.MarkSceneDirty(_driveController.gameObject.scene);
         }
     }
@@ -71,18 +73,20 @@ public class ArtBodyTargetControllerEditor : EditorWindow
     }
 
     private void MakeDriveSlider(int id, ArtDriveTarget artDriveTarget)
-    {        
+    {
         float val = _driveController.driveTargetValues[id];
         GUILayout.BeginHorizontal();
 
         EditorGUILayout.LabelField(id.ToString(), artDriveTarget.Name);
         _driveController.driveTargetValues[id] = EditorGUILayout.Slider(val, artDriveTarget.LowerLimit, artDriveTarget.UpperLimit);
-       
+
         GUILayout.EndHorizontal();
     }
 
     void OnInspectorUpdate()
-    {        
+    {
+         if (EditorApplication.isPlayingOrWillChangePlaymode)
+            return;
         if (_driveController != null && _driveController.driveTargets.Count > 0)
         {
             for (int i = 0; i < _driveController.driveTargets.Count; i++)
@@ -95,6 +99,5 @@ public class ArtBodyTargetControllerEditor : EditorWindow
                     _driveController.SetDriveValue(drive.DriveType, drive.InstanceId, sliderValue);
             }
         }
-
     }
 }

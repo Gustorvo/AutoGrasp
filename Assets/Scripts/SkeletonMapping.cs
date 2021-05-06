@@ -1,5 +1,6 @@
 namespace SoftHand
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -7,7 +8,7 @@ namespace SoftHand
     using UnityEditor;
     using UnityEngine;
     using static OVRSkeleton;
-
+    [DefaultExecutionOrder(-90)]
     public class SkeletonMapping : MonoBehaviour
     {
         [SerializeField]
@@ -22,7 +23,7 @@ namespace SoftHand
 
         //[HideInInspector]
         [SerializeField]
-        private List<Transform> _customBones_V2 = new List<Transform>(new Transform[(int)OVRSkeleton.BoneId.Max]);
+        private List<Transform> _customBones_V2 = new List<Transform>(new Transform[(int)BoneId.Max]);
         public SkeletonType SkeletonType => _skeletonType;
         public BoneId CurrentStartBoneId => _ovrSkeleton.GetCurrentStartBoneId() == BoneId.Hand_Start ? BoneId.Hand_Thumb0 : BoneId.Invalid;
         public BoneId CurrentEndBoneId => _ovrSkeleton.GetCurrentEndBoneId();// == BoneId.Hand_End ? BoneId.Hand_End : BoneId.Invalid;
@@ -34,7 +35,14 @@ namespace SoftHand
         private const int N_ACTIVE_BONES = 3;
 
         private ArticulationBody _palmBody;
-        private List<ArticulationBody> _articulationBodies;
+       // private List<ArticulationBody> _articulationBodies;
+
+        public List<bool> invertedVectorList { get; private set; }
+        public List<bool> flippedYVectorList { get; private set; }
+
+        public Dictionary<int, int> LookupDic { get; private set; } // bone index - art index table
+        private List<ArticulationBody> _bodies;
+
         private BoxCollider _palmCollider;
         private CapsuleCollider[] _capsuleColliders;
         private int _lastFrameTeleport = 0;
@@ -100,14 +108,24 @@ namespace SoftHand
         public bool IsInitialized { get; private set; }
 
         private void Awake()
-        {
+        {            
             InitializeCapsules();
             InitializeArticulationBodies();
+            CreateLookupDicitionaty();
+        }
+
+        private void CreateLookupDicitionaty()
+        {
+            LookupDic = new Dictionary<int, int>();
+            for (int i = 0; i < _bodies.Count; i++)
+            {
+                LookupDic.Add(_bodies[i].index-1, i);
+            }
         }
 
 #if UNITY_EDITOR
 
-        [ContextMenu("Fix bone Hierarchy")]
+        //[ContextMenu("Fix bone Hierarchy")]
         private void FixBoneHierarchy()
         {
             // itterate throught each bone and make it a child of an empty GO which has rotatin += (0, -90, 90)
@@ -135,7 +153,7 @@ namespace SoftHand
             }
         }
         public void TryAutoMapBonesByName()
-        {
+        {            
             BoneId start = CurrentStartBoneId;
             BoneId end = CurrentEndBoneId;
             SkeletonType skeletonType = SkeletonType;
@@ -247,6 +265,7 @@ namespace SoftHand
                 InitializeCapsules();
                 InitializeMaterial();
                 InitializeArticulationBodies();
+                CreateLookupDicitionaty();
 
                 IsInitialized = true;
             }
@@ -302,14 +321,14 @@ namespace SoftHand
         private void InitializeCapsules()
         {
             // Get the layers that collide with this hand
-            int myLayer = gameObject.layer;
-            for (int i = 0; i < 32; i++)
-            {
-                if (!Physics.GetIgnoreLayerCollision(myLayer, i))
-                {
-                    _layerMask = _layerMask | 1 << i;
-                }
-            }
+            //int myLayer = gameObject.layer;
+            //for (int i = 0; i < 32; i++)
+            //{
+            //    if (!Physics.GetIgnoreLayerCollision(myLayer, i))
+            //    {
+            //        _layerMask = _layerMask | 1 << i;
+            //    }
+            //}
 
             //bool flipX = (_skeletonType == SkeletonType.HandLeft || _skeletonType == SkeletonType.HandRight);
 
@@ -343,7 +362,7 @@ namespace SoftHand
                     capsule.height = (CustomBones[i].position - nextBoneTransform.position).magnitude + capsule.radius;
                     capsule.material = _material;
                     capsule.center = new Vector3(capsule.height / 2f - capsule.radius, 0f, 0f) * -1;
-                    capsule.isTrigger = true;
+                    //capsule.isTrigger = true;
                     //_capsuleColliders[i] = capsule;
                     //go.transform.SetParent(CustomBones[i]);
                     //go.transform.localPosition = Vector3.zero;
@@ -359,7 +378,9 @@ namespace SoftHand
             BoneId end = BoneId.Hand_MaxSkinnable;
             if (start != BoneId.Invalid && end != BoneId.Invalid)
             {
-                _articulationBodies = new List<ArticulationBody>();
+                _bodies = new List<ArticulationBody>();
+                flippedYVectorList = new List<bool>();
+                invertedVectorList = new List<bool>();
                 for (int i = (int)start; i < (int)end; ++i)
                 {
                     GameObject go = CustomBones[i].gameObject;
@@ -367,11 +388,15 @@ namespace SoftHand
                     {
                         BoneId bi = (BoneId)i;
                         ArticulationBody body = go.TryGetComponent<ArticulationBody>(out body) ? body : go.AddComponent<ArticulationBody>();
-                        body.SetupForBone(bi);
+                        body.SetupForBone(bi, out bool isVectorInverted, out bool isYFlipped);
+                        //body.ResetInertiaTensor();                        
+                        invertedVectorList.Add(isVectorInverted);
+                        flippedYVectorList.Add(isYFlipped);
                         body.useGravity = false;
+                        _bodies.Add(body);
                         // hack to re-initialize AB by toggling on and off
-                        body.enabled = false;
-                        body.enabled = true;
+                        //body.enabled = false;
+                       // body.enabled = true;
                     }
 
                 }

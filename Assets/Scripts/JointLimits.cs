@@ -21,7 +21,9 @@ namespace SoftHand
             if (skeleton == null)
                 skeleton = GetComponent<OVRCustomSkeleton>();
             if (skeleton == null)
-                skeleton = transform.parent.GetComponent<OVRCustomSkeleton>();
+                skeleton = transform.parent?.GetComponent<OVRCustomSkeleton>();
+            if (!skeleton)
+                return;
             fingerBoneIds = new List<FingerBoneLimits>();
             boneNames = GetBoneNames();
             boneRotValues = new List<Vector3>();
@@ -31,12 +33,13 @@ namespace SoftHand
             {
                 fingerBoneIds.Add(new FingerBoneLimits(i, boneNames[i], boneRotValues[i]));
             }
-
         }
 
 
         private void FixedUpdate()
         {
+            if (!skeleton)
+                return;
             FetchRotations(ref boneRotValues);
             if (skeleton.IsDataHighConfidence)
             {
@@ -47,9 +50,16 @@ namespace SoftHand
             }
         }
 
-        private void Start()
+        public Vector3[] GetDriveLimits(int driveIndex)
         {
-
+            if (driveIndex <= fingerBoneIds.Count)
+            {
+                Vector3[] limits = new Vector3[2];
+                limits[0] = fingerBoneIds[driveIndex].MinDelta;
+                limits[1] = fingerBoneIds[driveIndex].MaxDelta;
+                return limits;
+            }
+            return null;
         }
 
         void FetchRotations(ref List<Vector3> rotationEulers)
@@ -61,7 +71,7 @@ namespace SoftHand
             {
                 for (int i = (int)start; i < (int)end; ++i)
                 {
-                    Vector3 rot = GetBoneRotation(i).localRotation.ToInspectorEulerVector();
+                    Vector3 rot = GetBoneRotation(i).localRotation.FromQuaternionToDegrees();
                     rotationEulers.Add(rot);
                 }
             }

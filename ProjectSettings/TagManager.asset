@@ -18,8 +18,8 @@ TagManager:
   - InteractionNoContact
   - LeftContactBones
   - RightContactBones
-  - 
-  - 
+  - SoftHandSeftContact
+  - FingerTip
   - 
   - 
   - 

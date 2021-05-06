@@ -1,13 +1,14 @@
 
 namespace SoftHand
 {
-//using Leap;
-using Leap.Unity;
-using Leap.Unity.Encoding;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+    //using Leap;
+    using Leap.Unity;
+    using Leap.Unity.Encoding;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
     using static SoftHand.Enums;
+    using static SoftHand.Helpers;
 
     //using static SoftHand.Enums;
     //using Finger = SoftHand.Enums.Finger;
@@ -42,14 +43,54 @@ using UnityEngine;
     public static class HandExtensions
     {
         #region Transform extensions
-        public static Vector3 ToInspectorEulerVector(this Quaternion q)
+        //public static Vector3 ToInspectorEulerVector(this Quaternion q)
+        //{
+        //    return new Vector3(WrapAngle(q.eulerAngles.x), WrapAngle(q.eulerAngles.y), WrapAngle(q.eulerAngles.z));
+        //    float WrapAngle(float angle)
+        //    {
+        //        angle %= 360;
+        //        return angle > 180 ? angle - 360 : angle;
+        //    }
+        //}
+
+        public static Vector3 FromQuaternionToDegrees(this Quaternion q)
         {
-            return new Vector3(WrapAngle(q.eulerAngles.x), WrapAngle(q.eulerAngles.y), WrapAngle(q.eulerAngles.z));
+            return new Vector3()
+            {
+                x = WrapAngle(q.eulerAngles.x),
+                y = WrapAngle(q.eulerAngles.y),
+                z = WrapAngle(q.eulerAngles.z)
+            }; 
+
+            // local function
             float WrapAngle(float angle)
             {
                 angle %= 360;
                 return angle > 180 ? angle - 360 : angle;
             }
+        }
+
+        /// <summary>
+        /// Flipp Vector3's Y axiz by 180 deg, so that x and z asix replaces each other
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static Vector3 FlippX2Z(this Vector3 v)
+        {
+            return new Vector3(v.z, v.y, v.x);
+        }
+        public static Vector3 ToFlippedYVector3(this Vector3 v)
+        {
+            return new Vector3() { x = v.x, y = -v.y, z = v.z };
+        }
+        public static Vector3 ToFlippedXZVector3(this Vector3 v)
+        {
+            return new Vector3() { x = -v.x, y = v.y, z = -v.z };
+        }
+
+        public static Vector3s ToVector3s(this Vector3 v)
+        {
+            return new Vector3s() { x = v.x, y = v.y, z = v.z };
         }
 
         public static Vector3 FromVector(this Vector3 v)
@@ -81,6 +122,20 @@ using UnityEngine;
         {
             return new Quaternion() { x = -q.x, y = -q.y, z = q.z, w = q.w };
         }
-        #endregion       
+        #endregion
+
+        #region Dictionaty
+        /// <summary>
+        /// returns value by specifying key
+        /// returns 0 if no key found
+        /// </summary>
+        /// <param name="dic"></param>
+        /// <returns></returns>
+        public static int Lookup(this Dictionary<int, int> dic, int key)
+        {
+            return dic.TryGetValue(key, out int value) ? value : 0;
+        }
+
+        #endregion
     }
 }
