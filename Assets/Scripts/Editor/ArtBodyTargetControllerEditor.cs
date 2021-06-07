@@ -72,7 +72,7 @@ public class ArtBodyTargetControllerEditor : EditorWindow
 
     }
 
-    private void MakeDriveSlider(int id, ArtDriveTarget artDriveTarget)
+    private void MakeDriveSlider(int id, ArtDrive.ArtDriveTarget artDriveTarget)
     {
         float val = _driveController.driveTargetValues[id];
         GUILayout.BeginHorizontal();

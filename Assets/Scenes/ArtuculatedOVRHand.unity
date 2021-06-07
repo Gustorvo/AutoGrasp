@@ -476,7 +476,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652381702}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 2d1070ca94adbe641bc206048b5193ef, type: 2}
   m_CullingMode: 0
@@ -1574,11 +1574,5 @@ PrefabInstance:
       propertyPath: _ovrSkeleton
       value: 
       objectReference: {fileID: 1963573950}
-    - target: {fileID: 5580590545726074320, guid: 4b550ddd761500148bf4fd679c2293f0,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 21499581201963b4fba59af488b4b08c,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b550ddd761500148bf4fd679c2293f0, type: 3}

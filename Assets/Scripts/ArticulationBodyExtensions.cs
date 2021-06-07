@@ -81,6 +81,48 @@ namespace SoftHand
             body.immovable = immovable;
         }
 
+        public static ArticulationBody ResetAnchorLimitsAndRotaion(this ArticulationBody body)
+        {
+            float stiffness = 1500;
+            float damping = 10; // we should regulate damping based on % done on target. 99% done = 100% damping, 0% done = 0% damping
+            float forceLimit = 1f;
+            float mass = 0.05f;
+            float targetVelocity = 0;
+            body.anchorPosition = new Vector3(0f, 0f, 0f);
+            body.anchorRotation = Quaternion.identity;
+            body.jointType = ArticulationJointType.SphericalJoint;
+            body.swingZLock = ArticulationDofLock.FreeMotion;
+            body.swingYLock = ArticulationDofLock.FreeMotion;
+            body.twistLock = ArticulationDofLock.FreeMotion;
+
+            var xDrive = new ArticulationDrive()
+            {
+                stiffness = stiffness,// * _strength,
+                forceLimit = forceLimit,// * _strength,
+                damping = damping,
+                targetVelocity = targetVelocity               
+            };
+            var yDrive = new ArticulationDrive()
+            {
+                stiffness = stiffness,// * _strength,
+                forceLimit = forceLimit,// * _strength,
+                damping = damping,
+                targetVelocity = targetVelocity               
+            };
+            var zDrive = new ArticulationDrive()
+            {
+                stiffness = stiffness,// * _strength,
+                forceLimit = forceLimit,// * _strength,
+                damping = damping,
+                targetVelocity = targetVelocity               
+            };
+            
+            body.xDrive = xDrive;
+            body.yDrive = yDrive;
+            body.zDrive = zDrive;
+            return body;
+        }
+
         public static ArticulationBody SetupForBone(this ArticulationBody body, OVRSkeleton.BoneId bi, out bool inverted, out bool isYFlipped)
         {
             isYFlipped = false;
@@ -96,13 +138,14 @@ namespace SoftHand
             var finger = GetFinger(bi);
             if (bone == FingerBoneId.Invalid || finger == Finger.Invalid)
                 return null;
-            float stiffness = 150;
+            float stiffness = 1500;
             float damping = 10; // we should regulate damping based on % done on target. 99% done = 100% damping, 0% done = 0% damping
             float forceLimit = 1f;
             float mass = 0.05f;
             float targetVelocity = 0;
 
             body.anchorPosition = new Vector3(0f, 0f, 0f);
+            body.parentAnchorRotation = Quaternion.identity;
             body.anchorRotation = Quaternion.identity;
             body.mass = mass;
             body.angularDamping = 0.05f;
@@ -125,6 +168,7 @@ namespace SoftHand
                 body.twistLock = ArticulationDofLock.LockedMotion;
                 body.swingYLock = ArticulationDofLock.LockedMotion;
                 body.swingZLock = ArticulationDofLock.LockedMotion;
+
                 //body.mass = 0f;
                 return body;
             }
@@ -187,6 +231,7 @@ namespace SoftHand
                 body.swingYLock = ArticulationDofLock.LimitedMotion;
                 body.twistLock = ArticulationDofLock.LockedMotion;
                 body.anchorRotation = Quaternion.Euler(0f, 180f, 0f);
+                body.parentAnchorRotation = Quaternion.Euler(0f, 180f, 0f);
 
                 zDrive = new ArticulationDrive()
                 {
@@ -213,6 +258,7 @@ namespace SoftHand
             }
             // return 1 dof
             body.anchorRotation = Quaternion.Euler(0f, 90f, 0f);
+            body.parentAnchorRotation = Quaternion.Euler(0f, 90f, 0f);
             body.jointType = ArticulationJointType.RevoluteJoint;
             body.twistLock = ArticulationDofLock.LimitedMotion;
             body.swingYLock = ArticulationDofLock.LockedMotion;

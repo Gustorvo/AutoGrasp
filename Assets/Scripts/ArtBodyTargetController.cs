@@ -34,13 +34,13 @@ namespace SoftHand
         private int _layerMask;
         public float totalMass = 0f;
         [Header("Angular force values:")]
-        public float alignmentSpeed = 11.11f;
-        public float alignmentDamping = 11.3f;
+        public float alignmentSpeed = 7f;
+        public float alignmentDamping = 5f;
         public bool applyCounterTorque = false;
         public bool applyTorque = false;
 
         [Header("Linear force values:")]
-        public float minDistance = float.Epsilon;
+        public float minDistance = 0.002f;
         public float toVel = 25f;
         public float maxVel = 1500f;
         public float maxForce = 1500f;

@@ -35,7 +35,7 @@ namespace SoftHand
         private const int N_ACTIVE_BONES = 3;
 
         private ArticulationBody _palmBody;
-       // private List<ArticulationBody> _articulationBodies;
+        // private List<ArticulationBody> _articulationBodies;
 
         public List<bool> invertedVectorList { get; private set; }
         public List<bool> flippedYVectorList { get; private set; }
@@ -108,20 +108,12 @@ namespace SoftHand
         public bool IsInitialized { get; private set; }
 
         private void Awake()
-        {            
-            InitializeCapsules();
-            InitializeArticulationBodies();
-            CreateLookupDicitionaty();
-        }
-
-        private void CreateLookupDicitionaty()
         {
-            LookupDic = new Dictionary<int, int>();
-            for (int i = 0; i < _bodies.Count; i++)
-            {
-                LookupDic.Add(_bodies[i].index-1, i);
-            }
+            InitializeCapsules();
+           // InitializeArticulationBodies();
+            
         }
+      
 
 #if UNITY_EDITOR
 
@@ -153,7 +145,7 @@ namespace SoftHand
             }
         }
         public void TryAutoMapBonesByName()
-        {            
+        {
             BoneId start = CurrentStartBoneId;
             BoneId end = CurrentEndBoneId;
             SkeletonType skeletonType = SkeletonType;
@@ -264,8 +256,7 @@ namespace SoftHand
                 InitializeBones();
                 InitializeCapsules();
                 InitializeMaterial();
-                InitializeArticulationBodies();
-                CreateLookupDicitionaty();
+               // InitializeArticulationBodies();               
 
                 IsInitialized = true;
             }
@@ -361,7 +352,9 @@ namespace SoftHand
                     capsule.radius = radi;
                     capsule.height = (CustomBones[i].position - nextBoneTransform.position).magnitude + capsule.radius;
                     capsule.material = _material;
-                    capsule.center = new Vector3(capsule.height / 2f - capsule.radius, 0f, 0f) * -1;
+                    capsule.center = new Vector3(capsule.height / 2f - capsule.radius, 0f, 0f);
+                    if (SkeletonType == SkeletonType.HandLeft)
+                        capsule.center *= -1;
                     //capsule.isTrigger = true;
                     //_capsuleColliders[i] = capsule;
                     //go.transform.SetParent(CustomBones[i]);
@@ -378,7 +371,6 @@ namespace SoftHand
             BoneId end = BoneId.Hand_MaxSkinnable;
             if (start != BoneId.Invalid && end != BoneId.Invalid)
             {
-                _bodies = new List<ArticulationBody>();
                 flippedYVectorList = new List<bool>();
                 invertedVectorList = new List<bool>();
                 for (int i = (int)start; i < (int)end; ++i)
@@ -389,14 +381,35 @@ namespace SoftHand
                         BoneId bi = (BoneId)i;
                         ArticulationBody body = go.TryGetComponent<ArticulationBody>(out body) ? body : go.AddComponent<ArticulationBody>();
                         body.SetupForBone(bi, out bool isVectorInverted, out bool isYFlipped);
-                        //body.ResetInertiaTensor();                        
-                        invertedVectorList.Add(isVectorInverted);
-                        flippedYVectorList.Add(isYFlipped);
+                        body.useGravity = false;
+                    }
+
+                }
+
+            }
+        }
+
+        [ContextMenu("Reset Art bodies")]
+        private void ResetArtBodies()
+        {
+            BoneId start = CurrentStartBoneId;
+            BoneId end = BoneId.Hand_MaxSkinnable;
+            if (start != BoneId.Invalid && end != BoneId.Invalid)
+            {
+                _bodies = new List<ArticulationBody>();
+                for (int i = (int)start; i < (int)end; ++i)
+                {
+                    GameObject go = CustomBones[i].gameObject;
+                    if (go != null)
+                    {
+                        BoneId bi = (BoneId)i;
+                        ArticulationBody body = go.TryGetComponent<ArticulationBody>(out body) ? body : go.AddComponent<ArticulationBody>();
+                        body.ResetAnchorLimitsAndRotaion();
                         body.useGravity = false;
                         _bodies.Add(body);
                         // hack to re-initialize AB by toggling on and off
                         //body.enabled = false;
-                       // body.enabled = true;
+                        // body.enabled = true;
                     }
 
                 }

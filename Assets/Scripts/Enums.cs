@@ -6,6 +6,12 @@ namespace SoftHand
 {
     public class Enums
     {
+        public enum Handedness
+        {
+            Left,
+            Right
+        }
+
         public enum FingerBoneId
         {
             Invalid = -1,
