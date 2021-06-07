@@ -71,7 +71,8 @@ namespace SoftHand
             {
                 for (int i = (int)start; i < (int)end; ++i)
                 {
-                    Vector3 rot = GetBoneRotation(i).localRotation.FromQuaternionToDegrees();
+                    //var parentRotaion = GetBoneRotation(i - 1).localRotation;
+                    Vector3 rot = GetBoneRotation(i).localRotation.ToEulers();
                     rotationEulers.Add(rot);
                 }
             }
@@ -95,8 +96,10 @@ namespace SoftHand
             {
                 for (int i = (int)start; i < (int)end; ++i)
                 {
-                    FingerBoneId fingerBoneName = (FingerBoneId)i;
-                    names.Add(fingerBoneName.ToString());
+                    OVRSkeleton.BoneId boneId = (OVRSkeleton.BoneId)i;
+                    var bone = boneId.GetFingerBone();
+                    var finger = boneId.GetFinger();
+                    names.Add(finger.ToString() + " " + bone.ToString());
                 }
             }
             return names;
@@ -157,17 +160,17 @@ namespace SoftHand
             MinDelta = new Vector3(minX, minY, minZ) - InitialRot;
 
             //check for offset error
-            if (Math.Abs(maxX - minX) < 7)
+            if (Math.Abs(maxX - minX) < 2)
             {
                 MaxDelta.x = 0;
                 MinDelta.x = 0;
             }
-            if (Math.Abs(maxY - minY) < 7)
+            if (Math.Abs(maxY - minY) < 2)
             {
                 MaxDelta.y = 0;
                 MinDelta.y = 0;
             }
-            if (Math.Abs(maxZ - minZ) < 7)
+            if (Math.Abs(maxZ - minZ) < 2)
             {
                 MaxDelta.z = 0;
                 MinDelta.z = 0;

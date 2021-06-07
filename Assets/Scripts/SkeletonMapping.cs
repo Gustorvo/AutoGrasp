@@ -380,7 +380,7 @@ namespace SoftHand
                     {
                         BoneId bi = (BoneId)i;
                         ArticulationBody body = go.TryGetComponent<ArticulationBody>(out body) ? body : go.AddComponent<ArticulationBody>();
-                        body.SetupForBone(bi, out bool isVectorInverted, out bool isYFlipped);
+                        body.SetupForBone(bi);
                         body.useGravity = false;
                     }
 
