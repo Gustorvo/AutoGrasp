@@ -9,6 +9,7 @@ namespace Microsoft.MixedReality.OpenXR.Samples
 {
     public class HandJointsManager : MonoBehaviour
     {
+        /*
         private enum HandJointSource
         {
             FeatureUsage,
@@ -114,6 +115,6 @@ namespace Microsoft.MixedReality.OpenXR.Samples
             {
                 hand?.DisableHandJoints();
             }
+    }*/
         }
-    }
 }

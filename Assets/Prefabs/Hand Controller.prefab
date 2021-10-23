@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2103414825985778770}
-  - component: {fileID: 2103414825985779629}
   - component: {fileID: 2103414825985778771}
   m_Layer: 0
   m_Name: Hand Controller
@@ -32,89 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2103414825985779629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103414825985779628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0880114cf477954a960b428358924f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rightHand:
-    handedness: 0
-    palmArtBody: {fileID: 0}
-    palmRigidBody: {fileID: 0}
-    palmTarget: {fileID: 0}
-    fingers: []
-    totalMass: 0
-    initialized: 0
-  _leftHand:
-    handedness: 0
-    palmArtBody: {fileID: 0}
-    palmRigidBody: {fileID: 0}
-    palmTarget: {fileID: 0}
-    fingers:
-    - finger: 0
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 1
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 2
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 3
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 4
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    totalMass: 0
-    initialized: 0
-  alignmentSpeed: 7
-  alignmentDamping: 5
-  applyCounterTorque: 1
-  applyTorque: 1
-  minDistance: 0.002
-  toVel: 25
-  maxVel: 1500
-  maxForce: 1500
-  gain: 60
-  applyCounterLinearForces: 1
-  applyLinearForces: 1
 --- !u!114 &2103414825985778771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,74 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0880114cf477954a960b428358924f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rightHand:
-    handedness: 1
-    palmArtBody: {fileID: 0}
-    palmRigidBody: {fileID: 0}
-    palmTarget: {fileID: 0}
-    fingers:
-    - finger: 0
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 1
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 2
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 3
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    - finger: 4
-      joints:
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-      - body: {fileID: 0}
-        target: {fileID: 0}
-    totalMass: 0
-    initialized: 0
-  _leftHand:
-    handedness: 0
-    palmArtBody: {fileID: 0}
-    palmRigidBody: {fileID: 0}
-    palmTarget: {fileID: 0}
-    fingers: []
-    totalMass: 0
-    initialized: 0
-  alignmentSpeed: 7
-  alignmentDamping: 5
-  applyCounterTorque: 0
-  applyTorque: 0
-  minDistance: 0.002
-  toVel: 25
-  maxVel: 1500
-  maxForce: 1500
-  gain: 60
-  applyCounterLinearForces: 1
-  applyLinearForces: 1
+  _rightHand: {fileID: 0}
+  _leftHand: {fileID: 0}
+  _distanceThreshold: 0.85
+  _rotate: 1
+  _angularForceWeight: 1
+  _frequency: 10
+  _damping: 1.5
+  _move: 1
+  _applyForceToEveryJoint: 0
+  _linearForceWeight: 1
+  _toVelocity: 55
+  _maxVelocity: 100
+  _maxForce: 100
+  _gain: 20

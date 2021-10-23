@@ -18,25 +18,25 @@ TagManager:
   - InteractionNoContact
   - LeftContactBones
   - RightContactBones
-  - SoftHandSeftContact
+  - LeftArticulatedHand
+  - RightArticulatedHand
+  - LHandContactInternal
+  - RHandContactInternal
+  - NoContact
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - FingerTip
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0

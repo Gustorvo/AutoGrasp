@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3909b8b49d3fad489180d74e5e6710f, type: 3}
+  m_Name: R Hand Runtime limits
+  m_EditorClassIdentifier: 
+  hand: 1
+  jointLimits:
+  - id: RightHand_Thumb0
+    xDriveLimits: {x: 0, y: 0}
+    yDriveLimits: {x: 0, y: 0}
+    zDriveLimits: {x: 0, y: 0}
+    type: 0
+  - id: RightHand_Thumb1
+    xDriveLimits: {x: -19.546564, y: 46.675297}
+    yDriveLimits: {x: -15.76099, y: 1.7133803}
+    zDriveLimits: {x: 0, y: 40.865723}
+    type: 7
+  - id: RightHand_Thumb2
+    xDriveLimits: {x: -2.8550932, y: 45.77881}
+    yDriveLimits: {x: 0, y: 8.298019}
+    zDriveLimits: {x: -9.556709, y: 0}
+    type: 1
+  - id: RightHand_Thumb3
+    xDriveLimits: {x: 0, y: 49.491158}
+    yDriveLimits: {x: -6.830657, y: 0}
+    zDriveLimits: {x: 0, y: 9.421538}
+    type: 1
+  - id: RightHand_Index1
+    xDriveLimits: {x: 0, y: 5.85373}
+    yDriveLimits: {x: -15.739597, y: 10.540481}
+    zDriveLimits: {x: -54.898098, y: 10.898913}
+    type: 7
+  - id: RightHand_Index2
+    xDriveLimits: {x: 0, y: 108.17977}
+    yDriveLimits: {x: -2.231827, y: 0.7796399}
+    zDriveLimits: {x: -3.049722, y: 0}
+    type: 1
+  - id: RightHand_Index3
+    xDriveLimits: {x: 0, y: 73.86521}
+    yDriveLimits: {x: 0, y: 2.9169693}
+    zDriveLimits: {x: -2.0091925, y: 0}
+    type: 1
+  - id: RightHand_Middle1
+    xDriveLimits: {x: -10.804892, y: 0.33904195}
+    yDriveLimits: {x: -3.7520819, y: 17.207817}
+    zDriveLimits: {x: -69.87251, y: 8.545702}
+    type: 7
+  - id: RightHand_Middle2
+    xDriveLimits: {x: 0, y: 107.602264}
+    yDriveLimits: {x: -0.86658174, y: 0.46911326}
+    zDriveLimits: {x: -1.5911475, y: 0}
+    type: 1
+  - id: RightHand_Middle3
+    xDriveLimits: {x: -1.523534, y: 61.623413}
+    yDriveLimits: {x: -2.6339345, y: 0.1298833}
+    zDriveLimits: {x: -10.546706, y: 0}
+    type: 1
+  - id: RightHand_Ring1
+    xDriveLimits: {x: -18.729465, y: 0}
+    yDriveLimits: {x: 0, y: 27.848736}
+    zDriveLimits: {x: -79.06022, y: 3.1346152}
+    type: 7
+  - id: RightHand_Ring2
+    xDriveLimits: {x: 0, y: 107.35353}
+    yDriveLimits: {x: -3.3623154, y: 0}
+    zDriveLimits: {x: -5.355877, y: 0}
+    type: 1
+  - id: RightHand_Ring3
+    xDriveLimits: {x: 0, y: 61.128395}
+    yDriveLimits: {x: -3.4215622, y: 0}
+    zDriveLimits: {x: -3.3492763, y: 0}
+    type: 1
+  - id: RightHand_Pinky0
+    xDriveLimits: {x: -23.980585, y: 0}
+    yDriveLimits: {x: 0, y: 16.255646}
+    zDriveLimits: {x: -2.1210213, y: 0}
+    type: 0
+  - id: RightHand_Pinky1
+    xDriveLimits: {x: -4.1646943, y: 12.356361}
+    yDriveLimits: {x: -7.7861924, y: 34.977238}
+    zDriveLimits: {x: -86.01062, y: 8.900483}
+    type: 7
+  - id: RightHand_Pinky2
+    xDriveLimits: {x: 0, y: 101.030914}
+    yDriveLimits: {x: -0.40813556, y: 4.197569}
+    zDriveLimits: {x: -12.088405, y: 0}
+    type: 1
+  - id: RightHand_Pinky3
+    xDriveLimits: {x: 0, y: 55.954914}
+    yDriveLimits: {x: -5.629563, y: 0}
+    zDriveLimits: {x: 0, y: 0.26967582}
+    type: 1

@@ -8,19 +8,20 @@ namespace SoftHand
     {
         public enum Handedness
         {
-            Left,
-            Right
+            None = -1,
+            Left = 0,
+            Right = 1
         }
 
-        public enum FingerBoneId
-        {
-            Invalid = -1,
-            Trapezium = 0,
-            Metacarpal = 1,
-            Proximal = 2,
-            Intermediate = 3,
-            Distal = 4
-        }
+        //public enum FingerBoneId
+        //{
+        //    Invalid = -1,
+        //    Trapezium = 0,
+        //    Metacarpal = 1,
+        //    Proximal = 2,
+        //    Intermediate = 3,
+        //    Distal = 4
+        //}
 
         public enum Finger
         {
@@ -32,12 +33,32 @@ namespace SoftHand
             Pinky = 4
         }
 
-        public enum Drive
+
+        public enum DriveEnabled
         {
-            Invalid = -1,
+            None = 0,
             Xdrive = 1,
             Ydrive = 2,
-            Zdrive = 3
+            Zdrive = 4
+
+
+        }
+
+        public enum ArticulationDriveType
+        {
+            xDrive,
+            yDrive,
+            zDrive
+        }
+
+        /// <summary>
+        /// Alignment of center of mass. Applicable to capsule collider
+        /// </summary>
+        public enum COMAlignment
+        {
+            beginning,
+            center,
+            end
         }
     }
 }

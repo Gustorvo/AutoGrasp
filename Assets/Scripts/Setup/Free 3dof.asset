@@ -1,0 +1,631 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a885cba7026c62468ef212fd01a30e4, type: 3}
+  m_Name: Free 3dof
+  m_EditorClassIdentifier: 
+  motorSettings:
+    stiffness: 1500
+    damping: 10
+    forceLimit: 1
+  limitPreset: {fileID: 11400000, guid: 3dbba757e80ad7e4bb5c1132b91f2828, type: 2}
+  _fingers:
+  - name: Thumb
+    type: 0
+    joints:
+    - index: 0
+      name: Hand_Thumb0
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 1
+      name: Hand_Thumb1
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 2
+      name: Hand_Thumb2
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 3
+      name: Hand_Thumb3
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+  - name: Index
+    type: 1
+    joints:
+    - index: 0
+      name: Hand_Index1
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 1
+      name: Hand_Index2
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 2
+      name: Hand_Index3
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+  - name: Middle
+    type: 2
+    joints:
+    - index: 0
+      name: Hand_Middle1
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 1
+      name: Hand_Middle2
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 2
+      name: Hand_Middle3
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+  - name: Ring
+    type: 3
+    joints:
+    - index: 0
+      name: Hand_Ring1
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 1
+      name: Hand_Ring2
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 2
+      name: Hand_Ring3
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+  - name: Pinky
+    type: 4
+    joints:
+    - index: 0
+      name: Hand_Pinky0
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 1
+      name: Hand_Pinky1
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 2
+      name: Hand_Pinky2
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+    - index: 3
+      name: Hand_Pinky3
+      jointType: 3
+      anchorRotation: {x: 0, y: 0, z: 0}
+      motions:
+        swingY: 2
+        swingZ: 2
+        twist: 2
+      xDriveSettings:
+        type: 0
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      yDriveSettings:
+        type: 1
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+      zDriveSettings:
+        type: 2
+        limits:
+          lowerLimit: 0
+          upperLimit: 0
+        motor:
+          stiffness: 0
+          damping: 0
+          forceLimit: 0
+  initialized: 1

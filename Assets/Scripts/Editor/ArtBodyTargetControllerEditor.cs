@@ -1,103 +1,76 @@
-// Editor script that lets you scale the selected GameObject between 1 and 100
-
 using System.Collections.Generic;
 using SoftHand;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using static ArtDrive;
-using static OVRSkeleton;
 
-public class ArtBodyTargetControllerEditor : EditorWindow
-{    
-    ArtBodyTargetController _driveController = null;
-    List<float> _sliderValues = new List<float>();
-    public GameObject artDriveSource;
+namespace SoftHand.Experimental
+{
+    // TODO: Make the window to update its values continuesly (in play mode)
+    // TODO: Add bone names and propper spacings
 
-   
-
-
-    [MenuItem("Examples/Art Body Target Controller")]
-    static void Init()
+    public class ArtBodyTargetControllerEditor : EditorWindow
     {
-        EditorWindow window = GetWindow(typeof(ArtBodyTargetControllerEditor));
-        window.Show();
-    }
+        ArticulatedHand _articulatedHand = null;
+        public GameObject artHandGO;
 
-    void OnGUI()
-    {
-       // if (EditorApplication.isPlayingOrWillChangePlaymode)
-        //    return;
-        EditorGUILayout.BeginHorizontal();
-        artDriveSource = (UnityEngine.GameObject)EditorGUILayout.ObjectField(artDriveSource, typeof(GameObject), true);
-        if (artDriveSource == null)
-            return;
-        EditorGUILayout.EndHorizontal();
-        if (artDriveSource.TryGetComponent<ArtBodyTargetController>(out ArtBodyTargetController controller))
-            _driveController = controller;
-        else EditorGUILayout.HelpBox("GameObject has no ArtBodyTargetController attached!", MessageType.Warning);
 
-        if (_driveController.drives.Count == 0)
+
+        [MenuItem("Articulated Hand/Drive target visualizer")]
+        static void Init()
         {
-            EditorGUILayout.HelpBox("Articulation drives not fetched!", MessageType.Warning);
-            Fetch();
+            EditorWindow window = GetWindow(typeof(ArtBodyTargetControllerEditor));
+            window.Show();
         }
-        else
+
+        void OnGUI()
         {
-            Fetch();
-            //_sliderValues = new List<float>();
+            // if (EditorApplication.isPlayingOrWillChangePlaymode)
+            //    return;
+            EditorGUILayout.BeginHorizontal();
+            artHandGO = (GameObject)EditorGUILayout.ObjectField(artHandGO, typeof(GameObject), true);
+            if (artHandGO == null)
+                return;
+            EditorGUILayout.EndHorizontal();
+            if (artHandGO.TryGetComponent(out ArticulatedHand hand))
+                _articulatedHand = hand;
+            else EditorGUILayout.HelpBox("GameObject has no ArtBodyTargetController attached!", MessageType.Warning);
+
+            if (_articulatedHand.JointBodies == null || _articulatedHand.JointBodies.Length == 0)
             {
-                for (int i = 0; i < _driveController.driveTargets.Count; ++i)
-                {
-                    MakeDriveSlider(i, _driveController.driveTargets[i]);
-                }
+                EditorGUILayout.HelpBox("Articulation drives not available in editor mode! It needs to be initialized in play mode", MessageType.Warning);
+            }
+            else
+            {
+                Fetch();
             }
         }
-    }
 
-    private void Fetch()
-    {
-        if (GUILayout.Button("Fetch drives"))
+        private void Fetch()
         {
-            _driveController.Awake();
-            //EditorUtility.SetDirty(_driveController);
-            EditorSceneManager.MarkSceneDirty(_driveController.gameObject.scene);
-        }
-    }
-
-    private void InitSliderValues()
-    {
-        if (_sliderValues.Count == 0)
-            _driveController.rootBody.GetDriveTargets(_sliderValues);
-
-    }
-
-    private void MakeDriveSlider(int id, ArtDrive.ArtDriveTarget artDriveTarget)
-    {
-        float val = _driveController.driveTargetValues[id];
-        GUILayout.BeginHorizontal();
-
-        EditorGUILayout.LabelField(id.ToString(), artDriveTarget.Name);
-        _driveController.driveTargetValues[id] = EditorGUILayout.Slider(val, artDriveTarget.LowerLimit, artDriveTarget.UpperLimit);
-
-        GUILayout.EndHorizontal();
-    }
-
-    void OnInspectorUpdate()
-    {
-         if (EditorApplication.isPlayingOrWillChangePlaymode)
-            return;
-        if (_driveController != null && _driveController.driveTargets.Count > 0)
-        {
-            for (int i = 0; i < _driveController.driveTargets.Count; i++)
+            for (int i = 0; i < _articulatedHand.JointBodies.Length; ++i)
             {
-                var drive = _driveController.driveTargets[i];
-                float sliderValue = _driveController.driveTargetValues[i];
-                float driveValue = _driveController.GetDriveValue(drive.DriveType, drive.InstanceId);
-
-                if (Mathf.Abs(sliderValue - driveValue) > float.Epsilon)
-                    _driveController.SetDriveValue(drive.DriveType, drive.InstanceId, sliderValue);
+                ArticulationBody body = _articulatedHand.JointBodies[i];
+                int dofs = body.dofCount;
+                if (body.twistLock == ArticulationDofLock.LimitedMotion)
+                    MakeDriveSlider(i, "x", body.xDrive.target, body.xDrive.upperLimit, body.xDrive.lowerLimit);
+                if (body.swingYLock == ArticulationDofLock.LimitedMotion)
+                    MakeDriveSlider(i, "y", body.yDrive.target, body.yDrive.upperLimit, body.yDrive.lowerLimit);
+                if (body.swingZLock == ArticulationDofLock.LimitedMotion)
+                    MakeDriveSlider(i, "z", body.zDrive.target, body.zDrive.upperLimit, body.zDrive.lowerLimit);
             }
+            // EditorUtility.SetDirty(_articulatedHand);
+            // EditorSceneManager.MarkSceneDirty(_articulatedHand.gameObject.scene);
+
+        }
+
+        private void MakeDriveSlider(int id, string axis, float degrees, float maxDgr, float minDgr)
+        {
+            GUILayout.BeginHorizontal();
+
+            EditorGUILayout.LabelField(id.ToString(), axis);
+            EditorGUILayout.Slider(degrees, minDgr, maxDgr);
+
+            GUILayout.EndHorizontal();
         }
     }
 }

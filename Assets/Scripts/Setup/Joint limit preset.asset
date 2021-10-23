@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3909b8b49d3fad489180d74e5e6710f, type: 3}
+  m_Name: Joint limit preset
+  m_EditorClassIdentifier: 
+  hand: 1
+  jointLimits:
+  - id: Fixed
+    xDriveLimits: {x: 0, y: 0}
+    yDriveLimits: {x: 0, y: 0}
+    zDriveLimits: {x: 0, y: 0}
+    type: 0
+  - id: 3Dof
+    xDriveLimits: {x: -10, y: 41.505596}
+    yDriveLimits: {x: -18.982712, y: 27.405895}
+    zDriveLimits: {x: -32.960327, y: 18.311295}
+    type: -1
+  - id: 2Dof
+    xDriveLimits: {x: -10, y: 41.505596}
+    yDriveLimits: {x: -18.982712, y: 27.405895}
+    zDriveLimits: {x: -32.960327, y: 18.311295}
+    type: 3
