@@ -1462,6 +1462,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236970115}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 1
   m_ParentAnchorPosition: {x: 0, y: 1.1199999, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
@@ -3549,6 +3550,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684478304}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 0.5
   m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -4002,7 +4004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &782566532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4445,6 +4447,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872777676}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 1
   m_ParentAnchorPosition: {x: 0, y: 1.053, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
@@ -5384,6 +5387,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052232419}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 2
   m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -5914,6 +5918,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1137739062}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 1
   m_ParentAnchorPosition: {x: 0.0000048118677, y: 1.0529983, z: 0.000004184233}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -6390,6 +6395,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184781147}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 1
   m_ParentAnchorPosition: {x: 0.0000048118677, y: 1.119999, z: 0.000004184233}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -7184,6 +7190,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302659969}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 1
   m_ParentAnchorPosition: {x: 0, y: 1.0799999, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
@@ -8114,6 +8121,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549881138}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 1
   m_ParentAnchorPosition: {x: 0.0000048118677, y: 1.0799985, z: 0.000004184233}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -8767,6 +8775,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673866113}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 2
   m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
@@ -9614,6 +9623,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936484101}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 0.5
   m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -9895,6 +9905,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006750037}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 0.5
   m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -10243,6 +10254,7 @@ ArticulationBody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2088177240}
   m_Enabled: 1
+  serializedVersion: 2
   m_Mass: 2
   m_ParentAnchorPosition: {x: 0, y: 0, z: 0}
   m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
