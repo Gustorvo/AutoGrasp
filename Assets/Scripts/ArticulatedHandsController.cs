@@ -26,7 +26,7 @@ namespace SoftHand
         [Header("Linear force settings:")]
         public bool _move = false;
         [Tooltip("Applying linear forces to every joint will also apply a torque on the palm (root of articulation body). This is equivalent to AddForceAtPosition() method")]
-        public bool _applyForceToEveryJoint = false;
+        public bool _stabilizeByAddingSmallForces = false;
         [Range(0, 1), SerializeField] public float _linearForceWeight = 1;
         [Range(0, 100), SerializeField, Tooltip("Converts the distance remaining to the target velocity - if too low, the articulation body slows down early and takes a long time to stop. If too high, it may overshoot")]
         float _toVelocity = 55;
@@ -183,26 +183,27 @@ namespace SoftHand
         {
             if (hand && hand.Initialized)
             {
-                if (_applyForceToEveryJoint)
-                {
-                    Vector3 accumulatedForce = Vector3.zero;
-                    Vector3 accumulatedForcePosition = Vector3.zero;
+                // to reduce rotational inertia, we need to somehow stabilize the hand
+                // this could be done with IK system, where hand (palm) would be automatically stabilezed by the stiffness and damping properties of the attached elbow's and shoulder's  articulation joints, but since we don't have any IK yet,
+                // we're stabilizing by applying small forces to the palm, distributed across the body, where each impact position is the joint position and force is being calculated based on target position (taget joints' positions)
+                // this is equivalent as if adding the same ammount of force to every joint individually, but instead we add this force to the root (for simplicity reason).
+                // TODO: we could theoretically average the position of impact point and apply accumulated forces at once. This approach needs further testing. For now we are skipping this since we're no longer will need those small distributed forces once we implemented functional IK system
+                if (_stabilizeByAddingSmallForces)
+                {                   
                     foreach (var finger in hand.Fingers)
                     {
                         for (int i = 0; i < finger.joints.Length; i++)
                         {
                             Vector3 force = finger.joints[i].body.CalculateLinearForce(finger.joints[i].targetPose.position, _toVelocity, _maxVelocity, _maxForce, _gain);
-                            hand.Palm.AddForceAtPosition(force * _linearForceWeight * hand.PerBoneMass, finger.joints[i].body.transform.position); // moves articulation body
-
+                            hand.Palm.AddForceAtPosition(force * _linearForceWeight * hand.PerBoneMass, finger.joints[i].body.transform.position); // adds force to the root (palm) at the position of its joints 
                         }
                     }
-
                 }
 
                 if (_move)
                 {
                     Vector3 linearForce = hand.Palm.CalculateLinearForce(hand.LastReliablePose.position, _toVelocity, _maxVelocity, _maxForce, _gain);
-                    float mass = _applyForceToEveryJoint ? hand.PalmMass : hand.TotalMass;
+                    float mass = _stabilizeByAddingSmallForces ? hand.PalmMass : hand.TotalMass;
                     hand.Palm.AddForce(linearForce * _linearForceWeight * mass); // moves articulation body
 
 

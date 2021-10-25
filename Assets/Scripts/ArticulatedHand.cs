@@ -397,7 +397,7 @@ namespace SoftHand
         }
 
         /// <summary>
-        /// Teleports hand to desired pose (No-physically way). Velocities will be zeroed.
+        /// Teleports hand to desired pose (physics 'turned-off'). Velocities will be zeroed.
         /// </summary>
         /// <param name="position"></param>
         /// <param name="rotation"></param>
@@ -559,24 +559,24 @@ namespace SoftHand
                 TargetSpeed = delta.magnitude / Time.fixedDeltaTime;
                 DistanceToTargetSqr = palmPose.position.DistanceSquared(Palm.transform.position);
 
-                // update position and rotation               
-               // LastRelialbeTargetPosition = palmPose.position;
-               // LastRelialbeTargetRotaion = palmPose.rotation;
+                // update palm position and rotation              
                 LastReliablePose = palmPose;
 
                 // update bones              
                 Array.Copy(HandTrackingDataProvider.Instance.GetBoneRotaions(_handedness), targetRotations, targetRotations.Length);
 
+                // oculus hand tracking api doesn't provide us with joints' positions (unless we're using their OVRSkeleton class as data provider), so we need to calculate it
                 int index = 0;
                 Transform parent = Palm.transform;
                 float distToParent = 0;
+                int flippedDirection = Handedness == Handedness.Left ? -1 : 1;
                 for (int i = 0; i < Fingers.Length; i++)
                 {
                     for (int j = 0; j < Fingers[i].joints.Length; j++)
                     {
                         parent = Fingers[i].joints[j].parant;
-                        distToParent = Fingers[i].joints[j].distanceToParent;
-                        Vector3 jointPosition = parent.position + parent.up * distToParent;
+                        distToParent = Fingers[i].joints[j].distanceToParent;             
+                        Vector3 jointPosition = parent.position + parent.right * flippedDirection * distToParent;    // calculate finger joint target position (based on distance to parent and parent's direction vector (relative to this joint))
                         Pose newPose = new Pose(jointPosition, targetRotations[index]);
                         Fingers[i].joints[j].targetPose = newPose;
                         index++;
