@@ -1,6 +1,9 @@
 using NaughtyAttributes;
+using SoftHand.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using static SoftHand.Enums;
@@ -25,10 +28,10 @@ namespace SoftHand
             if (_hand == null && TryGetComponent<ArticulatedHand>(out _hand))
             {
                 if (!_hand.Initialized)
-                    _hand.InitializeArticulationBodies();
+                    _hand.Init();
             }
 
-            _init = (_hand && _hand.Palm && _settingsAsset);
+            _init = (_hand && _hand.ArticulationBody && _settingsAsset);
             return _init;
         }
 
@@ -44,25 +47,25 @@ namespace SoftHand
             bool doubleDamping = _settingsAsset.globalArticulationDriveMotorSettings.doubleDampingForFirstJoint;
             float damping = _settingsAsset.globalArticulationDriveMotorSettings.damping;
 
-            foreach (var finger in _hand.Fingers)
-            {
-                for (int i = 0; i < finger.joints.Length; i++)
+           // foreach (var finger in _hand.Fingers)
+           // {
+                for (int i = 0; i < _hand.Joints.Count; i++)
                 {
-                    finger.joints[i].body.mass = _settingsAsset.jointsPhysicalProperties.mass;
-                    finger.joints[i].body.maxAngularVelocity = _settingsAsset.jointsPhysicalProperties.maxAngularVelocity;
-                    finger.joints[i].body.maxLinearVelocity = _settingsAsset.jointsPhysicalProperties.maxLinearVelocity;
-                    finger.joints[i].body.linearDamping = _settingsAsset.jointsPhysicalProperties.linearDamping;
-                    finger.joints[i].body.angularDamping = _settingsAsset.jointsPhysicalProperties.angularDamping;
-                    finger.joints[i].body.maxDepenetrationVelocity = _settingsAsset.jointsPhysicalProperties.maxDepenetrationVelocity;
-                    finger.joints[i].body.useGravity = _settingsAsset.jointsPhysicalProperties.useGravity;
-                    finger.joints[i].body.jointFriction = _settingsAsset.jointsPhysicalProperties.jointFriciton;
-                    finger.joints[i].body.collisionDetectionMode = _settingsAsset.jointsPhysicalProperties.CollisionDetection;
-                    finger.joints[i].body.centerOfMass = GetCoM(finger.joints[i].collider, _settingsAsset.jointsCenterOfMassAlignemnt);
-                    //finger.joints[i].collider.isTrigger = true;
+                    _hand.Joints[i].ArticulationBody.mass = _settingsAsset.jointsPhysicalProperties.mass;
+                    _hand.Joints[i].ArticulationBody.maxAngularVelocity = _settingsAsset.jointsPhysicalProperties.maxAngularVelocity;
+                    _hand.Joints[i].ArticulationBody.maxLinearVelocity = _settingsAsset.jointsPhysicalProperties.maxLinearVelocity;
+                    _hand.Joints[i].ArticulationBody.linearDamping = _settingsAsset.jointsPhysicalProperties.linearDamping;
+                    _hand.Joints[i].ArticulationBody.angularDamping = _settingsAsset.jointsPhysicalProperties.angularDamping;
+                    _hand.Joints[i].ArticulationBody.maxDepenetrationVelocity = _settingsAsset.jointsPhysicalProperties.maxDepenetrationVelocity;
+                    _hand.Joints[i].ArticulationBody.useGravity = _settingsAsset.jointsPhysicalProperties.useGravity;
+                    _hand.Joints[i].ArticulationBody.jointFriction = _settingsAsset.jointsPhysicalProperties.jointFriciton;
+                    _hand.Joints[i].ArticulationBody.collisionDetectionMode = _settingsAsset.jointsPhysicalProperties.CollisionDetection;
+                    _hand.Joints[i].ArticulationBody.centerOfMass = GetCoM(_hand.Joints[i].Collider, _settingsAsset.jointsCenterOfMassAlignemnt);
+                    //_hand.joints[i].collider.isTrigger = true;
 
-                    finger.joints[i].body.xDrive = SetupDrive(finger.joints[i].body.xDrive);
-                    finger.joints[i].body.yDrive = SetupDrive(finger.joints[i].body.yDrive);
-                    finger.joints[i].body.zDrive = SetupDrive(finger.joints[i].body.zDrive);
+                    _hand.Joints[i].ArticulationBody.xDrive = SetupDrive(_hand.Joints[i].ArticulationBody.xDrive);
+                    _hand.Joints[i].ArticulationBody.yDrive = SetupDrive(_hand.Joints[i].ArticulationBody.yDrive);
+                    _hand.Joints[i].ArticulationBody.zDrive = SetupDrive(_hand.Joints[i].ArticulationBody.zDrive);
 
                     ArticulationDrive SetupDrive(ArticulationDrive drive)
                     {
@@ -88,25 +91,26 @@ namespace SoftHand
                         return alignment == COMAlignment.beginning ? beginning : alignment == COMAlignment.center ? center : end;
                     }
                 }
-            }
+           // }
             // setup root (palm)
-            _hand.Palm.maxAngularVelocity = _settingsAsset.palmPhysicalProperties.maxAngularVelocity;
-            _hand.Palm.maxLinearVelocity = _settingsAsset.palmPhysicalProperties.maxLinearVelocity;
-            _hand.Palm.maxDepenetrationVelocity = _settingsAsset.palmPhysicalProperties.maxDepenetrationVelocity;
-            _hand.Palm.linearDamping = _settingsAsset.palmPhysicalProperties.linearDamping;
-            _hand.Palm.angularDamping = _settingsAsset.palmPhysicalProperties.angularDamping;
-            _hand.Palm.jointFriction = _settingsAsset.palmPhysicalProperties.jointFriciton;
-            _hand.Palm.mass = _settingsAsset.palmPhysicalProperties.mass;
-            _hand.Palm.useGravity = _settingsAsset.palmPhysicalProperties.useGravity;
-            _hand.Palm.collisionDetectionMode = _settingsAsset.palmPhysicalProperties.CollisionDetection;
-            _hand.Palm.centerOfMass = Vector3.zero;
+            _hand.ArticulationBody.maxAngularVelocity = _settingsAsset.palmPhysicalProperties.maxAngularVelocity;
+            _hand.ArticulationBody.maxLinearVelocity = _settingsAsset.palmPhysicalProperties.maxLinearVelocity;
+            _hand.ArticulationBody.maxDepenetrationVelocity = _settingsAsset.palmPhysicalProperties.maxDepenetrationVelocity;
+            _hand.ArticulationBody.linearDamping = _settingsAsset.palmPhysicalProperties.linearDamping;
+            _hand.ArticulationBody.angularDamping = _settingsAsset.palmPhysicalProperties.angularDamping;
+            _hand.ArticulationBody.jointFriction = _settingsAsset.palmPhysicalProperties.jointFriciton;
+            _hand.ArticulationBody.mass = _settingsAsset.palmPhysicalProperties.mass;
+            _hand.ArticulationBody.useGravity = _settingsAsset.palmPhysicalProperties.useGravity;
+            _hand.ArticulationBody.collisionDetectionMode = _settingsAsset.palmPhysicalProperties.CollisionDetection;
+            _hand.ArticulationBody.centerOfMass = Vector3.zero;
 
-            UnityEngine.Debug.Log($"Max angular velocity is set to  { _hand.Palm.maxAngularVelocity}");
-            UnityEngine.Debug.Log($"Max linea velocity is set to  { _hand.Palm.maxLinearVelocity}");
+            // UnityEngine.Debug.Log($"Max angular velocity is set to  { _hand.ArticulationBody.maxAngularVelocity}");
+            // UnityEngine.Debug.Log($"Max linea velocity is set to  { _hand.ArticulationBody.maxLinearVelocity}");
+             UnityEngine.Debug.Log($"New hand settings applied to { _hand.Handedness} hand");
 
             // setup friction
             _hand.PalmColliders.ForEach(c => c.material = _settingsAsset.palmPhysicalMaterial);
-            _hand.AllHandJoints.ForEach(c => c.collider.material = _settingsAsset.jointsPhysicalMaterial);
+            _hand.Joints.ToList().ForEach( c => c.Collider.material = _settingsAsset.jointsPhysicalMaterial);
 
             // IgnoreCollisionBetweenNeighboringJoints();
 

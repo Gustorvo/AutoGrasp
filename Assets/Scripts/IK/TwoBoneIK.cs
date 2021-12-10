@@ -125,17 +125,17 @@ public class TwoBoneIK : MonoBehaviour
         if (_middleJoint != null && _useArticulations)
         {
            // Quaternion local = Quaternion.Inverse(LowerDummy.parent.rotation) * lowerWorld;
-            _middleJoint.SetDriveTargetRotation(MiddleDummy.localRotation, out _lowerReduced);
+            _middleJoint.SetDriveTargetRotation(MiddleDummy.localRotation);
         }
 
         if (_upperJoint != null && _useArticulations)
         {
             //Quaternion local = Quaternion.Inverse(UpperDummy.parent.rotation) * upperWorld ;
-            _upperJoint.SetDriveTargetRotation(UpperDummy.localRotation, out _upperReduced);
+            _upperJoint.SetDriveTargetRotation(UpperDummy.localRotation);
         }
         Vector3 endRotLocal = Vector3.zero;
         if (_endJoint != null && _useArticulations)
-            _endJoint.SetDriveTargetRotation(EndDummy.localRotation, out endRotLocal);
+            _endJoint.SetDriveTargetRotation(EndDummy.localRotation);
     }
    
 }

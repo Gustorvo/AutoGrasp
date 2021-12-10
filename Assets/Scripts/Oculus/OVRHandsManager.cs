@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
-using static OVRSkeleton;
 using static SoftHand.Enums;
 
-namespace SoftHand
+namespace SoftHand.Oculus
 {
     [DefaultExecutionOrder(-70)]
     public class OVRHandsManager : MonoBehaviour
@@ -26,9 +25,9 @@ namespace SoftHand
 
         private OVRHand[] _hand = new OVRHand[(int)OVRHand.Hand.HandRight + 1];
         private OVRSkeleton[] _handSkeleton = new OVRSkeleton[(int)OVRHand.Hand.HandRight + 1];
-      
+
         private int _leftSkeletonChangedCount = -1, _rightSkeletonChangedCount = -1;
-        private bool _reInitLeftHand, _reInitRightHand;           
+        private bool _reInitLeftHand, _reInitRightHand;
 
         public bool HandIsReliable(Handedness hand)
         {

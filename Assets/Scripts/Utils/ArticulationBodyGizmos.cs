@@ -1,4 +1,4 @@
-using SoftHand;
+using SoftHand.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,9 +14,15 @@ public class ArticulationBodyGizmos : MonoBehaviour
     [SerializeField] bool _showCenterOfMass;
     [SerializeField] bool _showPalmBoundingBox;
     [SerializeField] bool _showHandBoundingBox;
+    [SerializeField] bool _showHandBoundingSphere;
+    [SerializeField] bool _showTargetJointPosition;
+    [SerializeField] bool _createGameObjectsForJointPos;
     [SerializeField] Transform palmComObj, targetPalmComObj;
     [SerializeField] TMP_Text palmDeltaText;
     [SerializeField] ArticulatedHand hand;
+    [SerializeField] GameObject _jointVizPrefab;
+
+    private List<GameObject> _joints = new List<GameObject>();
 
     private void Awake()
     {
@@ -30,26 +36,41 @@ public class ArticulationBodyGizmos : MonoBehaviour
 
     private void Start()
     {
+        if (_createGameObjectsForJointPos)
+        {
+            //create game objects for visual debuging
+            for (int i = 0; i < hand.Joints.Count; i++)
+            {
+                GameObject newJointGO = Instantiate(_jointVizPrefab);
+                newJointGO.name = $"{hand.Joints[i].Name} {i}";
+                _joints.Add(newJointGO);
+            }
 
+        }
     }
 
     private void OnDrawGizmos()
     {
-        if (hand == null || !hand.Initialized)
+        if (!Application.isPlaying || hand == null || !hand.Initialized)
             return;
-        if (_showCenterOfMass && _bodies != null)
+        Pose pose = hand.Tracking.GetLastReliableRootPose(hand.Handedness);
+        if (_bodies != null)
         {
-            // draw root body/palm
-            DrawRedSphere(hand.Palm.transform.position + hand.Palm.transform.rotation * hand.Palm.centerOfMass, 0.010f);
-            if (palmComObj != null)
-                palmComObj.position = hand.Palm.transform.position;
-            if (targetPalmComObj != null)
-                targetPalmComObj.position = hand.LastReliablePose.position;
-
-            // draw fingers
-            foreach (ArticulationBody body in _bodies)
+            Gizmos.color = Color.red;
+            if (_showCenterOfMass)
             {
-                DrawRedSphere(body.transform.position + body.transform.rotation * body.centerOfMass, 0.005f);
+                // draw root body/palm
+                DrawSphere(hand.ArticulationBody.transform.position + hand.ArticulationBody.transform.rotation * hand.ArticulationBody.centerOfMass, 0.010f, Color.red);
+                if (palmComObj != null)
+                    palmComObj.position = hand.ArticulationBody.transform.position;
+                if (targetPalmComObj != null)
+                    targetPalmComObj.position = pose.position;
+
+                // draw fingers
+                foreach (ArticulationBody body in _bodies)
+                {
+                    DrawSphere(body.transform.position + body.transform.rotation * body.centerOfMass, 0.005f, Color.red);
+                }
             }
 
             if (_showPalmBoundingBox)
@@ -64,10 +85,34 @@ public class ArticulationBodyGizmos : MonoBehaviour
                 var colliders = hand.GetAlJointsColliders();
                 if (colliders.Count == 0) return;
 
-                Bounds bounds = hand.GetPalmBounds();
-                colliders.ForEach(c => bounds.Encapsulate(c.bounds));
-                Vector3 localCenter = hand.Palm.transform.InverseTransformPoint(bounds.center);
-                Gizmos.DrawCube(hand.LastReliablePose.position + hand.LastReliablePose.rotation * localCenter, bounds.size);
+                Bounds bounds = hand.GetHandBounds();
+               // colliders.ForEach(c => bounds.Encapsulate(c.bounds));
+                Vector3 localCenter = hand.ArticulationBody.transform.InverseTransformPoint(bounds.center);
+                Gizmos.DrawCube(pose.position + pose.rotation * localCenter, bounds.size);
+            }
+            if (_showHandBoundingSphere)
+            {
+                if (hand.TryGetTargetHandBoundingSphere(out Vector3 center, out float radius))
+                {
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawSphere(center, radius);
+                }
+            }
+            if (_showTargetJointPosition)
+            {
+                for (int i = 0; i < hand.Joints.Count; i++)
+                {
+                    Color color = hand.Joints[i].Index == 0 ? Color.red : Color.green;
+                    float size = Mathf.Clamp(0.0075f / hand.Joints[i].Index, 0.001f, 0.007f);                    
+                    DrawSphere(hand.Joints[i].TargetData.Position, size, color);                    
+                }
+            }
+            if (_createGameObjectsForJointPos)
+            {
+                for (int i = 0; i < _joints.Count; i++)
+                {                   
+                    _joints[i].transform.SetPositionAndRotation(hand.Joints[i].TargetData.Position, hand.Joints[i].TargetData.Rotation);
+                }
             }
         }
         //if (_showBoundingCollider)
@@ -77,10 +122,11 @@ public class ArticulationBodyGizmos : MonoBehaviour
         //}
     }
 
-    private void DrawRedSphere(Vector3 center, float radi)
+    private void DrawSphere(Vector3 center, float radius, Color color)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(center, radi);
+        Gizmos.color = color;
+        Gizmos.DrawSphere(center, radius);
+        
     }
 
     private void Update()
@@ -95,7 +141,7 @@ public class ArticulationBodyGizmos : MonoBehaviour
 
         if (palmDeltaText != null)
         {
-            float roundedDist = Mathf.Round(Mathf.Sqrt(hand.DistanceToTargetSqr) * 100f) * 0.01f;
+            float roundedDist = Mathf.Round(Vector3.Distance(hand.BodyData.Position, hand.TargetData.Position) * 100f) * 0.01f;
             palmDeltaText.text = $"Palm delta: {roundedDist.ToString()}";
 
         }

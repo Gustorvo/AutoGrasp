@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a885cba7026c62468ef212fd01a30e4, type: 3}
-  m_Name: R hand settings
+  m_Name: R hand settings 1
   m_EditorClassIdentifier: 
   palmPhysicalProperties:
-    mass: 1
+    mass: 2.5
     useGravity: 0
     linearDamping: 0.25
     angularDamping: 0.25
@@ -23,7 +23,7 @@ MonoBehaviour:
     maxLinearVelocity: 2
     maxDepenetrationVelocity: 1.5
   jointsPhysicalProperties:
-    mass: 0.2
+    mass: 0.25
     useGravity: 0
     linearDamping: 0.25
     angularDamping: 0.25
@@ -33,14 +33,14 @@ MonoBehaviour:
     maxLinearVelocity: 2
     maxDepenetrationVelocity: 5
   jointsCenterOfMassAlignemnt: 0
-  palmPhysicalMaterial: {fileID: 13400000, guid: 49744fe39eee06b4fb88bd05bf61187f,
+  palmPhysicalMaterial: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
     type: 2}
-  jointsPhysicalMaterial: {fileID: 13400000, guid: 49744fe39eee06b4fb88bd05bf61187f,
+  jointsPhysicalMaterial: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
     type: 2}
   globalArticulationDriveMotorSettings:
-    stiffness: 100
-    damping: 3
-    forceLimit: 100
+    stiffness: 10
+    damping: 0.3
+    forceLimit: Infinity
     targetVelocity: 0
     doubleDampingForFirstJoint: 1
   limitPreset: {fileID: 0}

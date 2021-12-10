@@ -1,3 +1,4 @@
+using SoftHand.Core;
 using UnityEngine;
 
 namespace SoftHand.Experimental
@@ -30,7 +31,7 @@ namespace SoftHand.Experimental
 
         private void FillPoseBuffer()
         {
-            if (!_hand.Initialized || !_hand.IsTrackingReliable || bufferSize == 0)
+            if (!_hand.Initialized || !_hand.Tracking.IsHandReliable(_hand.Handedness) || bufferSize == 0)
             {
                 bufferFull = false;
                 return;
@@ -52,19 +53,17 @@ namespace SoftHand.Experimental
                 if (_prevPrevFrame < 0)
                     _prevPrevFrame = palmPosedBuffer.Length + _prevPrevFrame;
             }
-            palmPosedBuffer[_frame] = new Pose(_hand.Palm.transform.position, _hand.Palm.transform.rotation);
-            for (int i = 0; i < _hand.Fingers.Length; i++)
-            {
-                for (int j = 0; j < _hand.Fingers[i].joints.Length; j++)
-                {
-                    _hand.Fingers[i].joints[j].poseBuffer[_frame] = new Pose(_hand.Fingers[i].joints[j].body.transform.position, _hand.Fingers[i].joints[j].body.transform.rotation);
-                    if (Vector3.Distance(_hand.Fingers[i].joints[j].poseBuffer[_frame].position, _hand.Fingers[i].joints[j].poseBuffer[_prevPrevFrame].position) < Vector3.Distance(_hand.Fingers[i].joints[j].poseBuffer[_frame].position, _hand.Fingers[i].joints[j].poseBuffer[_prevFrame].position))
-                    {
-                        _hand.Fingers[i].joints[j].poseBuffer[_frame] = _hand.Fingers[i].joints[j].poseBuffer[_prevPrevFrame];
-                        // Debug.LogWarning(" Finger jitter");
-                    }
-                }
-            }
+            palmPosedBuffer[_frame] = new Pose(_hand.ArticulationBody.transform.position, _hand.ArticulationBody.transform.rotation);
+          
+                //for (int j = 0; j < _hand.Joints.Length; j++)
+                //{
+                //    _hand.Joints[j].poseBuffer[_frame] = new Pose(_hand.Joints[j].ArticulationBody.transform.position, _hand.Joints[j].ArticulationBody.transform.rotation);
+                //    if (Vector3.Distance(_hand.Joints[j].poseBuffer[_frame].position, _hand.Joints[j].poseBuffer[_prevPrevFrame].position) < Vector3.Distance(_hand.Joints[j].poseBuffer[_frame].position, _hand.Joints[j].poseBuffer[_prevFrame].position))
+                //    {
+                //        _hand.Joints[j].poseBuffer[_frame] = _hand.Joints[j].poseBuffer[_prevPrevFrame];
+                //        // Debug.LogWarning(" Finger jitter");
+                //    }
+                //}           
 
             if (bufferFull && palmPosedBuffer.Length >= 3)
             {

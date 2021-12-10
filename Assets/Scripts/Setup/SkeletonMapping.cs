@@ -1,8 +1,8 @@
 namespace SoftHand
 {
+    using SoftHand.Extensions;
     using System.Collections.Generic;
     using UnityEngine;
-    using static OVRSkeleton;
     using static SoftHand.Enums;
 
     public class SkeletonMapping : MonoBehaviour
@@ -87,7 +87,7 @@ namespace SoftHand
                     return 0;
             }
         }
-        public static Finger GetFinger(OVRSkeleton.BoneId bi)
+        public static Finger GetFinger(BoneId bi)
         {
             switch ((int)bi)
             {
@@ -142,8 +142,8 @@ namespace SoftHand
             {
                 sum += joints[i];
             }
-            int OVRIndex = sum + (int)OVRPlugin.BoneId.Hand_Thumb0; // sum + 2 
-            return ((OVRPlugin.BoneId)OVRIndex).ToString();
+            int OVRIndex = sum + (int)BoneId.Hand_Thumb0; // sum + 2 
+            return ((BoneId)OVRIndex).ToString();
 
         }
 

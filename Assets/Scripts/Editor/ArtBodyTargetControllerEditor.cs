@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using SoftHand;
+using SoftHand.Core;
 using UnityEditor;
 using UnityEngine;
 
@@ -35,7 +35,7 @@ namespace SoftHand.Experimental
                 _articulatedHand = hand;
             else EditorGUILayout.HelpBox("GameObject has no ArtBodyTargetController attached!", MessageType.Warning);
 
-            if (_articulatedHand.JointBodies == null || _articulatedHand.JointBodies.Length == 0)
+            if (_articulatedHand.Joints == null || _articulatedHand.Joints.Count == 0)
             {
                 EditorGUILayout.HelpBox("Articulation drives not available in editor mode! It needs to be initialized in play mode", MessageType.Warning);
             }
@@ -47,9 +47,9 @@ namespace SoftHand.Experimental
 
         private void Fetch()
         {
-            for (int i = 0; i < _articulatedHand.JointBodies.Length; ++i)
+            for (int i = 0; i < _articulatedHand.Joints.Count; ++i)
             {
-                ArticulationBody body = _articulatedHand.JointBodies[i];
+                ArticulationBody body = _articulatedHand.Joints[i].ArticulationBody;
                 int dofs = body.dofCount;
                 if (body.twistLock == ArticulationDofLock.LimitedMotion)
                     MakeDriveSlider(i, "x", body.xDrive.target, body.xDrive.upperLimit, body.xDrive.lowerLimit);

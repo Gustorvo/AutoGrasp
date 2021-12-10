@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a533163dcd47fa4bb8c0410e82be128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTransform: {fileID: 815063892}
-  attemptChildScale: 0
+  parentTransform: {fileID: 802969224}
+  attemptChildScale: 1
 --- !u!65 &498614593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498614591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.66, y: 2.9, z: 0}
+  m_LocalPosition: {x: -0.01, y: 2.9, z: 0}
   m_LocalScale: {x: 0.9603, y: 1.1634995, z: 0.9603}
   m_Children: []
   m_Father: {fileID: 0}
@@ -342,7 +342,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802969223}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.416, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77c289f4cffc054fb9c833e6069403b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0
+  distToChild: 0
   objToMove: {fileID: 1240232480}
   child: {fileID: 1864967946}
   multiplier: {x: 0, y: 0, z: 0}
@@ -614,7 +614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240232480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.69, y: 1.5, z: 0}
+  m_LocalPosition: {x: -0.04000008, y: 1.5, z: 0}
   m_LocalScale: {x: 0.98, y: 1.18686, z: 0.9297064}
   m_Children: []
   m_Father: {fileID: 0}
@@ -632,8 +632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a533163dcd47fa4bb8c0410e82be128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTransform: {fileID: 815063892}
-  attemptChildScale: 0
+  parentTransform: {fileID: 1864967950}
+  attemptChildScale: 1
 --- !u!1 &1864967946
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +723,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864967946}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a77c289f4cffc054fb9c833e6069403b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0
+  distToChild: 0
   objToMove: {fileID: 498614591}
   child: {fileID: 802969223}
   multiplier: {x: 0, y: 0, z: 0}

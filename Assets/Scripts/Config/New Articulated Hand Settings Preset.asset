@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a885cba7026c62468ef212fd01a30e4, type: 3}
+  m_Name: New Articulated Hand Settings Preset
+  m_EditorClassIdentifier: 
+  palmPhysicalProperties:
+    mass: 0.05
+    useGravity: 0
+    linearDamping: 0.05
+    angularDamping: 0.05
+    jointFriciton: 0.05
+    CollisionDetection: 0
+    maxAngularVelocity: 1.75
+    maxLinearVelocity: 1.5
+    maxDepenetrationVelocity: 1.5
+  jointsPhysicalProperties:
+    mass: 0.05
+    useGravity: 0
+    linearDamping: 0.05
+    angularDamping: 0.05
+    jointFriciton: 0.05
+    CollisionDetection: 0
+    maxAngularVelocity: 1.75
+    maxLinearVelocity: 1.5
+    maxDepenetrationVelocity: 1.5
+  jointsCenterOfMassAlignemnt: 0
+  palmPhysicalMaterial: {fileID: 0}
+  jointsPhysicalMaterial: {fileID: 0}
+  globalArticulationDriveMotorSettings:
+    stiffness: 100
+    damping: 3
+    forceLimit: 100
+    targetVelocity: 0
+    doubleDampingForFirstJoint: 1
+  limitPreset: {fileID: 0}
+  showExperimentalSettings: 0
+  _fingers:
+  - name: Thumb
+    type: 0
+    joints: []
+  - name: Index
+    type: 1
+    joints: []
+  - name: Middle
+    type: 2
+    joints: []
+  - name: Ring
+    type: 3
+    joints: []
+  - name: Pinky
+    type: 4
+    joints: []
+  initialized: 1

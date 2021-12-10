@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
-using BoneId = OVRSkeleton.BoneId;
+
 using SoftHand;
 using static SoftHand.Enums;
 
@@ -67,53 +65,53 @@ public class SkeletonMappingEditor : Editor
         {
             switch (boneId)
             {
-                case OVRSkeleton.BoneId.Hand_WristRoot:
+                case BoneId.Hand_WristRoot:
                     return "Hand_WristRoot";
-                case OVRSkeleton.BoneId.Hand_ForearmStub:
+                case BoneId.Hand_ForearmStub:
                     return "Hand_ForearmStub";
-                case OVRSkeleton.BoneId.Hand_Thumb0:
+                case BoneId.Hand_Thumb0:
                     return "Hand_Thumb0";
-                case OVRSkeleton.BoneId.Hand_Thumb1:
+                case BoneId.Hand_Thumb1:
                     return "Hand_Thumb1";
-                case OVRSkeleton.BoneId.Hand_Thumb2:
+                case BoneId.Hand_Thumb2:
                     return "Hand_Thumb2";
-                case OVRSkeleton.BoneId.Hand_Thumb3:
+                case BoneId.Hand_Thumb3:
                     return "Hand_Thumb3";
-                case OVRSkeleton.BoneId.Hand_Index1:
+                case BoneId.Hand_Index1:
                     return "Hand_Index1";
-                case OVRSkeleton.BoneId.Hand_Index2:
+                case BoneId.Hand_Index2:
                     return "Hand_Index2";
-                case OVRSkeleton.BoneId.Hand_Index3:
+                case BoneId.Hand_Index3:
                     return "Hand_Index3";
-                case OVRSkeleton.BoneId.Hand_Middle1:
+                case BoneId.Hand_Middle1:
                     return "Hand_Middle1";
-                case OVRSkeleton.BoneId.Hand_Middle2:
+                case BoneId.Hand_Middle2:
                     return "Hand_Middle2";
-                case OVRSkeleton.BoneId.Hand_Middle3:
+                case BoneId.Hand_Middle3:
                     return "Hand_Middle3";
-                case OVRSkeleton.BoneId.Hand_Ring1:
+                case BoneId.Hand_Ring1:
                     return "Hand_Ring1";
-                case OVRSkeleton.BoneId.Hand_Ring2:
+                case BoneId.Hand_Ring2:
                     return "Hand_Ring2";
-                case OVRSkeleton.BoneId.Hand_Ring3:
+                case BoneId.Hand_Ring3:
                     return "Hand_Ring3";
-                case OVRSkeleton.BoneId.Hand_Pinky0:
+                case BoneId.Hand_Pinky0:
                     return "Hand_Pinky0";
-                case OVRSkeleton.BoneId.Hand_Pinky1:
+                case BoneId.Hand_Pinky1:
                     return "Hand_Pinky1";
-                case OVRSkeleton.BoneId.Hand_Pinky2:
+                case BoneId.Hand_Pinky2:
                     return "Hand_Pinky2";
-                case OVRSkeleton.BoneId.Hand_Pinky3:
+                case BoneId.Hand_Pinky3:
                     return "Hand_Pinky3";
-                case OVRSkeleton.BoneId.Hand_ThumbTip:
+                case BoneId.Hand_ThumbTip:
                     return "Hand_ThumbTip";
-                case OVRSkeleton.BoneId.Hand_IndexTip:
+                case BoneId.Hand_IndexTip:
                     return "Hand_IndexTip";
-                case OVRSkeleton.BoneId.Hand_MiddleTip:
+                case BoneId.Hand_MiddleTip:
                     return "Hand_MiddleTip";
-                case OVRSkeleton.BoneId.Hand_RingTip:
+                case BoneId.Hand_RingTip:
                     return "Hand_RingTip";
-                case OVRSkeleton.BoneId.Hand_PinkyTip:
+                case BoneId.Hand_PinkyTip:
                     return "Hand_PinkyTip";
                 default:
                     return "Hand_Unknown";
