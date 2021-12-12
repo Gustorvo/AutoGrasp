@@ -122,14 +122,7 @@ namespace SoftHand.Oculus
         private GameObject _bonesGO;
 
         private void InitializeBones()
-        {
-
-            _bonesGO = new GameObject("Bones");
-            _bonesGO.transform.SetParent(transform, false);
-            _bonesGO.transform.localPosition = Vector3.zero;
-            _bonesGO.transform.localRotation = Quaternion.identity;
-
-
+        {  
             if (_bones == null || _bones.Count != _skeleton.NumBones)
             {
                 _bones = new List<OVRBoneData>(new OVRBoneData[_skeleton.NumBones]);
@@ -146,15 +139,17 @@ namespace SoftHand.Oculus
                 Pose pose = new Pose(
                 _skeleton.Bones[i].Pose.Position.FromFlippedXVector3f(),
                _skeleton.Bones[i].Pose.Orientation.FromFlippedXQuatf());
-                // added
-                Pose parentPose;
-                if ((OVRPlugin.BoneId)_bones[i].ParentBoneIndex == OVRPlugin.BoneId.Invalid)
+
+               
+               Pose parentPose;
+                var parentBoneIndex = (OVRPlugin.BoneId)_bones[i].ParentBoneIndex;
+                if (parentBoneIndex == OVRPlugin.BoneId.Invalid)
                 {
-                    parentPose = new Pose(_bonesGO.transform.position, _bonesGO.transform.rotation);
+                    parentPose = _wristPose[1];                   
                 }
                 else
                 {
-                    parentPose = _bones[_bones[i].ParentBoneIndex].LocalBonePose;
+                    parentPose = _bones[_bones[i].ParentBoneIndex].BonePose;
                 }
                 Pose childPose = GetChildPoseRelativeToParent2(parentPose, pose);
                 _bones[i].Setup(childPose, parentPose);
@@ -162,27 +157,10 @@ namespace SoftHand.Oculus
                 var joint = Instantiate(_jointVizPrefab, childPose.position, childPose.rotation);
                 joint.name = BoneLabelFromBoneId((SkeletonType)OVRPlugin.SkeletonType.HandRight, bone.Id);
                 _jointVizList.Add(joint);
-                //end added
-                //bone.LocalBonePose = pose; not needed if added above
+               
             }
 
-            //for (int i = 0; i < _bones.Count; ++i)
-            //{
-            //    if ((OVRPlugin.BoneId)_bones[i].ParentBoneIndex == OVRPlugin.BoneId.Invalid)
-            //    {
-            //        Pose parentPose = new Pose(_bonesGO.transform.position, _bonesGO.transform.rotation);
-            //        Pose childPose = GetChildPoseRelativeToParent2(parentPose, _bones[i].LocalBonePose);
-            //        _bones[i].Setup(childPose, parentPose);
-            //    }
-            //    else
-            //    {
-            //        Pose parentPose = _bones[_bones[i].ParentBoneIndex].LocalBonePose;
-            //        _bones[i].LocalBonePose = GetChildPoseRelativeToParent2(parentPose, _bones[i].LocalBonePose);
-            //    }
-            //    var joint = Instantiate(_jointVizPrefab, _bones[i].LocalBonePose.position, _bones[i].LocalBonePose.rotation);
-            //    joint.name = BoneLabelFromBoneId((SkeletonType)OVRPlugin.SkeletonType.HandRight, _bones[i].Id);
-            //    _jointVizList.Add(joint);
-            //}
+           
         }
 
         private void Update()
@@ -236,23 +214,25 @@ namespace SoftHand.Oculus
 
             for (int i = 0; i < _bones.Count; ++i)
             {
-                if ((OVRPlugin.BoneId)_bones[i].ParentBoneIndex == OVRPlugin.BoneId.Invalid)
-                {
-                    Pose parentPose = _wristPose[1];
-                    _bones[i].UpdatePose(data.BoneRotations[i].FromFlippedXQuatf(), parentPose);  // GetChildPoseRelativeToParent2(parentPose, _bones[i].LocalBonePose);
-                }
-                else
-                {
-                    Pose parentPose = _bones[_bones[i].ParentBoneIndex].LocalBonePose;
-                    _bones[i].UpdatePose(data.BoneRotations[i].FromFlippedXQuatf(), parentPose);
-                }
+                //var parentBoneIndex = (OVRPlugin.BoneId)_bones[i].ParentBoneIndex;
+                //if (parentBoneIndex == OVRPlugin.BoneId.Invalid || parentBoneIndex == 0)
+                //{
+                //    Pose parentPose = _wristPose[1];
+                //    // Pose parentPose = data.BoneRotations[i].FromFlippedXQuatf();
+                //    _bones[i].UpdatePose(data.BoneRotations[i].FromFlippedXQuatf(), parentPose, _handSkeleton[1].Bones[0].Transform.right);  // GetChildPoseRelativeToParent2(parentPose, _bones[i].LocalBonePose);
+                //}
+                //else
+                //{
+                //    Pose parentPose = _bones[_bones[i].ParentBoneIndex].BonePose;
+                //    _bones[i].UpdatePose(data.BoneRotations[i].FromFlippedXQuatf(), parentPose, _handSkeleton[1].Bones[_bones[i].ParentBoneIndex].Transform.right);
+                //}
             }
             // debug update joint viz
-            for (int i = 0; i < data.BoneRotations.Length; ++i)
-            {
-                _jointVizList[i].transform.position = _bones[i].LocalBonePose.position;
-                _jointVizList[i].transform.localRotation = _bones[i].LocalBonePose.rotation;
-            }
+            //for (int i = 0; i < data.BoneRotations.Length; ++i)
+            //{
+            //    _jointVizList[i].transform.position = _bones[i].BonePose.position;
+            //    _jointVizList[i].transform.localRotation = _bones[i].BonePose.rotation;
+            //}
         }
 
         private Pose GetChildPoseRelativeToParent(Pose parentPose, Pose childPose)
@@ -324,8 +304,7 @@ namespace SoftHand.Oculus
     {
         public OVRSkeleton.BoneId Id { get; set; }
         public short ParentBoneIndex { get; set; }
-        public Pose LocalBonePose { get; set; }
-        public Pose WorldBonePose { get; set; }
+        public Pose BonePose { get; set; }        
         public float DistanceToParent { get; set; }
 
         public OVRBoneData() { }
@@ -334,18 +313,18 @@ namespace SoftHand.Oculus
         {
             Id = id;
             ParentBoneIndex = parentBoneIndex;
-            LocalBonePose = localPose;
+            BonePose = localPose;
         }
 
         //Vector3 childPos = parent.position + parent.up * distToChild;
         //objToMove.transform.position = childPos;
         //objToMove.transform.rotation = parent.rotation;// * child.transform.rotation;
 
-        public void UpdatePose(Quaternion newLocalRotation, Pose worldParentPose)
+        public void UpdatePose(Quaternion newLocalRotation, Pose worldParentPose, Vector3 parentToChildDir)
         {
             Quaternion newWorldRotation = worldParentPose.rotation * newLocalRotation;
-            Vector3 newWorldPosition = worldParentPose.position + worldParentPose.right * DistanceToParent;
-            LocalBonePose = new Pose(newWorldPosition, newWorldRotation);
+            Vector3 newWorldPosition = worldParentPose.position +  /*worldParentPose.right */ parentToChildDir * DistanceToParent;
+            BonePose = new Pose(newWorldPosition, newWorldRotation);
         }
 
         Vector3 LocalToWorld(Vector3 childPosition, Pose parentPose, Vector3 parentScale) => parentPose.position + parentPose.rotation * (Vector3.Scale(childPosition, parentScale));
@@ -353,7 +332,7 @@ namespace SoftHand.Oculus
         internal void Setup(Pose childPose, Pose parentPose)
         {
             DistanceToParent = Vector3.Distance(childPose.position, parentPose.position);
-            LocalBonePose = childPose;
+            BonePose = childPose;
         }
     }
 }
