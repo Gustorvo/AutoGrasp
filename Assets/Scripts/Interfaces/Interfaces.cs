@@ -35,9 +35,10 @@ namespace SoftHand.Interfaces
     public interface IDataProvider
     {
         Pose GetRootPose(Handedness hand);
-        Pose[] GetJointsPoses(Handedness hand);
+        Pose[] GetBonesPoses(Handedness hand);
         bool JointPositionsProvided { get; }
         bool JointRotationsProvided { get; }
+        bool IsInitialized { get; }
     }
     public interface IHandTrackingDataProvider : IDataProvider
     {
@@ -213,11 +214,7 @@ namespace SoftHand.Interfaces
         /// <summary>
         /// Instance Id
         /// </summary>
-        int Id { get; }
-        ITrackable ParentJoint { get; }
-        Transform Parent { get; }
-        Vector3 ParentPosition { get; set; }
-        float DistanceToParent { get; }
+        int Id { get; }           
         string Name { get; }
         int Index { get; }
         int FingerIndex { get; }

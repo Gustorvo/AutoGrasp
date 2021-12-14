@@ -10,7 +10,6 @@ namespace SoftHand.Core
     /// </summary>
     public abstract class HandTrackingBase : MonoBehaviour
     {
-        public abstract HandTrackingDataProvider Type { get; }
-        public  abstract bool IsInitialized { get; set; }
+        public abstract HandTrackingDataProvider Type { get; }        
     }
 }

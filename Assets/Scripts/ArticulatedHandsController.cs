@@ -18,6 +18,7 @@ namespace SoftHand
     public class ArticulatedHandsController : MonoBehaviour, IArticulatedHandsController
     {
         [SerializeField] float _onTeleportDistance = 0.3f;
+        [SerializeField] bool _moveHand, _rotateHand, _stabilizeHand, _moveFingers, _allowTeleport;
 
         public IEnumerable<IArticulatedHand> Hands => _hands;
         private List<IBodyMover> _handMovers = new List<IBodyMover>();
@@ -31,8 +32,8 @@ namespace SoftHand
         {
             FetchTrackingData();
             MoveHands();
-            MoveFingers();
-            StabilizeHands();
+             if (_moveFingers) MoveFingers();
+            if (_stabilizeHand) StabilizeHands();
 
             FixBugs();
         }
@@ -75,10 +76,10 @@ namespace SoftHand
         {
             for (int i = 0; i < _handMovers.Count; i++)
             {
-                _handMovers[i].MoveBody();
-                //_handMovers[i].RotateBody();
+                if (_moveHand) _handMovers[i].MoveBody();
+                if (_rotateHand) _handMovers[i].RotateBody();
 
-                _isTooFarAwayFromTarget = _hands[i].SqrDistanceToTarget > _onTeleportDistance * _onTeleportDistance;
+                if (_allowTeleport) _isTooFarAwayFromTarget = _hands[i].SqrDistanceToTarget > _onTeleportDistance * _onTeleportDistance;
 
                 //if (_isTooFarAwayFromTarget)
                 //{
@@ -143,100 +144,99 @@ namespace SoftHand
     }
 }
 
-    #region remove
-    //private void SetPalmPositionAndRotation(IArticulatedHand hand)
-    //{
-    //    if (hand.Initialized)
-    //    {
-    //        // to reduce rotational inertia, we need to somehow stabilize the hand
-    //        // this could be done with IK system, where hand would be automatically stabilezed by the stiffness and damping properties of the attached arm (elbow's and shoulder's  articulation joints), but since we don't have any IK yet,
-    //        // we're stabilizing by applying small forces to the palm, distributed across the body, where each impact position is the joint position and forces are being calculated based on taget joints' positions
-    //        // this is equivalent as if adding the same ammount of force to every joint individually, but instead we add this force to the root (for simplicity reason).
-    //        // TODO: we could theoretically average the position of impact point and apply accumulated forces at once. This approach needs further testing. For now we are skipping this since we'll no longer need those small distributed forces once we implemented functional IK system
-    //        if (_stabilizeByAddingSmallForces)
-    //        {
-    //            //   foreach (var finger in hand.Fingers) // TODO: use for loop
-    //            // {
-    //            for (int i = 0; i < hand.Joints.Length; i++)
-    //            {
-    //                Vector3 force = hand.Joints[i].ArticulationBody.CalculateLinearForce(hand.Joints[i].targetPose.position, linearForceSettings.ToVelocity, linearForceSettings.MaxVelocity, linearForceSettings.MaxForce, linearForceSettings.Gain);
-    //                // adds force to the root (palm) at the position of its joints 
-    //                hand.Palm.AddForceAtPosition(force * linearForceSettings.LinearForceWeight * hand.Joints[i].ArticulationBody.mass, hand.Joints[i].ArticulationBody.transform.position);
-    //            }
-    //            // }
-    //        }
+#region remove
+//private void SetPalmPositionAndRotation(IArticulatedHand hand)
+//{
+//    if (hand.Initialized)
+//    {
+//        // to reduce rotational inertia, we need to somehow stabilize the hand
+//        // this could be done with IK system, where hand would be automatically stabilezed by the stiffness and damping properties of the attached arm (elbow's and shoulder's  articulation joints), but since we don't have any IK yet,
+//        // we're stabilizing by applying small forces to the palm, distributed across the body, where each impact position is the joint position and forces are being calculated based on taget joints' positions
+//        // this is equivalent as if adding the same ammount of force to every joint individually, but instead we add this force to the root (for simplicity reason).
+//        // TODO: we could theoretically average the position of impact point and apply accumulated forces at once. This approach needs further testing. For now we are skipping this since we'll no longer need those small distributed forces once we implemented functional IK system
+//        if (_stabilizeByAddingSmallForces)
+//        {
+//            //   foreach (var finger in hand.Fingers) // TODO: use for loop
+//            // {
+//            for (int i = 0; i < hand.Joints.Length; i++)
+//            {
+//                Vector3 force = hand.Joints[i].ArticulationBody.CalculateLinearForce(hand.Joints[i].targetPose.position, linearForceSettings.ToVelocity, linearForceSettings.MaxVelocity, linearForceSettings.MaxForce, linearForceSettings.Gain);
+//                // adds force to the root (palm) at the position of its joints 
+//                hand.Palm.AddForceAtPosition(force * linearForceSettings.LinearForceWeight * hand.Joints[i].ArticulationBody.mass, hand.Joints[i].ArticulationBody.transform.position);
+//            }
+//            // }
+//        }
 
-    //        if (linearForceSettings.ShouldMove)
-    //        {
-    //            Vector3 linearForce = hand.Palm.CalculateLinearForce(hand.LastReliablePose.position, linearForceSettings.ToVelocity, linearForceSettings.MaxVelocity, linearForceSettings.MaxForce, linearForceSettings.Gain);
-    //            float mass = _stabilizeByAddingSmallForces ? hand.Palm.mass : hand.TotalMass;
-    //            hand.Palm.AddForce(linearForce * linearForceSettings.LinearForceWeight * mass);
-    //        }
-
-
-    //        if (angularForceSettings.ShouldRotate)
-    //        {
-    //            Vector3 angularForce = hand.Palm.CalculateRequiredTorque(hand.LastReliablePose.rotation, angularForceSettings.Frequency, angularForceSettings.Damping);
-    //            hand.Palm.AddTorque(angularForce * angularForceSettings.AngularForceWeight);
-    //        }
+//        if (linearForceSettings.ShouldMove)
+//        {
+//            Vector3 linearForce = hand.Palm.CalculateLinearForce(hand.LastReliablePose.position, linearForceSettings.ToVelocity, linearForceSettings.MaxVelocity, linearForceSettings.MaxForce, linearForceSettings.Gain);
+//            float mass = _stabilizeByAddingSmallForces ? hand.Palm.mass : hand.TotalMass;
+//            hand.Palm.AddForce(linearForce * linearForceSettings.LinearForceWeight * mass);
+//        }
 
 
-
-    //        // Teleport hand if it gets too far from the target
-    //        if (hand.DistanceToTargetSqr > _teleportOnDistance * _teleportOnDistance)
-    //        {
-    //            TeleportToTarget(hand);
-    //        }
-    //    }
-    //}
-    //private void SetFingersRotations(IArticulatedHand hand)
-    //{
-    //    if (!hand.Initialized || !hand.Tracking.IsHandReliable(hand.Handedness))
-    //        return;
-
-    //    ResetIfOverLimit(hand); //  <---- should not be here...
-
-    //    // update finger joints' rotations
-    //    // foreach (var finger in hand.Fingers)
-    //    //  {
-    //    for (int i = 0; i < hand.Joints.Length; i++)
-    //    {
-    //        Quaternion targetRotaion = Quaternion.identity;
-
-    //        if (hand.Joints[i].fingerIndex == 0 && hand.Joints[i].index == 0)
-    //            continue; // because art. body components tend to be unstable when its chain > 4 (bug ??), we want to fix the joint (thumb trapezium bone - thumb0) and skip its rotation
-
-    //        //since thumb0 is fixed (se above), we want its rotaion to be applied to the next joint in the chain (thumb1)
-    //        if (hand.Joints[i].fingerIndex == 0 && hand.Joints[i].index == 1)
-    //        {
-    //            // calculate rotation for thumb's second joint (metacarpal bone) and
-    //            // combine 2 rotations into 1 (thumb0 + thumb1), 
-    //            targetRotaion = Quaternion.Inverse(hand.Joints[i - 1].ArticulationBody.anchorRotation) * // exclude thumb0 anchor rotaion
-    //            hand.Joints[i - 1].targetPose.rotation *  // include thumb0 target rotaion
-    //            hand.Joints[i].targetPose.rotation; // include thumb1 target rotaion
-    //        }
-    //        // calculate rotations for rest of the joints
-    //        else
-    //            targetRotaion = hand.Joints[i].targetPose.rotation;
-    //        // Vector3 targetRotatioInReducedSpace = Vector3.zero;
-    //        hand.Joints[i].ArticulationBody.SetDriveTargetRotation(targetRotaion);
+//        if (angularForceSettings.ShouldRotate)
+//        {
+//            Vector3 angularForce = hand.Palm.CalculateRequiredTorque(hand.LastReliablePose.rotation, angularForceSettings.Frequency, angularForceSettings.Damping);
+//            hand.Palm.AddTorque(angularForce * angularForceSettings.AngularForceWeight);
+//        }
 
 
 
-    //        // TODO: report this bug to unity.
-    //        // art body sometimes stuck
-    //        if (hand.Joints[i].statsData.actualTravelledRatio > 400f) // joint is stuck!                  
-    //        {
-    //            int finger = hand.Joints[i].fingerIndex;
-    //            hand.Joints[i].Reset(); // reset not just ONE but ALL joints in this chain
-    //            UnityEngine.Debug.LogWarning($"Resetting {(Finger)finger} finger on {hand.Handedness} hand");
-    //            continue;
-    //        }
-    //    }
-    //    // }
-    //}
-    
-            #endregion
-        
+//        // Teleport hand if it gets too far from the target
+//        if (hand.DistanceToTargetSqr > _teleportOnDistance * _teleportOnDistance)
+//        {
+//            TeleportToTarget(hand);
+//        }
+//    }
+//}
+//private void SetFingersRotations(IArticulatedHand hand)
+//{
+//    if (!hand.Initialized || !hand.Tracking.IsHandReliable(hand.Handedness))
+//        return;
 
-    
+//    ResetIfOverLimit(hand); //  <---- should not be here...
+
+//    // update finger joints' rotations
+//    // foreach (var finger in hand.Fingers)
+//    //  {
+//    for (int i = 0; i < hand.Joints.Length; i++)
+//    {
+//        Quaternion targetRotaion = Quaternion.identity;
+
+//        if (hand.Joints[i].fingerIndex == 0 && hand.Joints[i].index == 0)
+//            continue; // because art. body components tend to be unstable when its chain > 4 (bug ??), we want to fix the joint (thumb trapezium bone - thumb0) and skip its rotation
+
+//        //since thumb0 is fixed (se above), we want its rotaion to be applied to the next joint in the chain (thumb1)
+//        if (hand.Joints[i].fingerIndex == 0 && hand.Joints[i].index == 1)
+//        {
+//            // calculate rotation for thumb's second joint (metacarpal bone) and
+//            // combine 2 rotations into 1 (thumb0 + thumb1), 
+//            targetRotaion = Quaternion.Inverse(hand.Joints[i - 1].ArticulationBody.anchorRotation) * // exclude thumb0 anchor rotaion
+//            hand.Joints[i - 1].targetPose.rotation *  // include thumb0 target rotaion
+//            hand.Joints[i].targetPose.rotation; // include thumb1 target rotaion
+//        }
+//        // calculate rotations for rest of the joints
+//        else
+//            targetRotaion = hand.Joints[i].targetPose.rotation;
+//        // Vector3 targetRotatioInReducedSpace = Vector3.zero;
+//        hand.Joints[i].ArticulationBody.SetDriveTargetRotation(targetRotaion);
+
+
+
+//        // TODO: report this bug to unity.
+//        // art body sometimes stuck
+//        if (hand.Joints[i].statsData.actualTravelledRatio > 400f) // joint is stuck!                  
+//        {
+//            int finger = hand.Joints[i].fingerIndex;
+//            hand.Joints[i].Reset(); // reset not just ONE but ALL joints in this chain
+//            UnityEngine.Debug.LogWarning($"Resetting {(Finger)finger} finger on {hand.Handedness} hand");
+//            continue;
+//        }
+//    }
+//    // }
+//}
+
+#endregion
+
+

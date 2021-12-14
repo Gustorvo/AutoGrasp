@@ -11,28 +11,21 @@ namespace SoftHand.Core
 {
     public partial struct ArticulatedJoint : IJoint
     {      
-        public ArticulationBody ArticulationBody { get; }
-        public Transform Parent { get; }
+        public ArticulationBody ArticulationBody { get; }       
         public ITrackable BodyData { get; private set; }
         public ITrackable TargetData { get; private set; }
         public string Name { get; private set; }
         public int Index { get; private set; }
         public int FingerIndex { get; private set; }
         public IJointStats Stats { get; private set; }
-        public float SqrDistanceToTarget => BodyData.Position.DistanceSquared(TargetData.Position);
-        public float DistanceToParent { get; private set; }
-        public Collider Collider { get; }
-        public Vector3 ParentPosition { get; set; }
-        public ITrackable ParentJoint { get; }      
+        public float SqrDistanceToTarget => BodyData.Position.DistanceSquared(TargetData.Position);       
+        public Collider Collider { get; }        
         public int Id { get; }
 
-        public ArticulatedJoint(ArticulationBody body, Transform parent, ITrackable parentJoint, string name, int index, int fingerIndex) : this()
+        public ArticulatedJoint(ArticulationBody body, string name, int index, int fingerIndex) : this()
         {            
             ArticulationBody = body;
-            Id = body.GetInstanceID();
-            Parent = parent;
-            ParentJoint = parentJoint;
-            DistanceToParent = Vector3.Distance(ArticulationBody.transform.position, parent.position);            
+            Id = body.GetInstanceID();                                        
             Name = name;
             Index = index;
             FingerIndex = fingerIndex;

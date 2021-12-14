@@ -56,6 +56,8 @@ namespace SoftHand.Core
         public int InstanceId => gameObject.GetInstanceID();
 
         private List<ArticulationBody> _jointArticulationBodies;
+        private int _firstBone = (int)OVRPlugin.BoneId.Hand_Thumb0;  //use like this: for (int i = _firstBone; i < _lastBone + 1; ++i)
+        private int _lastBone = (int)OVRPlugin.BoneId.Hand_Pinky3;
 
 
 
@@ -135,8 +137,8 @@ namespace SoftHand.Core
 
         private void ConstructHand()
         {
-            Transform parent = ArticulationBody.transform;
-            ITrackable trackableParent = BodyData;
+           // Transform parent = ArticulationBody.transform;
+           // ITrackable trackableParent = BodyData;
             int firstBone = (int)BoneId.Hand_Thumb0;
             int lastBone = (int)BoneId.Hand_Pinky3;
             int jointIndex = 0;
@@ -148,21 +150,21 @@ namespace SoftHand.Core
                 string jointName = ((BoneId)i).ToString();
                 jointIndex++;
                 ArticulationBody body = _jointArticulationBodies[i - firstBone];
-                parent = body.transform.parent;
+              //  parent = body.transform.parent;
                 if (prevFingerIndex != fingerIndex)
                 {
-                    parent = ArticulationBody.transform;
-                    trackableParent = BodyData;
+              //      parent = ArticulationBody.transform;
+              //      trackableParent = BodyData;
                     prevFingerIndex = fingerIndex;
                     jointIndex = 0;
                 }
                 else
                 {
-                    trackableParent = _joints[_joints.Count - 1].BodyData;
+               //     trackableParent = _joints[_joints.Count - 1].BodyData;
                 }
 
 
-                _joints.Add(new ArticulatedJoint(body, parent, /*hand +*/ trackableParent, jointName, jointIndex, fingerIndex));
+                _joints.Add(new ArticulatedJoint(body, /*hand +*/ jointName, jointIndex, fingerIndex));
             }
             Joints = _joints.OfType<IJoint>().ToList().AsReadOnly();
             PalmColliders = ArticulationBody.GetComponents<Collider>().ToList();
@@ -397,46 +399,16 @@ namespace SoftHand.Core
         }
         private void UpdateTargetJointsPoses()
         {
-            if (Initialized /*&& IsTrackingReliable*/)
+            if (Initialized && Tracking.IsInitialized /*&& IsTrackingReliable*/)
             {
-                Array.Copy(Tracking.GetJointsPoses(_handedness), _targetJointsPoseBuffer, _targetJointsPoseBuffer.Length);
-
-                // oculus hand tracking api doesn't provide us with joints' positions
-                // (unless we're using their OVRSkeleton class as data provider), so we need to calculate it
-
-                Transform parent = ArticulationBody.transform;
-                float distToParent = 0;
-                int finger = -1;
-                Vector3 targetJointParentPos = TargetData.Position; // starts with the root
-                Pose parentPose;
+                // Array.Copy(Tracking.GetBonesPoses(_handedness), _targetJointsPoseBuffer, _targetJointsPoseBuffer.Length);
+                Array.Copy(Tracking.GetBonesPoses(_handedness), _firstBone, _targetJointsPoseBuffer, 0, _targetJointsPoseBuffer.Length);
                 for (int i = 0; i < Joints.Count; i++)
-                {   // calculate joint's target position (based on distance to parent and parent's direction vector (relative to this joint))
-                    // parent = Joints[i].Parent;
-                    //Vector3 direction = parent.right;
-                    Vector3 direction = (Joints[i].TargetData.Position - targetJointParentPos).normalized; // get parent position 
-                                                                                                           //(Joints[i].ArticulationBody.transform.position - Joints[i].ParentJoint.Position).normalized;
-                                                                                                           //direction *= Handedness == Handedness.Left ? -1 : 1;
-                    distToParent = Joints[i].DistanceToParent;
-                    Vector3 targetJointPosition = targetJointParentPos + direction * distToParent;
-                    targetJointParentPos = targetJointPosition;// Joints[i].TargetData.Position;
-                    Pose newTargetPose = new Pose(targetJointPosition, _targetJointsPoseBuffer[i].rotation);
+                {
                     Pose newBodyPose = new Pose(Joints[i].ArticulationBody.transform.position, Joints[i].ArticulationBody.transform.rotation);
-                    int index = Joints[i].Index;
-                    //int parentIndexInList = Joints[i - index ] - 1;
-                    //Joints[i].ParentPosition = Joints[parentIndexInList].BodyData.Position;
-                    Joints[i].TargetData.Update(newTargetPose);
+
+                    Joints[i].TargetData.Update(_targetJointsPoseBuffer[i]);
                     Joints[i].BodyData.Update(newBodyPose);
-                    if (finger == Joints[i].FingerIndex)
-                    {
-                        parentPose = Joints[i - 1].BodyData.Pose;
-                    }
-                    else
-                    {
-                        targetJointParentPos = TargetData.Position; // finger has changed, 
-                        parentPose = BodyData.Pose;
-                        finger++;
-                    }
-                    Joints[i].ParentJoint.Update(parentPose);
                 }
             }
         }
