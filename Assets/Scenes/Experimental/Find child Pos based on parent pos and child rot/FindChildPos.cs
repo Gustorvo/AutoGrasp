@@ -14,19 +14,31 @@ public class FindChildPos : MonoBehaviour
     void Awake()
     {
         parent = transform;
-        distToChild = Vector3.Distance(parent.position, child.transform.position);
+        prevParentPosition = parent.position;
+        prevParentROtaion = parent.rotation;
+        distToChild = Vector3.Distance(parent.position, objToMove.transform.position);
+        childLocalPosition = child.transform.position - parent.position;
     }
 
     void  Update()
     {
 
-        Method1();
+        Method3();
     }
 
+    Vector3 prevParentPosition;
+    Quaternion prevParentROtaion;
+    Vector3 childLocalPosition;
     private void Method3()
     {
-        objToMove.transform.position = parent.rotation * objToMove.transform.position;
+        var parentRotDelta = prevParentROtaion * Quaternion.Inverse(parent.rotation);
+        var parentPosDelta =  parent.position - prevParentPosition;
+        prevParentPosition = parent.position;
+       // prevParentROtaion = parent.rotation;
+      
         objToMove.transform.rotation = parent.rotation * child.transform.localRotation; // this is absolutelly roght
+        objToMove.transform.position = parent.position + parent.rotation * Vector3.Scale(childLocalPosition, parent.lossyScale);
+        objToMove.transform.localScale = parent.lossyScale;
     }
 
     private void Method2()
