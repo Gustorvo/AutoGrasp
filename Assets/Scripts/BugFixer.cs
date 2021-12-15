@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using SoftHand.Interfaces;
 
 namespace SoftHand
 {
@@ -11,7 +10,7 @@ namespace SoftHand
         {
             Hand = hand;
         }
-        public void ResetFingerIfOvershooting()
+        public void ResetJointIfOvershooting()
         {
             // This fixes a bug in articulation body (resets when stuck). Issue is not reported yet!
             // TODO: Add better method description, report issue to unity
@@ -24,9 +23,24 @@ namespace SoftHand
                     Vector3 newPos = Hand.RuntimeStats.GetNearestJointMinMaxRange(joint, overlimit);
                     Hand.Joints[i].ForceJointToPosition(newPos);
                     Hand.RuntimeStats.ResetTravelRation(joint);
-                    UnityEngine.Debug.Log($"Resetting { Hand.Joints[i].Name} to its limits");
+                    UnityEngine.Debug.Log($"Resetting overshooting joint { Hand.Joints[i].Name} to its limits");
                 }
             }
+        }
+
+        public void ResetJointIfStuck()
+        {
+            // sometiems finger get stuck...and we need to reset it
+            for (int i = 0; i < Hand.Joints.Count; i++)
+            {
+                var joint = Hand.Joints[i];
+                if (Hand.RuntimeStats.IsJointStuck(joint))
+                {
+                    Hand.Joints[i].Reset();
+                    UnityEngine.Debug.LogWarning($"Resetting stuck joint { Hand.Joints[i].Name}");
+                }
+            }
+
         }
     }
 }
