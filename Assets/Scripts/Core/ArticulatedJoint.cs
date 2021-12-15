@@ -1,13 +1,8 @@
-using SoftHand.Extensions;
-using SoftHand.Interfaces;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static SoftHand.Enums;
 using static SoftHand.JointLimitsPreset;
 
-namespace SoftHand.Core
+namespace SoftHand
 {
     public partial struct ArticulatedJoint : IJoint
     {      
@@ -62,7 +57,7 @@ namespace SoftHand.Core
             //body.jointVelocity = new ArticulationReducedSpace(0f, 0f, 0f);
         }
 
-        internal void Reset()
+        public void Reset()
         {
             var zeroed = new ArticulationReducedSpace(0f, 0f, 0f);
             ArticulationBody.jointPosition = zeroed;

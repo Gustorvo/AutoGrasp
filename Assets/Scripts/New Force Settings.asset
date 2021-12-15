@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f9a138dc9391349a0cc0b3897d0c05, type: 3}
   m_Name: New Force Settings
   m_EditorClassIdentifier: 
-  _move: 0
   _linearForceWeight: 1
-  _toVelocity: 55
-  _maxVelocity: 100
-  _maxForce: 100
-  _gain: 20
+  _toVelocity: 50
+  _maxVelocity: 3
+  _maxForce: 50
+  _gain: 50

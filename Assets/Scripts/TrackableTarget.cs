@@ -1,7 +1,3 @@
-using SoftHand.Extensions;
-using SoftHand.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SoftHand
@@ -18,6 +14,8 @@ namespace SoftHand
         public TrackableTarget(string name): this()
         {
             Name = name;
+            Pose = new Pose(Vector3.zero, Quaternion.identity);
+            Velocity = Vector3.zero;
         }
 
         public void Update(Pose newPose)

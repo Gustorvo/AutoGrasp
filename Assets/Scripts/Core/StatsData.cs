@@ -1,9 +1,7 @@
-﻿using SoftHand.Extensions;
-using UnityEngine;
+﻿using UnityEngine;
 using static SoftHand.JointLimitsPreset;
-using SoftHand.Interfaces;
 
-namespace SoftHand.Core
+namespace SoftHand
 {
     public partial struct ArticulatedJoint
     {
@@ -58,7 +56,7 @@ namespace SoftHand.Core
 
             public float DriveTargetTraveledDistanceLocal { get; private set; }
 
-            public float ActualTravelledRatio { get; private set; }
+            public float ActualTravelledRatio => GetTravelRation();
 
             public int Id { get; }
             #endregion
@@ -113,7 +111,6 @@ namespace SoftHand.Core
                 // reset statistics data when joints accumulated traveled distance > 100 degrees
                 if (driveTargetTraveledDistanceLocal > 100)
                 {
-                    actualTravelledRatio = traveledJointDistanceLocal != 0 ? driveTargetTraveledDistanceLocal / traveledJointDistanceLocal : 0;
                     driveTargetTraveledDistanceLocal = 0;
                     traveledJointDistanceLocal = 0;
                     // traveledJointDistanceLocal = 0f;
@@ -131,14 +128,19 @@ namespace SoftHand.Core
                     // TODO: calculate the overshoot value and compare it against joint limits + some threshold
                     // raise event only if overshoot is significant
 
-                    float overlimitRad = Mathf.Sqrt(jointPositionsSqrMag - maxJointPositionsSqrMagLocal);
+                    ////float overlimitRad = Mathf.Sqrt(jointPositionsSqrMag - maxJointPositionsSqrMagLocal);
                     // if (data.IsOvershooting(currentJointPositionLocal, out Vector3 overshoot))
-                    //  Debug.LogWarning($"{fingers[i].joints[j].jointName} is over limit {overshoot * Mathf.Rad2Deg} degrees");
+                     //UnityEngine.Debug.LogWarning($"{joint} is over limit {overlimitRad * Mathf.Rad2Deg} degrees");
                     // Debug.Break();
                 }
 
                 // joints[j].statsData = data;
 
+            }
+
+            public float GetTravelRation()
+            {
+                return  traveledJointDistanceLocal > 0.0001f ? driveTargetTraveledDistanceLocal / traveledJointDistanceLocal : 0f;
             }
 
             public void ResetTravelRation()

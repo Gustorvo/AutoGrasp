@@ -1,4 +1,3 @@
-using SoftHand.Core;
 using UnityEngine;
 
 namespace SoftHand.Experimental
@@ -31,7 +30,7 @@ namespace SoftHand.Experimental
 
         private void FillPoseBuffer()
         {
-            if (!_hand.Initialized || !_hand.Tracking.IsHandReliable(_hand.Handedness) || bufferSize == 0)
+            if (!_hand.Initialized || !_hand.Tracking.IsReliable(_hand.Handedness) || bufferSize == 0)
             {
                 bufferFull = false;
                 return;

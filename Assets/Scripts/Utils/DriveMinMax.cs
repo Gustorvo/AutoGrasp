@@ -1,5 +1,4 @@
 ﻿using NaughtyAttributes;
-using SoftHand.Extensions;
 using System;
 using UnityEngine;
 using static SoftHand.Enums;

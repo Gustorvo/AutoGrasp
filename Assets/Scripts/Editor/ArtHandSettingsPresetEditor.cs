@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -14,7 +12,7 @@ namespace SoftHand
         {
             fingers = serializedObject.FindProperty("fg");
         }
-        public override void OnInspectorGUI()
+        public new void OnInspectorGUI()
         {
             base.OnInspectorGUI();
             var script = (ArticulatedHandSettingsPreset)target;

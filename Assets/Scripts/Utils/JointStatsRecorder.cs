@@ -1,12 +1,9 @@
-using SoftHand.Core;
-using SoftHand.Interfaces;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
-using static SoftHand.Core.ArticulatedJoint;
+using static SoftHand.ArticulatedJoint;
 using static SoftHand.Enums;
 using static SoftHand.JointLimitsPreset;
 
@@ -140,6 +137,19 @@ namespace SoftHand
                 overlimitRadians.z = statsData.JointPositionLocal.z - statsData.LowerLimitsRad.z;
 
             return overlimitRadians != Vector3.zero;
+        }
+
+        public bool IsJointStuck(IJoint joint)
+        {
+            IJointStats statsData = _runtimeJointsStats.FirstOrDefault(x => x.Id == joint.Id);
+            if (statsData == null)
+            {
+                return false;
+            }
+            // calculated as driveTargetTraveledDistanceLocal / traveledJointDistanceLocal.
+            // used to be ~ 1 radian (57) for a 'healthy' joint, or > 500 for a buggy one
+            return statsData.ActualTravelledRatio > 700f;
+            
         }
         public Vector3 GetNearestJointMinMaxRange(IJoint joint, Vector3 currentRange)
         {

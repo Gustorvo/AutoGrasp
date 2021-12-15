@@ -1,7 +1,7 @@
 using UnityEngine;
 using static SoftHand.Enums;
 
-namespace SoftHand.Core
+namespace SoftHand
 {
     /// <summary>
     /// Base class for Hand tracking

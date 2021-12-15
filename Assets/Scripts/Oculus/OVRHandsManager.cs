@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using static SoftHand.Enums;
 
-namespace SoftHand.Oculus
+namespace SoftHand
 {
     [DefaultExecutionOrder(-70)]
     public class OVRHandsManager : MonoBehaviour

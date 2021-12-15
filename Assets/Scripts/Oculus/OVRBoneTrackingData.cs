@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SoftHand.Oculus
+namespace SoftHand
 {
     public class OVRBoneTrackingData
     {

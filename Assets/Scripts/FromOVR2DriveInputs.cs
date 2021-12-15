@@ -1,6 +1,3 @@
-using SoftHand.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SoftHand

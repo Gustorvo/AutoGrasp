@@ -1,6 +1,3 @@
-using SoftHand.Extensions;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SoftHand.Debug

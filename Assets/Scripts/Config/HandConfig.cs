@@ -1,9 +1,9 @@
 using NaughtyAttributes;
-using SoftHand.Interfaces;
+using SoftHand;
 using System;
 using UnityEngine;
 
-namespace SoftHand.Config
+namespace SoftHand
 {
     [CreateAssetMenu(menuName = "SoftHand/Create new hand configuration")]
     [System.Serializable]

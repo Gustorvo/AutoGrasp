@@ -1,12 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using static SoftHand.Enums;
-using SoftHand.Extensions;
-using System;
-using NaughtyAttributes;
-using UnityEngine.Assertions;
-using SoftHand.Core;
-using SoftHand.Interfaces;
 using System.Linq;
 
 namespace SoftHand
@@ -27,12 +21,15 @@ namespace SoftHand
         private readonly List<IArticulatedHand> _hands = new List<IArticulatedHand>();
         private bool _isTooFarAwayFromTarget;
 
+        private void Update()
+        {
+            FetchTrackingData();            
+        }
 
         private void FixedUpdate()
         {
-            FetchTrackingData();
             MoveHands();
-             if (_moveFingers) MoveFingers();
+            if (_moveFingers) MoveFingers();
             if (_stabilizeHand) StabilizeHands();
 
             FixBugs();
@@ -76,20 +73,24 @@ namespace SoftHand
         {
             for (int i = 0; i < _handMovers.Count; i++)
             {
-                if (_moveHand) _handMovers[i].MoveBody();
-                if (_rotateHand) _handMovers[i].RotateBody();
+                _isTooFarAwayFromTarget = _hands[i].SqrDistanceToTarget > _onTeleportDistance * _onTeleportDistance;
+                bool teleport = _allowTeleport && _isTooFarAwayFromTarget;
+                if (teleport)
+                {
+                    Pose target = _hands[i].TargetData.Pose;
+                    teleport = _hands[i].CanTeleport(target);
+                    if (teleport)
+                    {
+                        _handMovers[i].TeleportBody(target);
+                        _hands[i].OnTeleport?.Invoke();
+                    }
+                }
 
-                if (_allowTeleport) _isTooFarAwayFromTarget = _hands[i].SqrDistanceToTarget > _onTeleportDistance * _onTeleportDistance;
+                // dont apply forces & torques if hand is teleporting
+                if (!teleport &&_moveHand) _handMovers[i].MoveBody();
+                if (!teleport && _rotateHand) _handMovers[i].RotateBody();
 
-                //if (_isTooFarAwayFromTarget)
-                //{
-                //    Pose target = _hands[i].TargetData.Pose;
-                //    if (_hands[i].CanTeleport(target))
-                //    {
-                //        _handMovers[i].TeleportBody(target);
-                //        _hands[i].OnTeleport?.Invoke();
-                //    }
-                //}
+
             }
         }
         public void MoveFingers()
@@ -103,7 +104,8 @@ namespace SoftHand
         {
             for (int i = 0; i < _bugFixers.Count; i++)
             {
-                _bugFixers[i].ResetFingerIfOvershooting();
+                _bugFixers[i].ResetJointIfOvershooting();
+                _bugFixers[i].ResetJointIfStuck();
             }
         }
         private void StabilizeHands()

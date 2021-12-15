@@ -741,7 +741,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1963234715}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &104349929
 PrefabInstance:
@@ -908,17 +908,17 @@ PrefabInstance:
     - target: {fileID: 887501645467430988, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: 0.045650546
+      value: 0.04565055
       objectReference: {fileID: 0}
     - target: {fileID: 887501645467430988, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: -0.0000010016374
+      value: -0.0000009983778
       objectReference: {fileID: 0}
     - target: {fileID: 887501645467430988, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0000022015302
+      value: 0.000002195011
       objectReference: {fileID: 0}
     - target: {fileID: 887501645467430989, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -989,12 +989,12 @@ PrefabInstance:
     - target: {fileID: 887514256063379350, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: 0.0000000037252903
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 887514256063379350, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0000000018626451
+      value: -0.0000000018626451
       objectReference: {fileID: 0}
     - target: {fileID: 887514256063379351, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1065,17 +1065,17 @@ PrefabInstance:
     - target: {fileID: 887578614570680612, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: 0.0000000037801415
+      value: -0.0000000021327848
       objectReference: {fileID: 0}
     - target: {fileID: 887578614570680612, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: 0.0000000058455933
+      value: 7.164535e-10
       objectReference: {fileID: 0}
     - target: {fileID: 887578614570680612, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0000000033745406
+      value: 3.769537e-10
       objectReference: {fileID: 0}
     - target: {fileID: 887578614570680613, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1146,7 +1146,7 @@ PrefabInstance:
     - target: {fileID: 887647504264128936, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.010496527
+      value: 0.0104965195
       objectReference: {fileID: 0}
     - target: {fileID: 887647504264128937, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1217,7 +1217,7 @@ PrefabInstance:
     - target: {fileID: 887676424266057536, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0000000066356733
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 887676424266057537, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1298,7 +1298,7 @@ PrefabInstance:
     - target: {fileID: 887693055823608506, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.000000009313226
+      value: -1.3322676e-17
       objectReference: {fileID: 0}
     - target: {fileID: 887693055823608506, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1379,7 +1379,7 @@ PrefabInstance:
     - target: {fileID: 887735255917609656, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.02355069
+      value: 0.02355068
       objectReference: {fileID: 0}
     - target: {fileID: 887735255917609656, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1460,7 +1460,7 @@ PrefabInstance:
     - target: {fileID: 887742507470085016, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.017465234
+      value: -0.017465241
       objectReference: {fileID: 0}
     - target: {fileID: 887742507470085017, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1531,7 +1531,7 @@ PrefabInstance:
     - target: {fileID: 887908989427557630, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0000000066356733
+      value: -4.440892e-18
       objectReference: {fileID: 0}
     - target: {fileID: 887908989427557631, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1602,7 +1602,7 @@ PrefabInstance:
     - target: {fileID: 887991477878968830, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.000000007450581
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 887991477878968831, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1673,7 +1673,7 @@ PrefabInstance:
     - target: {fileID: 888030643941249232, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.022998571
+      value: -0.022998573
       objectReference: {fileID: 0}
     - target: {fileID: 888030643941249233, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1744,12 +1744,12 @@ PrefabInstance:
     - target: {fileID: 888045619797228644, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: -0.0000000010759322
+      value: 7.867129e-10
       objectReference: {fileID: 0}
     - target: {fileID: 888045619797228644, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0000000011018528
+      value: -0.0000000021577762
       objectReference: {fileID: 0}
     - target: {fileID: 888045619797228645, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1820,17 +1820,17 @@ PrefabInstance:
     - target: {fileID: 888103045836010008, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: 0.03251291
+      value: 0.032512914
       objectReference: {fileID: 0}
     - target: {fileID: 888103045836010008, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: -0.0000000037252903
+      value: -4.440892e-18
       objectReference: {fileID: 0}
     - target: {fileID: 888103045836010008, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000000037252903
+      value: 1.1657341e-17
       objectReference: {fileID: 0}
     - target: {fileID: 888103045836010009, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1927,7 +1927,7 @@ PrefabInstance:
     - target: {fileID: 888264239836681898, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.000000007450581
+      value: -8.881784e-18
       objectReference: {fileID: 0}
     - target: {fileID: 888264239836681899, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1998,17 +1998,17 @@ PrefabInstance:
     - target: {fileID: 888498346819758158, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: 0.020311367
+      value: 0.020311374
       objectReference: {fileID: 0}
     - target: {fileID: 888498346819758158, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: -0.000000005732545
+      value: -1.4460966e-10
       objectReference: {fileID: 0}
     - target: {fileID: 888498346819758158, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.000000010182248
+      value: -0.000000002856268
       objectReference: {fileID: 0}
     - target: {fileID: 888498346819758159, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -2079,7 +2079,7 @@ PrefabInstance:
     - target: {fileID: 888569762127894338, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0017259121
+      value: 0.0017259055
       objectReference: {fileID: 0}
     - target: {fileID: 888569762127894339, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -2160,7 +2160,7 @@ PrefabInstance:
     - target: {fileID: 888573638189873228, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.000000009313226
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 888573638189873228, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -2306,7 +2306,7 @@ PrefabInstance:
     - target: {fileID: 8832487439938420029, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8832487439938420029, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -2901,8 +2901,8 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: 0, y: 1.1199999, z: 0}
-  m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
+  m_ParentAnchorPosition: {x: -0.0000008368466, y: 1.1199998, z: 0}
+  m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
   m_AnchorPosition: {x: 0.00000010851809, y: -1, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
   m_ComputeParentAnchor: 1
@@ -3164,22 +3164,22 @@ PrefabInstance:
     - target: {fileID: 557733585, guid: 4b550ddd761500148bf4fd679c2293f0, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 49744fe39eee06b4fb88bd05bf61187f,
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
         type: 2}
     - target: {fileID: 557733587, guid: 4b550ddd761500148bf4fd679c2293f0, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 49744fe39eee06b4fb88bd05bf61187f,
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
         type: 2}
     - target: {fileID: 557733588, guid: 4b550ddd761500148bf4fd679c2293f0, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 49744fe39eee06b4fb88bd05bf61187f,
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
         type: 2}
     - target: {fileID: 557733589, guid: 4b550ddd761500148bf4fd679c2293f0, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: 49744fe39eee06b4fb88bd05bf61187f,
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
         type: 2}
     - target: {fileID: 1076125918, guid: 4b550ddd761500148bf4fd679c2293f0, type: 3}
       propertyPath: _root
@@ -3223,7 +3223,7 @@ PrefabInstance:
     - target: {fileID: 1804898948502610076, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1804898948502610076, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3283,7 +3283,7 @@ PrefabInstance:
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3298,32 +3298,32 @@ PrefabInstance:
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3343,12 +3343,18 @@ PrefabInstance:
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.02355069
+      value: -0.02355068
       objectReference: {fileID: 0}
+    - target: {fileID: 3353784389034351197, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3363,32 +3369,32 @@ PrefabInstance:
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3408,12 +3414,18 @@ PrefabInstance:
     - target: {fileID: 3353802831503035720, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.010496527
+      value: -0.0104965195
       objectReference: {fileID: 0}
+    - target: {fileID: 3353802831503035721, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3428,32 +3440,32 @@ PrefabInstance:
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3473,22 +3485,28 @@ PrefabInstance:
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: -0.0000000037801415
+      value: 0.0000000021327848
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: -0.0000000058455933
+      value: -7.164535e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000000033745406
+      value: -3.769537e-10
       objectReference: {fileID: 0}
+    - target: {fileID: 3353813853921212929, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3503,32 +3521,32 @@ PrefabInstance:
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3548,17 +3566,23 @@ PrefabInstance:
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: 0.0000000010759322
+      value: -7.867129e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000000011018528
+      value: 0.0000000021577762
       objectReference: {fileID: 0}
+    - target: {fileID: 3353833168418887677, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3573,32 +3597,32 @@ PrefabInstance:
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3618,22 +3642,28 @@ PrefabInstance:
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: -0.020311367
+      value: -0.020311374
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: 0.000000005732545
+      value: 1.4460966e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.000000010182248
+      value: 0.000000002856268
       objectReference: {fileID: 0}
+    - target: {fileID: 3354254766851310743, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3648,32 +3678,32 @@ PrefabInstance:
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3693,12 +3723,18 @@ PrefabInstance:
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000000066356733
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3354286545286100627, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3713,32 +3749,32 @@ PrefabInstance:
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3758,22 +3794,28 @@ PrefabInstance:
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: -0.03251291
+      value: -0.032512914
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: 0.0000000037252903
+      value: 8.881784e-18
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.0000000037252903
+      value: -1.0547119e-17
       objectReference: {fileID: 0}
+    - target: {fileID: 3354511832271954681, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3788,32 +3830,32 @@ PrefabInstance:
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3838,12 +3880,18 @@ PrefabInstance:
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.000000009313226
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3354528724001889343, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3858,32 +3906,32 @@ PrefabInstance:
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3903,12 +3951,18 @@ PrefabInstance:
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.000000007450581
+      value: 8.881784e-18
       objectReference: {fileID: 0}
+    - target: {fileID: 3354546444961528729, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354551582538639016, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3354551582538639016, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3928,7 +3982,7 @@ PrefabInstance:
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3943,32 +3997,32 @@ PrefabInstance:
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3988,12 +4042,18 @@ PrefabInstance:
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000000066356733
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3354579637742009293, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4008,32 +4068,32 @@ PrefabInstance:
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4053,12 +4113,18 @@ PrefabInstance:
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.000000007450581
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3354611246307284897, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4073,32 +4139,32 @@ PrefabInstance:
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4118,12 +4184,18 @@ PrefabInstance:
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.017465234
+      value: 0.017465241
       objectReference: {fileID: 0}
+    - target: {fileID: 3354657382426686551, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4138,32 +4210,32 @@ PrefabInstance:
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 9
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 9
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 9
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4183,12 +4255,18 @@ PrefabInstance:
     - target: {fileID: 3354744639563917154, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 0.022998571
+      value: 0.022998573
       objectReference: {fileID: 0}
+    - target: {fileID: 3354744639563917155, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4203,17 +4281,32 @@ PrefabInstance:
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 9
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 9
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_XDrive.stiffness
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_YDrive.stiffness
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_ZDrive.stiffness
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4233,12 +4326,18 @@ PrefabInstance:
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0017259121
+      value: -0.0017259055
       objectReference: {fileID: 0}
+    - target: {fileID: 3354782295024608093, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4253,32 +4352,32 @@ PrefabInstance:
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4298,17 +4397,23 @@ PrefabInstance:
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: -0.0000000037252903
+      value: -8.881784e-18
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000000018626451
+      value: 0.0000000018626451
       objectReference: {fileID: 0}
+    - target: {fileID: 3354819457117074847, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4323,32 +4428,32 @@ PrefabInstance:
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4373,12 +4478,18 @@ PrefabInstance:
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.000000009313226
+      value: 8.881784e-18
       objectReference: {fileID: 0}
+    - target: {fileID: 3354845804000464309, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Mass
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4393,32 +4504,32 @@ PrefabInstance:
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 3
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 3
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 3
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.stiffness
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4438,18 +4549,24 @@ PrefabInstance:
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: -0.045650546
+      value: -0.04565055
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: 0.0000010016374
+      value: 0.0000009983778
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: -0.0000022015302
+      value: -0.000002195011
       objectReference: {fileID: 0}
+    - target: {fileID: 3355132802570800601, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b550ddd761500148bf4fd679c2293f0, type: 3}
 --- !u!171741748 &292237425 stripped
@@ -6563,7 +6680,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000062763496, y: -0.0000004184233, z: 0}
+  m_ConnectedAnchor: {x: 0.00000062763496, y: -0.0000004184233, z: 0.0000008368466}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -6694,7 +6811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &782566532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6781,7 +6898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782566531}
   m_LocalRotation: {x: -0, y: 0.3867976, z: -0, w: 0.9221647}
-  m_LocalPosition: {x: 0.328, y: 0.747, z: -0.119}
+  m_LocalPosition: {x: 0.648, y: 0.747, z: 0.195}
   m_LocalScale: {x: 1, y: 0.017264994, z: 0.58554}
   m_Children:
   - {fileID: 1741984521}
@@ -7271,8 +7388,8 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: 0, y: 1.053, z: 0}
-  m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
+  m_ParentAnchorPosition: {x: -0.0000008368466, y: 1.0529983, z: 0}
+  m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
   m_AnchorPosition: {x: 0.00000010851809, y: -1, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
   m_ComputeParentAnchor: 1
@@ -8676,7 +8793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1095546674
 Transform:
   m_ObjectHideFlags: 0
@@ -10238,8 +10355,8 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: 0, y: 1.0799999, z: 0}
-  m_ParentAnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
+  m_ParentAnchorPosition: {x: -0.0000008368466, y: 1.0800009, z: 0}
+  m_ParentAnchorRotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
   m_AnchorPosition: {x: 0, y: -1, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.70710677, w: -0.70710677}
   m_ComputeParentAnchor: 1
@@ -11943,7 +12060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1677505554
 Transform:
   m_ObjectHideFlags: 0
@@ -12012,6 +12129,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _recordJointStats: 1
   _recordJointLimitsToPreset: 0
+--- !u!114 &1707310723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707310718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdaca5e2680f7e54cbbe329d2afb165d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settingsAsset: {fileID: 11400000, guid: 3f3bf7f0815fb7e4381c64e189e42b56, type: 2}
 --- !u!1 &1721950482
 GameObject:
   m_ObjectHideFlags: 0
@@ -12348,7 +12478,7 @@ Transform:
   - {fileID: 1747473866}
   - {fileID: 1473186202}
   m_Father: {fileID: 1963234715}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1797433097
 GameObject:
@@ -13180,8 +13310,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 97498725}
   - {fileID: 1792316837}
+  - {fileID: 97498725}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

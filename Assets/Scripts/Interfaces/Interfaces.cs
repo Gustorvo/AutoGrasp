@@ -1,5 +1,3 @@
-
-using SoftHand.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +5,7 @@ using UnityEngine;
 using static SoftHand.Enums;
 using static SoftHand.JointLimitsPreset;
 
-namespace SoftHand.Interfaces
+namespace SoftHand
 {
     public interface IHand
     {
@@ -44,7 +42,7 @@ namespace SoftHand.Interfaces
     {
         HandTrackingDataProvider Type { get; }
         int GetNumberOfJoints();
-        bool IsHandReliable(Handedness hand);
+        bool IsReliable(Handedness hand);
         Pose GetLastReliableRootPose(Handedness hand);
         TrackingConfidence GetFingerConfidence(Handedness handedness, Finger finger);
     }
@@ -71,20 +69,20 @@ namespace SoftHand.Interfaces
         // IArticulatedHand GetHand();
     }
     public interface IForceSettings
-    {
-        bool ShouldMove { get; }
+    {      
         float LinearForceWeight { get; }
         float ToVelocity { get; }
         float MaxVelocity { get; }
         float MaxForce { get; }
         float Gain { get; }
+        void ResetToDefaults();
     }
     public interface ITorqueSettings
-    {
-        bool ShouldRotate { get; }
+    {      
         float AngularForceWeight { get; }
         float Frequency { get; }
         float Damping { get; }
+        void ResetToDefaults();
     }
     public interface IBodyConfig
     {
@@ -139,7 +137,7 @@ namespace SoftHand.Interfaces
     {
         int InstanceId { get; }
         Handedness Handedness { get; }
-        IHandConfig Config { get; }
+        //IHandConfig Config { get; }
         IForceSettings ForceSettings { get; }
         ITorqueSettings TorqueSettings { get; }
         IHandTrackingDataProvider Tracking { get; }
@@ -219,12 +217,14 @@ namespace SoftHand.Interfaces
         int Index { get; }
         int FingerIndex { get; }
         Collider Collider { get; }
-        void ForceJointToPosition(Vector3 overshootValue);       
+        void ForceJointToPosition(Vector3 overshootValue);
+        void Reset();
     }
 
     public interface IJointStatsController
     {
         bool RecordRuntimeMinMax { get; }
+        bool IsJointStuck(IJoint joint);
         bool IsJointPositionOverLimit(IJoint joint, out Vector3 overshoot);
         Vector3 GetNearestJointMinMaxRange(IJoint joint, Vector3 currentRange);
         void ResetTravelRation(IJoint joint);
@@ -266,6 +266,7 @@ namespace SoftHand.Interfaces
     public interface IBugFixable
     {
         IArticulatedHand Hand { get; }
-        void ResetFingerIfOvershooting();
+        void ResetJointIfOvershooting();
+        void ResetJointIfStuck();
     }
 }

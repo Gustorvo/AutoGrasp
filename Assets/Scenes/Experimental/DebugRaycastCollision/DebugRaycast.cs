@@ -1,4 +1,4 @@
-using SoftHand.Core;
+using SoftHand;
 using UnityEngine;
 
 [ExecuteInEditMode]

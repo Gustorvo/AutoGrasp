@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
-
+#endif
 using SoftHand;
 using static SoftHand.Enums;
 
 [CustomEditor(typeof(SkeletonMapping))]
 public class SkeletonMappingEditor : Editor
 {
-    public override void OnInspectorGUI()
+    public new void OnInspectorGUI()
     {
         DrawPropertiesExcluding(serializedObject, new string[] { "_customBones" });
         serializedObject.ApplyModifiedProperties();

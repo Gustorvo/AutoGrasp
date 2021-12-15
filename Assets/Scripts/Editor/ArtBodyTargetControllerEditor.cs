@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using SoftHand.Core;
 using UnityEditor;
 using UnityEngine;
 

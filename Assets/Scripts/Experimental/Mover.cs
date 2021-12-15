@@ -1,5 +1,4 @@
 using NaughtyAttributes;
-using SoftHand.Extensions;
 using UnityEngine;
 
 namespace SoftHand.Experimental

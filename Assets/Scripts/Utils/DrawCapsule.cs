@@ -1,4 +1,3 @@
-using SoftHand.Extensions;
 using UnityEngine;
 
 namespace SoftHand

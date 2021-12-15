@@ -1,10 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static SoftHand.Enums;
-using static SoftHand.JointLimitsPreset;
-using System.Linq;
 using static SoftHand.ArticulationBodySettings;
 using NaughtyAttributes;
 
@@ -13,23 +9,19 @@ namespace SoftHand
     [System.Serializable]
     [CreateAssetMenu(menuName = "SoftHand/Create new settings preset for Articulated hand")]
     public class ArticulatedHandSettingsPreset : ScriptableObject
-    {    
+    {
         [Header("Hand physical properties")]
         public ArticulationBodyPhysicsSettings palmPhysicalProperties;
         public ArticulationBodyPhysicsSettings jointsPhysicalProperties;
         [Tooltip("Specify where the center of mass (of every joint) will be placed")]
         public COMAlignment jointsCenterOfMassAlignemnt;
 
-        [Header("Hand physical materials (used for friction simulation)")]   
+        [Header("Hand physical materials (used for friction simulation)")]
         public PhysicMaterial palmPhysicalMaterial;
         public PhysicMaterial jointsPhysicalMaterial;
 
-
-
-
         [Header("Articulation Bodies' motor properties:")]
         public MotorSettings globalArticulationDriveMotorSettings;
-
 
         [Expandable]
         public JointLimitsPreset limitPreset;
@@ -38,12 +30,11 @@ namespace SoftHand
 
         public bool showExperimentalSettings = false;
         [Header("Per finger/joint settings (experimental)"), SerializeField]
-        private ArticulatedFingerSettings[] _fingers = new ArticulatedFingerSettings[5];       
-       
+        private ArticulatedFingerSettings[] _fingers = new ArticulatedFingerSettings[5];
+
         [HideInInspector]
         public bool initialized = false;
 
-      
 
         public void Init()
         {
@@ -160,14 +151,5 @@ namespace SoftHand
                 }
             }
         }
-
-
-
-       
-
-       
-
-        
-
     }
 }

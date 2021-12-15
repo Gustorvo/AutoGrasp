@@ -1,13 +1,10 @@
-using SoftHand.Interfaces;
-using SoftHand.Oculus;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using static SoftHand.Enums;
 
-namespace SoftHand.Core
+namespace SoftHand
 {
     [DefaultExecutionOrder(-70)]
     public class HandsCore : MonoBehaviour

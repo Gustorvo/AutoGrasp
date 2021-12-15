@@ -1,8 +1,4 @@
 using NaughtyAttributes;
-using SoftHand.Core;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -23,7 +19,7 @@ namespace SoftHand
             Assert.IsNotNull(_settingsAsset);
         }
 
-        private bool TryInit()
+        private bool IsHandInitialized()
         {
             if (_hand == null && TryGetComponent<ArticulatedHand>(out _hand))
             {
@@ -40,7 +36,7 @@ namespace SoftHand
         [ShowIf("_hasSettingsAsset"), Button("Initialize and apply settings")]
         private void ApplyPhysicalPropertiesFromAsset()
         {
-            if (!_init && !TryInit())
+            if (!IsHandInitialized())
                 return;
 
 
@@ -73,7 +69,7 @@ namespace SoftHand
                         drive.forceLimit = _settingsAsset.globalArticulationDriveMotorSettings.forceLimit;
                         drive.damping = damping; // apply double joint friction on first joint in a finger
                         if (i == 0 && doubleDamping)
-                            drive.damping *= damping;
+                            drive.damping *= 2f;
                         return drive;
                     }
 

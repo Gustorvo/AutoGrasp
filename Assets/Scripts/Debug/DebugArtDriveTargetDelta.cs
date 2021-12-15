@@ -1,10 +1,8 @@
 using UnityEngine;
-using SoftHand.Extensions;
 
 namespace SoftHand.Debug
 {
-
-    /// <summary>
+        /// <summary>
     /// Displays the difference between this articulation drive target rotaion and target's rotation
     /// </summary>
     public class DebugArtDriveTargetDelta : MonoBehaviour

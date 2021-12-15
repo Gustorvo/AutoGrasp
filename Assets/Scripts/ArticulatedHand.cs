@@ -1,16 +1,13 @@
-using SoftHand.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
-using SoftHand.Oculus;
 using static SoftHand.Enums;
-using SoftHand.Config;
-using SoftHand.Interfaces;
+
 using System.Collections.ObjectModel;
 
-namespace SoftHand.Core
+namespace SoftHand
 {
 
     [Serializable]
@@ -18,12 +15,12 @@ namespace SoftHand.Core
     {
         [SerializeField] Handedness _handedness = Handedness.None;
         [SerializeField] HandTrackingDataProvider _handTrackingProvider = HandTrackingDataProvider.Oculus;
-        [SerializeField] HandConfig _config = null;
+       // [SerializeField] HandConfig _config = null;
         [SerializeField] ForceSettings _forceSettings = null;
         [SerializeField] TorqueSettings _torqueSettings = null;
 
         public Handedness Handedness => _handedness;
-        public IHandConfig Config { get; private set; }
+        //public IHandConfig Config { get; private set; }
         public IForceSettings ForceSettings { get; private set; }
         public ITorqueSettings TorqueSettings { get; private set; }
         public IHandTrackingDataProvider Tracking { get; private set; }
@@ -45,7 +42,7 @@ namespace SoftHand.Core
 
         public ITrackable BodyData { get; private set; } = new TrackableTarget("root");
         public ITrackable TargetData { get; private set; } = new TrackableTarget("OVR hand");
-        public ArticulationBody ArticulationBody { get; private set; }
+        public ArticulationBody ArticulationBody { get; private set; } // the root (palm/wrist)
 
         private List<ArticulatedJoint> _joints = new List<ArticulatedJoint>();
         public ReadOnlyCollection<IJoint> Joints { get; private set; }
@@ -56,28 +53,27 @@ namespace SoftHand.Core
         public int InstanceId => gameObject.GetInstanceID();
 
         private List<ArticulationBody> _jointArticulationBodies;
-        private int _firstBone = (int)OVRPlugin.BoneId.Hand_Thumb0;  //use like this: for (int i = _firstBone; i < _lastBone + 1; ++i)
+        private int _firstBone = (int)OVRPlugin.BoneId.Hand_Thumb0;
         private int _lastBone = (int)OVRPlugin.BoneId.Hand_Pinky3;
 
-
-
-        private void OnValidate()
-        {
-            bool prefabModeIsActive = String.IsNullOrEmpty(gameObject.scene.path) && String.IsNullOrEmpty(gameObject.scene.name);
-            if (!prefabModeIsActive)
-            {
-                Init();
-            }
-        }
+        //private void OnValidate()
+        //{
+        //    bool prefabModeIsActive = String.IsNullOrEmpty(gameObject.scene.path) && String.IsNullOrEmpty(gameObject.scene.name);
+        //    if (!prefabModeIsActive)
+        //    {
+        //        Init();
+        //    }
+        //}
         public void Init()
         {
             if (Initialized)
             {
+               // OnInitialized?.Invoke(this);
                 return;
             }
 
             Assert.IsTrue(_handedness != Handedness.None, $"The handedness (right or left) is not defined for this hand: {gameObject}");
-            Assert.IsNotNull(_config);
+          //  Assert.IsNotNull(_config);
             if (TryGetComponent(out IJointStatsController stats))
             {
                 RuntimeStats = stats;
@@ -85,8 +81,7 @@ namespace SoftHand.Core
             else
             {
                 RuntimeStats = gameObject.AddComponent<JointStatsRecorder>();
-            }
-            Tracking = HandsCore.GetHandTrackingDataProvider(_handTrackingProvider);
+            }            
 
             //TODO: add checks for rest of the properties!
 
@@ -99,7 +94,12 @@ namespace SoftHand.Core
             _jointArticulationBodies = bodyList;
             ConstructHand();
             Initialized = true;
+            HandsCore.HandsController.TryAdd(this);
             OnInitialized?.Invoke(this);
+        }
+        private void Start()
+        {
+            Init();
         }
 
         private void Awake()
@@ -115,12 +115,12 @@ namespace SoftHand.Core
                 UnityEngine.Debug.LogWarning($"Torque settings for {gameObject} is not specified. Default values will be used!");
             }
 
-            Config = _config;
+           // Config = _config;
             ForceSettings = _forceSettings;
             TorqueSettings = _torqueSettings;
             OnTeleport -= ResetVelocities;
             OnTeleport += ResetVelocities;
-            HandsCore.HandsController.TryAdd(this);
+            Tracking = HandsCore.GetHandTrackingDataProvider(_handTrackingProvider);
             _targetJointsPoseBuffer = new Pose[Tracking.GetNumberOfJoints()];
         }
 
@@ -346,20 +346,20 @@ namespace SoftHand.Core
         /// Returns the average weighted center of mass in world space for the hand (palm + fingers)
         /// </summary>
         /// <returns></returns>
-        private Vector3 GetHandCenterOfMass()
-        {
-            Vector3 CoM = Vector3.zero;
-            float c = 0f;
-            foreach (var joint in Joints)
-            {
-                CoM += joint.ArticulationBody.worldCenterOfMass * Config.Joint.Mass;// PerBoneMass;
-                c += Config.Joint.Mass;//PerBoneMass;
-            }
+        //private Vector3 GetHandCenterOfMass()
+        //{
+        //    Vector3 CoM = Vector3.zero;
+        //    float c = 0f;
+        //    foreach (var joint in Joints)
+        //    {
+        //        CoM += joint.ArticulationBody.worldCenterOfMass * Config.Joint.Mass;// PerBoneMass;
+        //        c += Config.Joint.Mass;//PerBoneMass;
+        //    }
 
-            CoM += ArticulationBody.worldCenterOfMass;
-            c += ArticulationBody.mass;
-            return CoM / c;
-        }
+        //    CoM += ArticulationBody.worldCenterOfMass;
+        //    c += ArticulationBody.mass;
+        //    return CoM / c;
+        //}
 
         private bool TryGetArticulationBodiesInHierarchy(out List<ArticulationBody> bodies)
         {
@@ -399,9 +399,8 @@ namespace SoftHand.Core
         }
         private void UpdateTargetJointsPoses()
         {
-            if (Initialized && Tracking.IsInitialized /*&& IsTrackingReliable*/)
-            {
-                // Array.Copy(Tracking.GetBonesPoses(_handedness), _targetJointsPoseBuffer, _targetJointsPoseBuffer.Length);
+            if (Initialized && Tracking.IsReliable(_handedness))
+            {              
                 Array.Copy(Tracking.GetBonesPoses(_handedness), _firstBone, _targetJointsPoseBuffer, 0, _targetJointsPoseBuffer.Length);
                 for (int i = 0; i < Joints.Count; i++)
                 {

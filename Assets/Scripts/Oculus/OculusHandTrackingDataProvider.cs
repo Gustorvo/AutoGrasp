@@ -2,13 +2,10 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using static SoftHand.Enums;
 using static OVRSkeleton;
-using SoftHand.Interfaces;
-using SoftHand.Core;
-using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 
-namespace SoftHand.Oculus
+namespace SoftHand
 {
 
     public class OculusHandTrackingDataProvider : HandTrackingBase, IHandTrackingDataProvider
@@ -22,7 +19,7 @@ namespace SoftHand.Oculus
         private List<GameObject>[] _debugBoneList = new List<GameObject>[NUM_OF_HANDS];
         private const int NUM_OF_HANDS = 2;
 
-        public bool IsInitialized { get; set; }
+        public bool IsInitialized { get; private set; }
         List<bool> _handInitialized = new List<bool>(NUM_OF_HANDS) { false, false };
         public override HandTrackingDataProvider Type => HandTrackingDataProvider.Oculus;
 
@@ -237,9 +234,9 @@ namespace SoftHand.Oculus
 
         #region Interface implementation
 
-        public bool IsHandReliable(Handedness hand)
+        public bool IsReliable(Handedness hand)
         {
-            return _hands[(int)hand].IsTracked && _hands[(int)hand].HandConfidence == OVRHand.TrackingConfidence.High;
+            return _handInitialized[(int)hand] && _hands[(int)hand].IsTracked && _hands[(int)hand].HandConfidence == OVRHand.TrackingConfidence.High;
         }
 
 

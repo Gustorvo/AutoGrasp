@@ -1,9 +1,4 @@
-using SoftHand.Core;
-using SoftHand.Extensions;
-using SoftHand.Interfaces;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SoftHand

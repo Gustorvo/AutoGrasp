@@ -1,21 +1,20 @@
+using System.Collections.Generic;
+using UnityEngine;
+using static SoftHand.Enums;
+
 namespace SoftHand
 {
-    using SoftHand.Extensions;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using static SoftHand.Enums;
-
     public class SkeletonMapping : MonoBehaviour
     {
         [SerializeField]
         protected Handedness _skeletonType = Handedness.None;
-       
+
         public List<Transform> CustomBones { get { return _customBones_V2; } }
         public bool IsInitialized => _customBones_V2.Count > 0;
         public Handedness SkeletonType => _skeletonType;
         public BoneId CurrentStartBoneId => BoneId.Hand_Start;
         public BoneId CurrentEndBoneId => BoneId.Hand_End;
-      
+
 
         [HideInInspector, SerializeField]
         private List<Transform> _customBones_V2 = new List<Transform>(new Transform[(int)BoneId.Hand_End]);
@@ -24,7 +23,7 @@ namespace SoftHand
 
         private static readonly string[] _fbxHandSidePrefix = { "l_", "r_" };
         private static readonly string _fbxHandBonePrefix = "b_";
-       // private static readonly string _boneOffsetPrefix = "off_";
+        // private static readonly string _boneOffsetPrefix = "off_";
         private static readonly string[] _fbxHandBoneNames =
         {
         "wrist",
@@ -54,20 +53,18 @@ namespace SoftHand
         "middle",
         "ring",
         "pinky"
-    }; 
+    };
 
-        
+
         public static string FbxBoneNameFromBoneIndex(Handedness skeletonType, BoneId bi)
         {
+            if (bi >= BoneId.Hand_ThumbTip && bi <= BoneId.Hand_PinkyTip)
             {
-                if (bi >= BoneId.Hand_ThumbTip && bi <= BoneId.Hand_PinkyTip)
-                {
-                    return _fbxHandSidePrefix[(int)skeletonType] + _fbxHandFingerNames[(int)bi - (int)BoneId.Hand_ThumbTip] + "_finger_tip_marker";
-                }
-                else
-                {
-                    return _fbxHandBonePrefix + _fbxHandSidePrefix[(int)skeletonType] + _fbxHandBoneNames[(int)bi];
-                }
+                return _fbxHandSidePrefix[(int)skeletonType] + _fbxHandFingerNames[(int)bi - (int)BoneId.Hand_ThumbTip] + "_finger_tip_marker";
+            }
+            else
+            {
+                return _fbxHandBonePrefix + _fbxHandSidePrefix[(int)skeletonType] + _fbxHandBoneNames[(int)bi];
             }
         }
         //#endif  
@@ -175,7 +172,7 @@ namespace SoftHand
             BoneId start = BoneId.Hand_Thumb0;
             BoneId end = BoneId.Hand_MaxSkinnable;
             if (start != BoneId.Invalid && end != BoneId.Invalid)
-            {                
+            {
                 for (int i = (int)start; i < (int)end; ++i)
                 {
                     float radius = 0.007f;
@@ -185,11 +182,11 @@ namespace SoftHand
                     if (curFingerIndex != nextBoneFingerIndex)
                         nextBoneTransform = CustomBones[GetFingerTipIndexFromBoneId(i)];
                     GameObject go = CustomBones[i].gameObject;
-                  
-                    CapsuleCollider capsule = go.TryGetComponent<CapsuleCollider>(out capsule) ? capsule : UnityEditor.Undo.AddComponent<CapsuleCollider>(go);                   
+
+                    CapsuleCollider capsule = go.TryGetComponent<CapsuleCollider>(out capsule) ? capsule : UnityEditor.Undo.AddComponent<CapsuleCollider>(go);
                     capsule.direction = 0;
                     capsule.radius = radius;
-                    capsule.height = (CustomBones[i].position - nextBoneTransform.position).magnitude + capsule.radius;                  
+                    capsule.height = (CustomBones[i].position - nextBoneTransform.position).magnitude + capsule.radius;
                     capsule.center = new Vector3(capsule.height / 2f - capsule.radius, 0f, 0f);
                     if (SkeletonType == Handedness.Left)
                         capsule.center *= -1;
@@ -215,7 +212,7 @@ namespace SoftHand
             }
         }
 
-        #endif  
+#endif
     }
 }
 

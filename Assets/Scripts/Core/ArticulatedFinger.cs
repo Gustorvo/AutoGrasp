@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 using static SoftHand.Enums;
 
-namespace SoftHand.Core
+namespace SoftHand
 {
     public interface IArticulatedFinger
     {

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca3a0fb9844920408d56026df2128c0, type: 3}
   m_Name: New Torque Settings
   m_EditorClassIdentifier: 
-  _rotate: 1
   _angularForceWeight: 1
   _frequency: 20
   _damping: 1
