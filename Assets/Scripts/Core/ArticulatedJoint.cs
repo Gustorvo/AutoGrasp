@@ -63,7 +63,10 @@ namespace SoftHand
             ArticulationBody.jointPosition = zeroed;
             ArticulationBody.jointAcceleration = zeroed;
             ArticulationBody.jointForce = zeroed;
-            ArticulationBody.jointVelocity = zeroed;          
+            ArticulationBody.jointVelocity = zeroed;
+
+            ArticulationBody.angularVelocity = Vector3.zero;
+            ArticulationBody.velocity = Vector3.zero;                  
         }        
     }
 }

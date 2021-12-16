@@ -131,8 +131,8 @@ namespace SoftHand
 
         private void ResetVelocities()
         {
-            ArticulationBody.ResetVelocities();
-            _jointArticulationBodies.ForEach(b => b.ResetVelocities());
+            ArticulationBody.Reset();            
+            _joints.ForEach(j => j.Reset());
         }
 
         private void ConstructHand()

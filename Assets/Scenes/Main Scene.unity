@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0880114cf477954a960b428358924f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onTeleportDistance: 0.3
+  _onTeleportDistance: 1
   _moveHand: 1
   _rotateHand: 0
   _stabilizeHand: 1
@@ -1065,17 +1065,17 @@ PrefabInstance:
     - target: {fileID: 887578614570680612, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: -0.0000000021327848
+      value: -0.0000000033236405
       objectReference: {fileID: 0}
     - target: {fileID: 887578614570680612, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: 7.164535e-10
+      value: 0.0000000013340768
       objectReference: {fileID: 0}
     - target: {fileID: 887578614570680612, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 3.769537e-10
+      value: 0.0000000016691809
       objectReference: {fileID: 0}
     - target: {fileID: 887578614570680613, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1142,6 +1142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ZDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 887647504264128936, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
+        type: 3}
+      propertyPath: m_ParentAnchorPosition.x
+      value: 0.020069297
       objectReference: {fileID: 0}
     - target: {fileID: 887647504264128936, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1378,6 +1383,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 887735255917609656, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
+      propertyPath: m_ParentAnchorPosition.x
+      value: 0.095996246
+      objectReference: {fileID: 0}
+    - target: {fileID: 887735255917609656, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
+        type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: 0.02355068
       objectReference: {fileID: 0}
@@ -1456,6 +1466,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ZDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 887742507470085016, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
+        type: 3}
+      propertyPath: m_ParentAnchorPosition.x
+      value: 0.0886938
       objectReference: {fileID: 0}
     - target: {fileID: 887742507470085016, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -1820,17 +1835,22 @@ PrefabInstance:
     - target: {fileID: 888103045836010008, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.x
-      value: 0.032512914
+      value: 0.03251291
       objectReference: {fileID: 0}
     - target: {fileID: 888103045836010008, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.y
-      value: -4.440892e-18
+      value: 0.0000000037252903
       objectReference: {fileID: 0}
     - target: {fileID: 888103045836010008, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
-      value: 1.1657341e-17
+      value: 0.0000000018626451
+      objectReference: {fileID: 0}
+    - target: {fileID: 888103045836010009, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 888103045836010009, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -2296,7 +2316,7 @@ PrefabInstance:
     - target: {fileID: 8832487439938420029, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.0597
       objectReference: {fileID: 0}
     - target: {fileID: 8832487439938420029, guid: 8999b7e24fa00084d8d2bd7ed89a3ae8,
         type: 3}
@@ -3133,6 +3153,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &254304381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1808677077558039088, guid: 4b550ddd761500148bf4fd679c2293f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 263492425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &254304385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254304381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355c1f8037865f84a8dc55e3fe1ac50b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ratio: 0
+  _traveledDistanceLocal: 0
+  _driveTargetTraveledDistanceLocal: 0
 --- !u!1001 &263492425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3200,6 +3241,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: a1f872a71cbefb644bc8d8bcf0c80c17,
         type: 2}
+    - target: {fileID: 1799794928695661496, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1799794928695661496, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3342,6 +3388,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_ZDrive.upperLimit
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353784389034351196, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: -0.02355068
       objectReference: {fileID: 0}
@@ -3418,6 +3469,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353802831503035721, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_Height
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353802831503035721, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01190678
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353802831503035721, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 75e63df27398a5742af918161504a3e9,
@@ -3440,17 +3501,17 @@ PrefabInstance:
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 0.09
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 0.09
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 0.09
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3474,13 +3535,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_YDrive.forceLimit
       value: Infinity
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_YDrive.lowerLimit
+      value: -95
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_YDrive.upperLimit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_ZDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_ZDrive.lowerLimit
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_ZDrive.upperLimit
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212928, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3496,6 +3582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: -3.769537e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353813853921212929, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01171776
       objectReference: {fileID: 0}
     - target: {fileID: 3353813853921212929, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3552,6 +3643,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_XDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3353833168418887676, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3628,6 +3724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_XDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 3354254766851310742, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3712,6 +3813,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354286545286100626, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_YDrive.forceLimit
       value: Infinity
       objectReference: {fileID: 0}
@@ -3780,6 +3886,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_XDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3354511832271954680, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -3864,6 +3975,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354528724001889342, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_YDrive.forceLimit
       value: Infinity
       objectReference: {fileID: 0}
@@ -3937,6 +4053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_XDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 3354546444961528728, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4031,6 +4152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354579637742009292, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_YDrive.forceLimit
       value: Infinity
       objectReference: {fileID: 0}
@@ -4099,6 +4225,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_XDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 3354611246307284896, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4180,6 +4311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ZDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_ZDrive.upperLimit
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3354657382426686550, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4325,6 +4461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_ZDrive.upperLimit
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354782295024608092, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: -0.0017259055
       objectReference: {fileID: 0}
@@ -4386,6 +4527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354819457117074846, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_YDrive.forceLimit
       value: Infinity
       objectReference: {fileID: 0}
@@ -4403,6 +4549,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ParentAnchorPosition.z
       value: 0.0000000018626451
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354819457117074847, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: 3354819457117074847, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4462,6 +4613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
+      propertyPath: m_XDrive.lowerLimit
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354845804000464308, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
       propertyPath: m_YDrive.forceLimit
       value: Infinity
       objectReference: {fileID: 0}
@@ -4504,17 +4660,17 @@ PrefabInstance:
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_XDrive.damping
-      value: 0.09
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_YDrive.damping
-      value: 0.09
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
       propertyPath: m_ZDrive.damping
-      value: 0.09
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}
@@ -4545,6 +4701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ZDrive.forceLimit
       value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
+        type: 3}
+      propertyPath: m_ZDrive.upperLimit
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3355132802570800600, guid: 4b550ddd761500148bf4fd679c2293f0,
         type: 3}

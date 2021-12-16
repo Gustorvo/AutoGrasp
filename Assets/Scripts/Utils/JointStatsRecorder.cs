@@ -72,6 +72,9 @@ namespace SoftHand
             _initialized = _handToRecordFrom.Joints.Count > 0;
         }
 
+        private IJointStats GetJointStats(IJoint joint) => _runtimeJointsStats.FirstOrDefault(x => x.Id == joint.Id);
+        
+
         void OnApplicationQuit()
         {
             SaveJointLimitsToPreset();
@@ -114,7 +117,7 @@ namespace SoftHand
         public bool IsJointPositionOverLimit(IJoint joint, out Vector3 overlimitRadians)
         {
             overlimitRadians = Vector3.zero;
-            IJointStats statsData = _runtimeJointsStats.FirstOrDefault(x => x.Id == joint.Id);
+            IJointStats statsData = GetJointStats(joint);
             if (statsData == null)
             {
                 return false;
@@ -141,7 +144,7 @@ namespace SoftHand
 
         public bool IsJointStuck(IJoint joint)
         {
-            IJointStats statsData = _runtimeJointsStats.FirstOrDefault(x => x.Id == joint.Id);
+            IJointStats statsData = GetJointStats(joint);
             if (statsData == null)
             {
                 return false;
@@ -153,7 +156,7 @@ namespace SoftHand
         }
         public Vector3 GetNearestJointMinMaxRange(IJoint joint, Vector3 currentRange)
         {
-            IJointStats statsData = _runtimeJointsStats.FirstOrDefault(x => x.Id == joint.Id);
+            IJointStats statsData = GetJointStats(joint);
             if (statsData == null)
             {
                 return Vector3.zero;
@@ -169,7 +172,7 @@ namespace SoftHand
 
         public void ResetTravelRation(IJoint joint)
         {
-            IJointStats statsData = _runtimeJointsStats.FirstOrDefault(x => x.Id == joint.Id);
+            IJointStats statsData = GetJointStats(joint);
             if (statsData == null) return;
             statsData.ResetTravelRation();
         }

@@ -37,7 +37,9 @@ namespace SoftHand
                 if (Hand.RuntimeStats.IsJointStuck(joint))
                 {
                     Hand.Joints[i].Reset();
-                    UnityEngine.Debug.LogWarning($"Resetting stuck joint { Hand.Joints[i].Name}");
+                    Hand.RuntimeStats.ResetTravelRation(joint);
+                    string handPrefix = Hand.Handedness == Enums.Handedness.Right ? "R" : "L";
+                    UnityEngine.Debug.LogWarning($"Resetting stuck joint {handPrefix}_{Hand.Joints[i].Name}");
                 }
             }
 

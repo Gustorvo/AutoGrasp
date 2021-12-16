@@ -91,16 +91,19 @@ namespace SoftHand
                 driveTargetTraveledDistanceLocal += delta.x + delta.y + delta.z;
                 prevDriveTargets = currentDriveTargets;
                 Vector3 currentJointPositionLocal = Vector3.zero;
-                if (joint.dofCount >= 1) // x
-                    currentJointPositionLocal.x = joint.jointPosition[0];
-                if (joint.dofCount >= 2) // y
-                    currentJointPositionLocal.y = joint.jointPosition[1];
-                if (joint.dofCount == 3) // z
-                    currentJointPositionLocal.z = joint.jointPosition[2];
+                for (int i = 0; i < joint.dofCount; i++)
+                {
+                    if (i == 0) // x
+                        currentJointPositionLocal.x = joint.jointPosition[0];
+                    if (i == 1) // y
+                        currentJointPositionLocal.y = joint.jointPosition[1];
+                    if (i == 2) // z
+                        currentJointPositionLocal.z = joint.jointPosition[2];
+                }              
 
                 Vector3 deltaJointPos = (currentJointPositionLocal - prevJointPos).Abs();
                 traveledJointDistanceLocal += deltaJointPos.x + deltaJointPos.y + deltaJointPos.z;
-                prevJointPos = currentJointPositionLocal;
+                prevJointPos = currentJointPositionLocal;               
 
 
                 //  if (RecordJointMinMax && joints[j].Confidence == TrackingConfidence.High)
@@ -109,16 +112,11 @@ namespace SoftHand
                 // }
 
                 // reset statistics data when joints accumulated traveled distance > 100 degrees
-                if (driveTargetTraveledDistanceLocal > 100)
+                if (driveTargetTraveledDistanceLocal > 1000f)
                 {
-                    driveTargetTraveledDistanceLocal = 0;
-                    traveledJointDistanceLocal = 0;
-                    // traveledJointDistanceLocal = 0f;
-                    //driveTargetTraveledDistanceLocal = 0f;
-                    // ratio = 0f;
+                    ResetTravelRation();
                 }
-                jointPositionLocal = currentJointPositionLocal;
-                jointPositionsSqrMag = currentJointPositionLocal.Abs().sqrMagnitude;
+               // jointPositionsSqrMag = currentJointPositionLocal.Abs().sqrMagnitude;
                 // data.maxJointLimitsReached = data.jointPositionsSqrMag > data.maxJointPositionsSqrMagLocal;
                 bool overshootOnX = Mathf.Clamp(currentJointPositionLocal.x, lowerLimitsRad.x, upperLimitsRad.x) != currentJointPositionLocal.x;
                 bool overshootOnY = Mathf.Clamp(currentJointPositionLocal.y, lowerLimitsRad.y, upperLimitsRad.y) != currentJointPositionLocal.y;
@@ -145,9 +143,11 @@ namespace SoftHand
 
             public void ResetTravelRation()
             {
-                actualTravelledRatio = traveledJointDistanceLocal != 0 ? driveTargetTraveledDistanceLocal / traveledJointDistanceLocal : 0;
-                driveTargetTraveledDistanceLocal = 0;
-                traveledJointDistanceLocal = 0;
+                //actualTravelledRatio = traveledJointDistanceLocal != 0 ? driveTargetTraveledDistanceLocal / traveledJointDistanceLocal : 0;
+                driveTargetTraveledDistanceLocal = 0f;
+                traveledJointDistanceLocal = 0f;
+                prevDriveTargets = Vector3.zero;
+                prevJointPos = Vector3.zero;
             }
         }
     }

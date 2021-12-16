@@ -14,8 +14,8 @@ namespace SoftHand.Debug
         private Vector3 _prevDriveTargets;
         private Vector3 _currentDriveTargets;
         private Vector3 _prevJointPos;
-        private float _traveledDistanceLocal;
-        private float _driveTargetTraveledDistanceLocal;
+        public float _traveledDistanceLocal;
+        public float _driveTargetTraveledDistanceLocal;
 
 
         private void Awake()
@@ -51,12 +51,14 @@ namespace SoftHand.Debug
             Vector3 deltaJointPos = (_currentJointPosition - _prevJointPos).Abs();
             _traveledDistanceLocal += deltaJointPos.x + deltaJointPos.y + deltaJointPos.z;
             _prevJointPos = _currentJointPosition;
+            ratio = _traveledDistanceLocal > 0.001f ? _driveTargetTraveledDistanceLocal / _traveledDistanceLocal : 0f;
 
-            if (_driveTargetTraveledDistanceLocal > 10)
+            if (_driveTargetTraveledDistanceLocal > 1000f)
             {
-                ratio = _traveledDistanceLocal != 0 ? _driveTargetTraveledDistanceLocal / _traveledDistanceLocal : 0;
-                _driveTargetTraveledDistanceLocal = 0;
-                _traveledDistanceLocal = 0;
+                _driveTargetTraveledDistanceLocal = 0f;
+                _traveledDistanceLocal = 0f;
+                _prevDriveTargets = Vector3.zero;
+                _prevJointPos = Vector3.zero;
             }
 
         }
