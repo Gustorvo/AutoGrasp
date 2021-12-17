@@ -23,13 +23,13 @@ TagManager:
   - LHandContactInternal
   - RHandContactInternal
   - NoContact
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall
+  - Floor
+  - Ceiling
+  - Window
+  - Door
+  - Table
+  - Polygon
   - 
   - 
   - 
