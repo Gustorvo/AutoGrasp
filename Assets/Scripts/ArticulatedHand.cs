@@ -6,6 +6,7 @@ using UnityEngine.Assertions;
 using static SoftHand.Enums;
 
 using System.Collections.ObjectModel;
+using NaughtyAttributes;
 
 namespace SoftHand
 {
@@ -14,7 +15,7 @@ namespace SoftHand
     public class ArticulatedHand : MonoBehaviour, IArticulatedHand
     {
         [SerializeField] Handedness _handedness = Handedness.None;
-        [SerializeField] HandTrackingDataProvider _handTrackingProvider = HandTrackingDataProvider.Oculus;
+        [SerializeField, OnValueChanged("ReinitializeTrackingProvider")] HandTrackingDataProvider _handTrackingProvider = HandTrackingDataProvider.Oculus;
        // [SerializeField] HandConfig _config = null;
         [SerializeField] ForceSettings _forceSettings = null;
         [SerializeField] TorqueSettings _torqueSettings = null;
@@ -127,6 +128,12 @@ namespace SoftHand
         private void Destroy()
         {
             OnTeleport -= ResetVelocities;
+        }
+
+        private void ReinitializeTrackingProvider()
+        {
+            Tracking = HandsCore.GetHandTrackingDataProvider(_handTrackingProvider);
+            UnityEngine.Debug.Log($"Hand tracking provider changed to {_handTrackingProvider}");
         }
 
         private void ResetVelocities()
@@ -399,6 +406,7 @@ namespace SoftHand
         }
         private void UpdateTargetJointsPoses()
         {
+            
             if (Initialized && Tracking.IsReliable(_handedness))
             {              
                 Array.Copy(Tracking.GetBonesPoses(_handedness), _firstBone, _targetJointsPoseBuffer, 0, _targetJointsPoseBuffer.Length);

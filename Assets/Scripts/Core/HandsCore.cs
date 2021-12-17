@@ -41,7 +41,12 @@ namespace SoftHand
 
         public static IHandTrackingDataProvider GetHandTrackingDataProvider(HandTrackingDataProvider type)
         {
-            return HandTrackingProvides.FirstOrDefault(x => x.Type == type);
+            var provider = HandTrackingProvides.FirstOrDefault(x => x.Type == type);
+            if (provider != null)
+            {
+                provider.Init();
+            }
+            return provider;
         }
 
         private void OnValidate()

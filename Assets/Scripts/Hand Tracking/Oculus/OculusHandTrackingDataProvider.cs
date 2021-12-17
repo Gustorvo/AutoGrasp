@@ -7,7 +7,6 @@ using NaughtyAttributes;
 
 namespace SoftHand
 {
-
     public class OculusHandTrackingDataProvider : HandTrackingBase, IHandTrackingDataProvider
     {
         [SerializeField] bool _debugBones = false;
@@ -263,6 +262,11 @@ namespace SoftHand
         public Pose GetLastReliableRootPose(Handedness hand)
         {
             return _lastReliableFrame[(int)hand, 0];
+        }
+
+        public void Init()
+        {
+            //throw new System.NotImplementedException();
         }
         #endregion // interface implementation
     }    

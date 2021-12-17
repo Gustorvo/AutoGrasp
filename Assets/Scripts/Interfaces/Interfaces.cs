@@ -45,6 +45,7 @@ namespace SoftHand
         bool IsReliable(Handedness hand);
         Pose GetLastReliableRootPose(Handedness hand);
         TrackingConfidence GetFingerConfidence(Handedness handedness, Finger finger);
+        void Init();
     }
     public interface IArticulatedHandsController
     {
