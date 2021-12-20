@@ -133,7 +133,7 @@ namespace SoftHand
         private void ReinitializeTrackingProvider()
         {
             Tracking = HandsCore.GetHandTrackingDataProvider(_handTrackingProvider);
-            UnityEngine.Debug.Log($"Hand tracking provider changed to {_handTrackingProvider}");
+            UnityEngine.Debug.Log($"Hand tracking provider for {_handedness} hand changed to {_handTrackingProvider}");
         }
 
         private void ResetVelocities()

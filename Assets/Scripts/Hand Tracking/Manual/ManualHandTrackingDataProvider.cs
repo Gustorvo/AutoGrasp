@@ -14,6 +14,8 @@ namespace SoftHand
         [SerializeField] bool _copyFingerTrackingDataFromAlternativeProvider = true;
 
         private Pose[] _wristPose = new Pose[2];
+        private Pose[][] _bonePoses = new Pose[2][];
+
         private IHandTrackingDataProvider _altDataProvider;
 
         public override Enums.HandTrackingDataProvider Type => Enums.HandTrackingDataProvider.Manual;
@@ -48,17 +50,17 @@ namespace SoftHand
             if (_alternativeDataProvider != null)
             {
                 _altDataProvider = (IHandTrackingDataProvider)_alternativeDataProvider;
-                JointPositionsProvided = true;
-                JointRotationsProvided = true;
-                Snap();
+                if (_altDataProvider.IsInitialized)
+                {                   
+                    SnapRoot();                    
+                        SnapFingers();                    
+                }
             }
-            else
-            {
-                JointPositionsProvided = false;
-                JointRotationsProvided = false;
-            }
+           
+            
             IsInitialized = true;
         }
+
 
         private void OnDisable()
         {
@@ -70,13 +72,18 @@ namespace SoftHand
             Init();
         }
 
-        private void Snap()
+        private void SnapRoot()
         {
             _wristPose[0] = _altDataProvider.GetLastReliableRootPose((Enums.Handedness)0);
             _wristPose[1] = _altDataProvider.GetLastReliableRootPose((Enums.Handedness)1);
 
             _lHandRoot.SetPositionAndRotation(_wristPose[0].position, _wristPose[0].rotation);
             _rHandRoot.SetPositionAndRotation(_wristPose[1].position, _wristPose[1].rotation);
+        }
+        private void SnapFingers()
+        {
+            _bonePoses[0] = _altDataProvider.GetBonesPoses((Enums.Handedness)0);
+            _bonePoses[1] = _altDataProvider.GetBonesPoses((Enums.Handedness)1);
         }
         public Pose[] GetBonesPoses(Enums.Handedness hand)
         {
@@ -92,16 +99,12 @@ namespace SoftHand
             if (_copyFingerTrackingDataFromAlternativeProvider && _altDataProvider != null)
             {
                 return _altDataProvider.GetFingerConfidence(handedness, finger);
-            }            
+            }
             throw new System.NotImplementedException();
         }
 
-        #region not implemented
-        public int GetNumberOfJoints()
-        {
-            throw new System.NotImplementedException();
-        }
+        public int GetNumberOfJoints() => 17;
 
-        #endregion // not implemented
+
     }
 }
