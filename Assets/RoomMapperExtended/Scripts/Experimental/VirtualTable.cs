@@ -28,6 +28,8 @@ namespace VRoom
                 _interactableList.ForEach(i => i.GetComponent<Collider>().enabled = false);
                 _interactableList.ForEach(i => i.GetComponent<Rigidbody>().isKinematic = true);
             }
+            ToggleInteractables(false);
+
             RoomItems.OnItemAdded -= IsItemTable;
             RoomItems.OnItemAdded += IsItemTable;
         }
@@ -43,6 +45,7 @@ namespace VRoom
             {
                 _table = item;
                 PlaceVirtualObj();
+               // ToggleInteractables(true);
             }
         }
 
@@ -71,13 +74,13 @@ namespace VRoom
             Vector3 surfaceTop = tableTransform.position + Vector3.up * yOffset;
 
             // place on the table surface
-            _interactables.transform.position = surfaceTop;
-            _interactables.transform.forward = tableTransform.forward;
+            transform.position = surfaceTop;
+            transform.forward = tableTransform.forward;
 
             //set scale
-            _interactables.parent = null;
-            transform.localScale = tableTransform.localScale;
-            _interactables.parent = transform;
+           // _interactables.parent = null;
+           // transform.localScale = tableTransform.localScale;
+           // _interactables.parent = transform;
         }
 
         public void SetVisibility(bool active)
@@ -90,8 +93,11 @@ namespace VRoom
 
         public void ToggleInteractables(bool active)
         {
+            if (_interactableList.Count > 0)
+            {
             _interactableList.ForEach(i => i.GetComponent<Collider>().enabled = active);
             _interactableList.ForEach(i => i.GetComponent<Rigidbody>().isKinematic = !active);
+            }
         }
     }
 }
