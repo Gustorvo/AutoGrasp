@@ -58,8 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-Assets/Oculus/
-Assets/Oculus.meta
+
 Packages/MixedReality/
 EditorUserSettings.asset
 Assets/Recordings/
