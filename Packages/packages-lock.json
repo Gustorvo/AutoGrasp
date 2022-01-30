@@ -1,50 +1,5 @@
 {
   "dependencies": {
-    "com.microsoft.mixedreality.openxr": {
-      "version": "file:MixedReality/com.microsoft.mixedreality.openxr-0.9.2.tgz",
-      "depth": 0,
-      "source": "local-tarball",
-      "dependencies": {
-        "com.unity.xr.openxr": "1.1.1",
-        "com.unity.xr.arsubsystems": "4.1.7",
-        "com.unity.xr.arfoundation": "4.1.7"
-      }
-    },
-    "com.unity.2d.common": {
-      "version": "4.0.3",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.2d.sprite": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.path": {
-      "version": "4.0.2",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.2d.sprite": {
-      "version": "1.0.0",
-      "depth": 2,
-      "source": "builtin",
-      "dependencies": {}
-    },
-    "com.unity.2d.spriteshape": {
-      "version": "5.1.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.mathematics": "1.1.0",
-        "com.unity.2d.common": "4.0.3",
-        "com.unity.2d.path": "4.0.2",
-        "com.unity.modules.physics2d": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.burst": {
       "version": "1.4.6",
       "depth": 0,
@@ -77,13 +32,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.inputsystem": {
-      "version": "1.0.2",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.mathematics": {
       "version": "1.2.1",
       "depth": 1,
@@ -91,29 +39,11 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.probuilder": {
-      "version": "4.5.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.settings-manager": "1.0.3"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.settings-manager": {
-      "version": "1.0.3",
+    "com.unity.subsystemregistration": {
+      "version": "1.0.6",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.subsystemregistration": {
-      "version": "1.1.0",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.subsystems": "1.0.0"
-      },
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
@@ -145,25 +75,6 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "com.unity.xr.arfoundation": {
-      "version": "4.1.7",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.xr.arsubsystems": "4.1.7",
-        "com.unity.xr.management": "4.0.1"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.xr.arsubsystems": {
-      "version": "4.1.7",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.subsystemregistration": "1.1.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.8",
       "depth": 1,
@@ -194,17 +105,6 @@
       "dependencies": {
         "com.unity.xr.management": "4.0.1",
         "com.unity.ugui": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.xr.openxr": {
-      "version": "1.1.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.xr.management": "4.0.1",
-        "com.unity.xr.legacyinputhelpers": "2.1.2",
-        "com.unity.inputsystem": "1.0.2"
       },
       "url": "https://packages.unity.com"
     },
